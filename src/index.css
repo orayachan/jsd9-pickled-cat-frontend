@@ -72,6 +72,33 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@theme {
+    /* fonts & color */
+    --font-custom: Inter, 'Noto Sans Thai', serif;
+    --color-primary: var(--color-primary-700);
+    --color-secondary: var(--color-secondary-100);
+    --color-primary-50: #eaecf5;
+    --color-primary-100: #d3d6e3;
+    --color-primary-200: #b8bdd1;
+    --color-primary-300: #9ea5c0;
+    --color-primary-400: #838daf;
+    --color-primary-500: #6b76a0;
+    --color-primary-600: #536090;
+    --color-primary-700: #3b4a81;
+    --color-primary-800: #2b3760;
+    --color-primary-900: #1d2540;
+    --color-secondary-50: #f0ebf5;
+    --color-secondary-100: #ded1e8;
+    --color-secondary-200: #c5b9ce;
+    --color-secondary-300: #ada2b5;
+    --color-secondary-400: #938b9a;
+    --color-secondary-500: #7d7582;
+    --color-secondary-600: #65606a;
+    --color-secondary-700: #504b54;
+    --color-secondary-800: #3b373e;
+    --color-secondary-900: #28252a;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
