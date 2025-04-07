@@ -1,13 +1,17 @@
 import js from '@eslint/js';
+import configPrettier from 'eslint-config-prettier';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 
 export default [
-  { ignores: ['dist'] },
+  { ignores: ['dist', 'vite.config.js'] },
   {
     files: ['**/*.{js,jsx}'],
+    ...jsxA11y.flatConfigs.strict,
     languageOptions: {
+      ...jsxA11y.flatConfigs.strict.languageOptions,
       ecmaVersion: 2020,
       globals: globals.browser,
       parserOptions: {
@@ -28,6 +32,7 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      ...configPrettier.rules,
     },
   },
 ];
