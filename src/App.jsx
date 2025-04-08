@@ -1,11 +1,12 @@
-import { Button } from "@/components/ui/button"
+import { Home } from '@/pages/Home';
 
-function App() {
+export function App() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-svh">
-      <Button>Click me</Button>
-    </div>
-  )
+    <main className='grid min-h-svh min-w-xl place-content-center-safe gap-4'>
+      <p className='text-center'>
+        This is <code>App.jsx</code> main layout.
+      </p>
+      <Home />
+    </main>
+  );
 }
-
-export default App
