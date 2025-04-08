@@ -1,0 +1,3 @@
+.section {
+  @apply grid justify-center-safe;
+}

@@ -1,12 +1,33 @@
-# React + Vite
+# JSD 9 Pickled Cat Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A frontend e-commerce app of **Pickled Cat Merchandise**, featuring unique
+products from our brand.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+First, clone this repo to your local machine. Make sure to navigate inside the
+directory.
 
-## Expanding the ESLint configuration
+```sh
+git clone https://github.com/orayachan/jsd9-pickled-cat-frontend.git
+cd ./jsd9-pickled-cat-frontend
+```
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Then, run this command to install all dependencies based on `package.json`
+
+```sh
+npm i
+```
+
+Now, try starting the dev server to see if it works.
+
+```sh
+npm run dev
+```
+
+## Tech Stack
+
+- React
+- React Router
+- Tailwind CSS
+- shadcn/ui
