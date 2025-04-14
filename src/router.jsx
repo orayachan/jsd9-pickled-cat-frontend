@@ -6,13 +6,14 @@ import {
 } from '@/components/layouts';
 import { Home, MyAccount } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
+import { LandingPage } from './pages/Products/LandingPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     Component: Default,
     children: [
-      { index: true, Component: Home },
+      { index: true, Component: LandingPage },
       { path: '*', Component: Home },
     ],
   },
