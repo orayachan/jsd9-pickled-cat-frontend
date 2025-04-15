@@ -1,6 +1,7 @@
 import React from 'react';
 
 export const ProductCard = ({ product }) => {
+
   return (
     <div className="flex h-full w-full flex-col justify-between rounded-2xl border p-4 shadow-md">
       {/* รูปภาพ */}
@@ -22,15 +23,15 @@ export const ProductCard = ({ product }) => {
         </div>
         <p>{product.description}</p>
         <div className="mt-2 flex h-4 gap-1 items-center">
-          <img src="/assets/images/avg-star-review.png" alt="" />
+          <p className="text-yellow-400">★★★★★</p>
           <p className="text-sm">(121)</p>
         </div>
       </div>
 
       {/* ปุ่ม */}
       <div className="mt-4  flex flex-col gap-2">
-        <button className="btn btn-addToCart">Add To Cart</button>
-        <button className="btn btn-addToShortList">Add To Shortlist</button>
+        <button className="btn btn-addToCart">รายละเอียด</button>
+        <button className="btn btn-addToShortList">ลงตระกร้า</button>
       </div>
     </div>
   );
