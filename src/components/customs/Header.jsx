@@ -81,7 +81,7 @@ export function Header() {
               </ul>
             )}
           </div>
-          <button className='hover:text-primary-600 flex hidden items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-yellow-100'>
+          <button className='hover:text-primary-600 hidden items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-yellow-100'>
             <HiOutlineUserCircle />
           </button>
           <p className='hidden flex-col items-start justify-center lg:flex'>
