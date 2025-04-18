@@ -1,7 +1,6 @@
+import { data } from '@/lib/data';
+import { ProductCard, SearchProduct } from './components';
 import { useState } from 'react';
-import { CiSearch } from 'react-icons/ci';
-import { data } from '../../lib/data';
-import { ProductCard } from './ProductCard';
 
 export const LandingPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -12,7 +11,7 @@ export const LandingPage = () => {
   return (
     <section className='mx-4 my-6 flex justify-center sm:mx-8 md:mx-16 lg:mx-20'>
       <section className='w-full max-w-screen-2xl'>
-        <h2 className='text-[28px] font-bold text-[#3A4980] italic sm:text-[32px]'>
+        <h2 className='text-[28px] font-bold text-[#3A4980] sm:text-[32px]'>
           สินค้าของเรา
         </h2>
 
@@ -29,7 +28,7 @@ export const LandingPage = () => {
                   {label}
                   <img
                     className='inline-block h-4 w-4'
-                    src='../../../public/logos/drop.png'
+                    src='/logos/drop.png'
                     alt='dropdown icon'
                   />
                 </button>
@@ -38,21 +37,9 @@ export const LandingPage = () => {
           </div>
 
           {/* search bar */}
-          <div className='relative w-full max-w-sm'>
-            <input
-              type='text'
-              placeholder='ค้นหาผลิตภัณฑ์...'
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className='w-full rounded-full border border-gray-300 bg-white py-2 pr-10 pl-4 text-sm shadow-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 focus:outline-none'
-            />
-            <CiSearch
-              className='absolute top-1/2 right-3 -translate-y-1/2 text-gray-400'
-              size={20}
-            />
-          </div>
+          <SearchProduct searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         </div>
-        
+
         {/* product list */}
         <div className='mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           {filteredProducts.map((product) => (

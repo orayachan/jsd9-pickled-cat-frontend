@@ -6,7 +6,8 @@ import {
 } from '@/components/layouts';
 import { Home, MyAccount } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
-import { LandingPage } from './pages/Products/LandingPage';
+import { LandingPage } from './pages/Products';
+
 
 const router = createBrowserRouter([
   {
