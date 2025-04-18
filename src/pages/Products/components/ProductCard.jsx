@@ -1,7 +1,6 @@
 import React from 'react';
 
 export const ProductCard = ({ product }) => {
-
   return (
     <div className="flex h-full w-full flex-col justify-between rounded-2xl border p-4 shadow-md">
       {/* รูปภาพ */}
