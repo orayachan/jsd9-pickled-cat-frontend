@@ -10,7 +10,7 @@ export const data = [
     option: ['สูตรดั้งเดิม', 'สูตรโอเมก้า+', 'สูตรลดกลิ่น'],
     sizes: ['150g', '300g', '500g'],
     images: [
-      'https://example.com/images/1.jpg',
+      'https://img2.pic.in.th/pic/Chicken.jpeg',
       'https://example.com/images/2.jpg',
       'https://example.com/images/3.jpg',
     ],

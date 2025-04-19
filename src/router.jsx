@@ -1,5 +1,5 @@
 import { Dashboard, Default } from '@/components/layouts';
-import { Home, MyAccount } from '@/pages';
+import { Home, MyAccount, MyOrders } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 
 const router = createBrowserRouter([
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, Component: MyAccount },
       { path: '*', Component: MyAccount },
-    ],
+    ]
   },
 ]);
 
