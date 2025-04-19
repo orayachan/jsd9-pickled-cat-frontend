@@ -3,3 +3,7 @@
 html {
   @apply font-custom;
 }
+
+button {
+  @apply cursor-pointer;
+}
