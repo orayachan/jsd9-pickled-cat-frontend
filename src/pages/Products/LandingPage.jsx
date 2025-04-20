@@ -1,13 +1,31 @@
 import { data } from '@/lib/data';
-import { ProductCard, SearchProduct } from './components';
 import { useState } from 'react';
+import { ProductCard, ProductFilterBar, SearchProduct } from './components';
 
 export const LandingPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [sortPrice, setSortPrice] = useState('');
 
-  const filteredProducts = data.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
+  let filteredData = [...data];
+
+  if (selectedCategory) {
+    filteredData = filteredData.filter(
+      (product) => product.category === selectedCategory,
+    );
+  }
+
+  if (searchTerm) {
+    filteredData = filteredData.filter((product) =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    );
+  }
+
+  if (sortPrice === 'ราคาน้อยไปมาก') {
+    filteredData.sort((a, b) => a.price - b.price);
+  } else if (sortPrice === 'ราคามากไปน้อย') {
+    filteredData.sort((a, b) => b.price - a.price);
+  }
   return (
     <section className='mx-4 my-6 flex justify-center sm:mx-8 md:mx-16 lg:mx-20'>
       <section className='w-full max-w-screen-2xl'>
@@ -18,31 +36,21 @@ export const LandingPage = () => {
         {/* menu-bar */}
         <div className='my-8 hidden items-center justify-between text-sm md:flex'>
           {/* sort-option */}
-          <div className='flex flex-wrap gap-2'>
-            {['หมวดหมู่', 'ราคา', 'รีวิว', 'ขายดี', 'มาใหม่', 'ส่วนลด'].map(
-              (label) => (
-                <button
-                  key={label}
-                  className='flex items-center gap-1 rounded-full bg-gray-200 px-4 py-1 text-sm font-medium hover:bg-gray-300'
-                >
-                  {label}
-                  <img
-                    className='inline-block h-4 w-4'
-                    src='/logos/drop.png'
-                    alt='dropdown icon'
-                  />
-                </button>
-              ),
-            )}
-          </div>
+          <ProductFilterBar
+            onCategoryChange={(category) => setSelectedCategory(category)}
+            onPriceChange={(price) => setSortPrice(price)}
+          />
 
           {/* search bar */}
-          <SearchProduct searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+          <SearchProduct
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+          />
         </div>
 
         {/* product list */}
         <div className='mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-          {filteredProducts.map((product) => (
+          {filteredData.slice(0, 16).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
