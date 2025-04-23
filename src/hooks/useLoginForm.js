@@ -1,6 +1,6 @@
+import { postFormData, validateFormData } from '@/utils';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { postFormData, validateFormData } from '../utils';
 
 export function useLoginForm() {
   const navigate = useNavigate();
@@ -20,6 +20,7 @@ export function useLoginForm() {
     setLoading(true);
     setErrors({ type: null, errors: {} });
 
+    // TODO: Optional: make it loop and auto append error fields in object
     const { validatedData, errors, success } = validateFormData(data, 'login');
     if (!success) {
       const emailError =
@@ -39,6 +40,7 @@ export function useLoginForm() {
       console.log(data);
     } else {
       try {
+        // TODO: check `postFormData()` supposed to be done before `navigate()`
         await postFormData(signal, validatedData);
         navigate('/dashboard');
       } catch (error) {
