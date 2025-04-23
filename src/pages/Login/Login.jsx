@@ -2,11 +2,11 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useLoginForm } from '@/hooks';
 import { cn } from '@/lib/utils';
+import { handleBlur } from '@/utils';
 import { LoaderCircle } from 'lucide-react';
 import { Link } from 'react-router';
-import { useLoginForm } from './hooks';
-import { handleBlur } from './utils';
 
 export function Login() {
   const { errors, handleSubmit, loading, setData, setErrors } = useLoginForm();
