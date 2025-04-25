@@ -26,34 +26,34 @@ export function Header() {
             </Link>
           </li>
           <li>
-            <a href='#products' className='hover:text-primary-600'>
+            <Link to={{hash: '#products'}} className='hover:text-primary-600'>
               สินค้าของเรา
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='#highlight' className='hover:text-primary-600'>
+            <Link to={{hash: '#highlight'}} className='hover:text-primary-600'>
               สินค้าขายดี
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='#contact' className='hover:text-primary-600'>
+            <Link to={{hash: '#contact'}} className='hover:text-primary-600'>
               ติดต่อเรา
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='#faqs' className='hover:text-primary-600'>
+            <Link to={{hash: '#faqs'}} className='hover:text-primary-600'>
               คำถามที่พบบ่อย
-            </a>
+            </Link>
           </li>
         </ul>
         {/* Part - end */}
         <div className='flex items-center justify-end gap-4'>
-          <button className='hover:text-primary-600 flex items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-[#f5f1ee] lg:text-[#875541]'>
+          <Link to='/Checkout' className='hover:text-primary-600 flex items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-[#f5f1ee] lg:text-[#875541]'>
             <HiOutlineShoppingCart />
-          </button>
-          <button className='hover:text-primary-600 flex items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-[#eeeff8]'>
+          </Link>
+          <Link to='/' className='hover:text-primary-600 flex items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-[#eeeff8]'>
             <HiOutlineMegaphone />
-          </button>
+          </Link>
           {/* Menu */}
           <div className='relative'>
             <button
@@ -65,19 +65,19 @@ export function Header() {
             {isMenuOpen && (
               <ul className='absolute right-0 z-50 mt-4 w-36 rounded-lg border bg-white shadow-md'>
                 <li className='hover:text-primary-600 mr-4 text-end'>
-                  <a href='#'>ข้อมูลของฉัน</a>
+                  <Link to='/Dashboard'>ข้อมูลของฉัน</Link>
                 </li>
                 <li className='hover:text-primary-600 mr-4 text-end'>
-                  <a href='#'>คำสั่งซื้อ</a>
+                  <Link to='/Dashboard'>คำสั่งซื้อ</Link>
                 </li>
                 <li className='hover:text-primary-600 mr-4 text-end'>
-                  <a href='#'>รายการยกเลิก</a>
+                  <Link to='/Dashboard'>รายการยกเลิก</Link>
                 </li>
                 <li className='hover:text-primary-600 mr-4 text-end'>
-                  <a href='#'>รีวิวสินค้า</a>
+                  <Link to='/Dashboard'>รีวิวสินค้า</Link>
                 </li>
                 <li className='hover:text-primary-600 mr-4 text-end'>
-                  <a href='#'>ออกจากระบบ</a>
+                  <Link to='/'>ออกจากระบบ</Link>
                 </li>
               </ul>
             )}
@@ -87,9 +87,9 @@ export function Header() {
           </button>
           <p className='hidden flex-col items-start justify-center lg:flex'>
             <span className='font-semibold'>สวัสดี</span>
-            <a href='#' className='hover:text-primary-600'>
+            <Link to='/Login' className='hover:text-primary-600'>
               เข้าสู่ระบบ
-            </a>
+            </Link>
           </p>
         </div>
       </nav>
