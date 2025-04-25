@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Card } from './components';
 import style from './home.module.css';
 import { useMockData } from './hooks';
-import { LandingPage } from '../Products/LandingPage';
 
 export function Home() {
   const data = useMockData();

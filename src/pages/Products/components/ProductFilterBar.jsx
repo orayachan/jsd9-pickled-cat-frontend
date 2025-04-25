@@ -34,7 +34,7 @@ export function ProductFilterBar({ onCategoryChange, onPriceChange }) {
           </button>
           {showCategoryDropdown && (
             <ul className='absolute left-0 z-10 mt-2 w-40 rounded-md bg-white shadow-lg'>
-              {categories.map(({label, value}) => (
+              {categories.map(({ label, value }) => (
                 <li
                   key={value}
                   onClick={() => {
