@@ -1,5 +1,5 @@
-import ErrorCat from '/public/error/graycat404.png';
 import { Link } from 'react-router';
+import ErrorCat from '/public/error/graycat404.png';
 
 export function Error404() {
   return (
