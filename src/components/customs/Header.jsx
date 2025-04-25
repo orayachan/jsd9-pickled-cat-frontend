@@ -5,6 +5,7 @@ import {
   HiOutlineUserCircle,
 } from 'react-icons/hi';
 import { HiOutlineMegaphone } from 'react-icons/hi2';
+import { Link } from 'react-router';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,20 +14,20 @@ export function Header() {
       <nav className='mx-auto flex items-center justify-between gap-4 lg:max-w-screen-2xl'>
         {/* Part - start */}
         <h1 className='flex items-start text-xl font-bold italic lg:text-2xl'>
-          <a href='#' className='hover:text-primary-700'>
+          <Link to='/' className='hover:text-primary-700'>
             PICKLED-CAT
-          </a>
+          </Link>
         </h1>
         {/* Part - middle */}
         <ul className='hidden items-center justify-center gap-4 font-medium lg:flex'>
           <li>
-            <a href='#' className='hover:text-primary-600'>
+            <Link to='/' className='hover:text-primary-600'>
               หน้าแรก
-            </a>
+            </Link>
           </li>
           <li>
             <a href='#products' className='hover:text-primary-600'>
-              ผลิตภัณฑ์
+              สินค้าของเรา
             </a>
           </li>
           <li>
