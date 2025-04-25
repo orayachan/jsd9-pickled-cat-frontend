@@ -8,7 +8,6 @@ import { Home, MyAccount } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { LandingPage } from './pages/Products';
 
-
 const router = createBrowserRouter([
   {
     path: '/',
