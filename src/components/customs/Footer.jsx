@@ -1,7 +1,6 @@
 /** @param {{variation: 'default', 'minimal'}} */
-import { Link2 } from 'lucide-react';
-import { Link } from 'react-router';
 import { BsFacebook, BsInstagram, BsTwitterX, BsYoutube } from 'react-icons/bs';
+import { Link } from 'react-router';
 
 export function Footer({ variation: variant = 'default' }) {
   return variant === 'default' ?
@@ -59,19 +58,25 @@ export function Footer({ variation: variant = 'default' }) {
               <Link to='/' className='hover:text-primary-700'>
                 เกี่ยวกับเรา
               </Link>
-              <Link to={{hash: '#contact'}} className='hover:text-primary-700'>
+              <Link
+                to={{ hash: '#contact' }}
+                className='hover:text-primary-700'
+              >
                 ติดต่อเรา
               </Link>
               <Link to='/Join-us' className='hover:text-primary-700'>
                 ร่วมงานกับเรา
               </Link>
-              <Link to={{hash: '#faqs'}} className='hover:text-primary-700'>
+              <Link to={{ hash: '#faqs' }} className='hover:text-primary-700'>
                 คำถามที่พบบ่อย
               </Link>
             </article>
             <article className='flex flex-col'>
               <h3 className='my-2 font-semibold'>บริการลูกค้า</h3>
-              <Link to={{hash: '#products'}} className='hover:text-primary-700'>
+              <Link
+                to={{ hash: '#products' }}
+                className='hover:text-primary-700'
+              >
                 สินค้าของเรา
               </Link>
               <Link to='/Checkout' className='hover:text-primary-700'>

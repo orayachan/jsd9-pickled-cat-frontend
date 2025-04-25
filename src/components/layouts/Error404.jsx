@@ -1,4 +1,5 @@
-import ErrorCat from '../../../public/error/graycat404.png';
+import { Link } from 'react-router';
+import ErrorCat from '/public/error/graycat404.png';
 
 export function Error404() {
   return (
@@ -6,9 +7,9 @@ export function Error404() {
       <section className='mx-12 flex flex-col items-end justify-center'>
         <h1 className='text-4xl font-bold lg:text-6xl'>404 ERROR</h1>
         <p className='mb-8 text-lg'>This page is under construction</p>
-        <a href='#' className='hover:text-primary-600 font-semibold'>
+        <Link to='/' className='hover:text-primary-600 font-semibold'>
           Back →
-        </a>
+        </Link>
       </section>
       <img src={ErrorCat} />
     </div>

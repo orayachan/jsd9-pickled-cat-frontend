@@ -26,32 +26,41 @@ export function Header() {
             </Link>
           </li>
           <li>
-            <Link to={{hash: '#products'}} className='hover:text-primary-600'>
+            <Link to={{ hash: '#products' }} className='hover:text-primary-600'>
               สินค้าของเรา
             </Link>
           </li>
           <li>
-            <Link to={{hash: '#highlight'}} className='hover:text-primary-600'>
+            <Link
+              to={{ hash: '#highlight' }}
+              className='hover:text-primary-600'
+            >
               สินค้าขายดี
             </Link>
           </li>
           <li>
-            <Link to={{hash: '#contact'}} className='hover:text-primary-600'>
+            <Link to={{ hash: '#contact' }} className='hover:text-primary-600'>
               ติดต่อเรา
             </Link>
           </li>
           <li>
-            <Link to={{hash: '#faqs'}} className='hover:text-primary-600'>
+            <Link to={{ hash: '#faqs' }} className='hover:text-primary-600'>
               คำถามที่พบบ่อย
             </Link>
           </li>
         </ul>
         {/* Part - end */}
         <div className='flex items-center justify-end gap-4'>
-          <Link to='/Checkout' className='hover:text-primary-600 flex items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-[#f5f1ee] lg:text-[#875541]'>
+          <Link
+            to='/Checkout'
+            className='hover:text-primary-600 flex items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-[#f5f1ee] lg:text-[#875541]'
+          >
             <HiOutlineShoppingCart />
           </Link>
-          <Link to='/' className='hover:text-primary-600 flex items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-[#eeeff8]'>
+          <Link
+            to='/'
+            className='hover:text-primary-600 flex items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-[#eeeff8]'
+          >
             <HiOutlineMegaphone />
           </Link>
           {/* Menu */}
