@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import {
   OrderAll,
-  OrderCancel,
   OrderOnRoute,
   OrderPending,
   OrderSuccess,
-} from './MyOrderList';
+} from './LatestOrderLists';
 
-export function MyOrders() {
+export function LatestOrder() {
   const [orderTab, setOrderTab] = useState('all');
 
   const renderOrderContent = () => {
@@ -18,8 +17,6 @@ export function MyOrders() {
         return <OrderOnRoute />;
       case 'success':
         return <OrderSuccess />;
-      case 'cancel':
-        return <OrderCancel />;
       case 'all':
       default:
         return <OrderAll />;
@@ -33,7 +30,7 @@ export function MyOrders() {
 
   return (
     <div>
-      <h2 className='mt-6 mb-4 text-2xl font-bold'>รายการคำสั่งซื้อ</h2>
+      <h1 className='my-5 text-3xl font-bold'>คำสั่งซื้อล่าสุด</h1>
 
       <div className='mb-6 flex gap-2'>
         <button onClick={() => setOrderTab('all')} className={tabClass('all')}>
@@ -56,12 +53,6 @@ export function MyOrders() {
           className={tabClass('success')}
         >
           จัดส่งสำเร็จ
-        </button>
-        <button
-          onClick={() => setOrderTab('cancel')}
-          className={tabClass('cancel')}
-        >
-          ยกเลิก
         </button>
       </div>
 

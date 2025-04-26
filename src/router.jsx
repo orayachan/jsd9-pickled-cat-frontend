@@ -1,4 +1,4 @@
-import { Dashboard, Default } from '@/components/layouts';
+import { AdminDashboard, Dashboard, Default } from '@/components/layouts';
 import { Home, MyAccount, MyOrders } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 
@@ -18,6 +18,10 @@ const router = createBrowserRouter([
       { index: true, Component: MyAccount },
       { path: '*', Component: MyAccount },
     ]
+  },
+  {
+    path: 'admin/dashboard',
+    Component: AdminDashboard,
   },
 ]);
 

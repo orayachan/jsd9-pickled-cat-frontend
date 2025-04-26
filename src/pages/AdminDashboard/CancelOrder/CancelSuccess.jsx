@@ -1,12 +1,19 @@
-import { Button } from '@/components/ui/button';
-
-export function OrderPending() {
+export function CancelSuccess() {
   return (
     <section className='flex flex-col gap-4'>
       <div className='flex flex-col rounded-lg border bg-white p-4 shadow-sm'>
+        <div className='mx-2 my-2 flex flex-row gap-4 border-b pb-4'>
+          <img
+            src='/public/logos/Sample_User_Icon.png'
+            alt='user profile'
+            className='max-h-12 max-w-12 rounded-4xl border'
+          />
+          <p className='text-primary my-auto text-xl font-bold'>USER 456</p>
+        </div>
+
         <div className='mx-2 mb-2 flex flex-row justify-between'>
           <p className='text-lg'>15 เมษายน 2568 21:23</p>
-          <p className='text-lg font-bold text-yellow-500'>กำลังจัดเตรียม</p>
+          <p className='text-lg font-bold text-red-500'>ยกเลิกสำเร็จ</p>
         </div>
 
         <div className='mb-4 flex flex-row rounded-lg border p-4 shadow-sm'>
@@ -29,11 +36,7 @@ export function OrderPending() {
         </div>
 
         <div className='mx-2 mb-2 flex flex-row justify-between'>
-          <div className='flex flex-row gap-4'>
-            <Button className='hover:bg-secondary-100 border bg-white p-4 text-lg text-black hover:cursor-pointer'>
-              ยกเลิกคำสั่งซื้อ
-            </Button>
-          </div>
+          <div className='flex flex-row gap-4'></div>
           <p className='mt-auto text-lg'>
             รวมทั้งสิ้น ( 3 สินค้า ) : <strong>฿ 750</strong>
           </p>

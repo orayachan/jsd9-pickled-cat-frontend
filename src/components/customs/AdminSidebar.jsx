@@ -10,51 +10,51 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 
-export function Sidebar({ activeTab, setActiveTab }) {
+export function AdminSidebar({ activeTab, setActiveTab }) {
   return (
     <nav className='border-secondary min-h-140 space-y-2 rounded-l-2xl border-r-3 bg-white pt-12'>
       <button
-        onClick={() => setActiveTab('account')}
+        onClick={() => setActiveTab('all')}
         className={`block w-full py-2 pr-20 pl-10 text-left text-2xl font-bold hover:cursor-pointer ${
-          activeTab === 'account' ?
+          activeTab === 'all' ?
             'bg-secondary font-bold'
           : 'hover:bg-secondary-50'
         }`}
       >
-        บัญชีของฉัน
+        สินค้าทั้งหมด
       </button>
 
       <button
-        onClick={() => setActiveTab('orders')}
+        onClick={() => setActiveTab('add')}
         className={`block w-full py-2 pr-20 pl-10 text-left text-2xl font-bold hover:cursor-pointer ${
-          activeTab === 'orders' ?
+          activeTab === 'add' ?
             'bg-secondary font-bold'
           : 'hover:bg-secondary-50'
         }`}
       >
-        รายการคำสั่งซื้อ
+        เพิ่มสินค้าคงคลัง
       </button>
 
       <button
-        onClick={() => setActiveTab('wishlist')}
+        onClick={() => setActiveTab('latest')}
         className={`block w-full py-2 pr-20 pl-10 text-left text-2xl font-bold hover:cursor-pointer ${
-          activeTab === 'wishlist' ?
+          activeTab === 'latest' ?
             'bg-secondary font-bold'
           : 'hover:bg-secondary-50'
         }`}
       >
-        รายการสินค้าที่สนใจ
+        คำสั่งซื้อล่าสุด
       </button>
 
       <button
-        onClick={() => setActiveTab('reviews')}
+        onClick={() => setActiveTab('cancel')}
         className={`block w-full py-2 pr-20 pl-10 text-left text-2xl font-bold hover:cursor-pointer ${
-          activeTab === 'reviews' ?
+          activeTab === 'cancel' ?
             'bg-secondary font-bold'
           : 'hover:bg-secondary-50'
         }`}
       >
-        รีวิวของฉัน
+        คำขอยกเลิก
       </button>
 
       <AlertDialog>
