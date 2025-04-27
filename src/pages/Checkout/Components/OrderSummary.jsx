@@ -12,7 +12,7 @@ export function OrderSummary() {
   return (
     <Card className='min-w-[350px] p-4'>
       <CardHeader>
-        <CardTitle>สรุปคำสั่งซื้อ</CardTitle>
+        <CardTitle className='pt-2'>สรุปคำสั่งซื้อ</CardTitle>
       </CardHeader>
       <CardContent className='border-b-1 px-6'>
         <CardDescription className='mb-2 flex items-start justify-between gap-4'>
