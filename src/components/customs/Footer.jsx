@@ -64,7 +64,7 @@ export function Footer({ variation: variant = 'default' }) {
               >
                 ติดต่อเรา
               </Link>
-              <Link to='/Join-us' className='hover:text-primary-700'>
+              <Link to='/404' className='hover:text-primary-700'>
                 ร่วมงานกับเรา
               </Link>
               <Link to={{ hash: '#faqs' }} className='hover:text-primary-700'>
@@ -80,15 +80,15 @@ export function Footer({ variation: variant = 'default' }) {
                 สินค้าของเรา
               </Link>
               <Link to='/Checkout' className='hover:text-primary-700'>
-                ตะกร้าสินค้า
+                รายการคำสั่งซื้อ
               </Link>
               <Link to='/Payment' className='hover:text-primary-700'>
                 การชำระเงิน
               </Link>
-              <Link to='/' className='hover:text-primary-700'>
+              <Link to='/404' className='hover:text-primary-700'>
                 ข้อกำหนดและเงื่อนไข
               </Link>
-              <Link to='/' className='hover:text-primary-700'>
+              <Link to='/404' className='hover:text-primary-700'>
                 นโยบายความเป็นส่วนตัว
               </Link>
             </article>
