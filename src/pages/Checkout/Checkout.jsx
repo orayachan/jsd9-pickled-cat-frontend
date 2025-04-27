@@ -17,12 +17,12 @@ export function Checkout() {
             {/* Order summary */}
             <OrderSummary />
             <p className='text-primary-700 py-4'>
-              <Link to='Login' className='hover:text-primary-500 font-semibold'>
+              <Link to='/Login' className='hover:text-primary-500 font-semibold'>
                 เข้าสู่ระบบ
               </Link>
               <span> หรือ </span>
               <Link
-                to='Registration'
+                to='/Registration'
                 className='hover:text-primary-500 font-semibold'
               >
                 สมัครสมาชิก
