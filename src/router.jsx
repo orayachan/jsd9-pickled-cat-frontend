@@ -1,5 +1,5 @@
 import { Dashboard, Default, Minimal } from '@/components/layouts';
-import { Home, MyAccount } from '@/pages';
+import { Home, Login, MyAccount } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { LandingPage } from './pages/Products';
 
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     Component: Minimal,
-    children: [],
+    children: [{ path: 'login', Component: Login }],
   },
   {
     path: 'dashboard',
