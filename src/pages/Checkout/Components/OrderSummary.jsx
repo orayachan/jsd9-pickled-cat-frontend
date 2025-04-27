@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { Link } from 'react-router';
 
 export function OrderSummary() {
   return (
@@ -37,13 +38,15 @@ export function OrderSummary() {
           <input
             type='text'
             placeholder='กรอกรหัสส่วนลด'
-            className='bg-primary-50 hover:bg-primary-50 text-primary-800 w-38 rounded-full pl-4 text-sm font-normal'
+            className='bg-primary-50 text-primary-800 w-38 rounded-full pl-4 text-sm font-normal'
           />
           <Button className='bg-secondary-50 hover:bg-secondary-100 text-primary-800 rounded-full font-medium'>
             รับส่วนลด
           </Button>
         </div>
-        <Button className='w-full rounded-full'>ชำระเงิน</Button>
+        <Link to='/payment'>
+          <Button className='w-66 rounded-full'>ชำระเงิน</Button>
+        </Link>
       </CardFooter>
     </Card>
   );
