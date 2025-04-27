@@ -21,8 +21,7 @@ export function useForm(validationType) {
     setLoading(true);
     setErrors({ type: null, errors: {} });
 
-    // TODO: Optional: make it loop and auto append error fields in object
-
+    // TODO: Wrap these inside a function, return validatedData for future
     if (validationType === 'login') {
       const { validatedData, errors, success } = validateFormData(
         data,
@@ -40,6 +39,7 @@ export function useForm(validationType) {
           errors: { email: email, password: password },
         }));
 
+        setData((prev) => ({ ...prev, validatedData }));
         setLoading(false);
         return;
       }
@@ -76,6 +76,7 @@ export function useForm(validationType) {
           },
         }));
 
+        setData((prev) => ({ ...prev, validatedData }));
         setLoading(false);
         return;
       }
@@ -86,7 +87,7 @@ export function useForm(validationType) {
     } else {
       try {
         // TODO: check `postFormData()` supposed to be done before `navigate()`
-        await postFormData(signal, validatedData);
+        await postFormData(controller.signal, data);
         navigate('/dashboard');
       } catch (error) {
         setErrors((prev) => ({
@@ -102,6 +103,7 @@ export function useForm(validationType) {
 
   useEffect(() => {
     return () => {
+      setData({});
       setErrors({ type: null, errors: [] });
       controller.abort();
     };
