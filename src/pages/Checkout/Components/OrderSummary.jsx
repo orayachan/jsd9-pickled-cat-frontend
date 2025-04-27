@@ -34,9 +34,7 @@ export function OrderSummary() {
       </CardContent>
       <CardFooter className='flex flex-col'>
         <div className='mb-4 flex w-full justify-between gap-4'>
-          <Button className='bg-primary-50 hover:bg-primary-50 text-primary-800 max-w-[200px] rounded-full font-normal'>
-            กรอกรหัสส่วนลด
-          </Button>
+          <input type="text" placeholder='กรอกรหัสส่วนลด' className='bg-primary-50 hover:bg-primary-50 text-sm text-primary-800 w-38 rounded-full font-normal pl-4' />
           <Button className='bg-secondary-50 hover:bg-secondary-100 text-primary-800 rounded-full font-medium'>
             รับส่วนลด
           </Button>
