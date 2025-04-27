@@ -1,5 +1,5 @@
 import { Dashboard, Default, Minimal } from '@/components/layouts';
-import { Home, Login, MyAccount } from '@/pages';
+import { Home, Login, MyAccount, Register } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 
 const router = createBrowserRouter([
@@ -14,7 +14,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     Component: Minimal,
-    children: [{ path: 'login', Component: Login }],
+    children: [
+      { path: 'login', Component: Login },
+      { path: 'register', Component: Register },
+    ],
   },
   {
     path: 'dashboard',
