@@ -9,10 +9,10 @@ import {
 
 export function ProductHighlight() {
   return (
-    <div className='flex flex-col content-center-safe justify-center mx-auto max-w-screen-2xl'>
+    <div className='mx-auto flex max-w-screen-2xl flex-col content-center-safe justify-center'>
       <h2
         id='highlight'
-        className='text-primary-700 text-center font-bold text-2xl py-4'
+        className='text-primary-700 py-4 text-center text-2xl font-bold'
       >
         สินค้าขายดี
       </h2>
@@ -26,11 +26,13 @@ export function ProductHighlight() {
               >
                 <div className='p-1'>
                   <Card>
-                    <CardContent className='flex flex-col aspect-square items-center justify-center p-6 h-80 bg-primary-50'>
-                      <img src={`@/error/graycat404.png`} alt='' className='object-cover w-32 h-32 sm:w-40 sm:h-40' />
-                      <p className='text-lg'>
-                        {index + 1}
-                      </p>
+                    <CardContent className='bg-primary-50 flex aspect-square h-80 flex-col items-center justify-center p-6'>
+                      <img
+                        src={`@/error/graycat404.png`}
+                        alt=''
+                        className='h-32 w-32 object-cover sm:h-40 sm:w-40'
+                      />
+                      <p className='text-lg'>{index + 1}</p>
                     </CardContent>
                   </Card>
                 </div>
