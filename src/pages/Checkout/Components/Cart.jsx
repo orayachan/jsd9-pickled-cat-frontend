@@ -3,7 +3,7 @@ import { ItemCard } from './ItemCard';
 
 export function Cart() {
   return (
-    <Card className='min-w-[350px] xl:min-w-[500px] p-4'>
+    <Card className='min-w-[350px] p-4 xl:min-w-[500px]'>
       <CardHeader>
         <CardTitle className='pt-2'>รายการคำสั่งซื้อ</CardTitle>
       </CardHeader>

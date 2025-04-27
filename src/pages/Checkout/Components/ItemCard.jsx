@@ -14,10 +14,10 @@ export function ItemCard() {
         <p className='text-primary-700 text-sm'>ตัวเลือก, ขนาด</p>
         <p className='text-primary-700 font-semibold'>฿ xxx.xx</p>
         <div className='mt-2 flex items-center justify-center gap-2'>
-          <div className='flex justify-around items-center bg-primary-50 w-24 rounded-full py-1'>
-            <button className='font-bold hover:text-primary-500'>-</button>
-            <span className='font-bold text-primary-700'>1</span>
-            <button className='font-bold hover:text-primary-500'>+</button>
+          <div className='bg-primary-50 flex w-24 items-center justify-around rounded-full py-1'>
+            <button className='hover:text-primary-500 font-bold'>-</button>
+            <span className='text-primary-700 font-bold'>1</span>
+            <button className='hover:text-primary-500 font-bold'>+</button>
           </div>
           <HiOutlineTrash className='text-primary-500 hover:text-primary-800' />
         </div>
