@@ -58,7 +58,7 @@ export function Header() {
             <HiOutlineShoppingCart />
           </Link>
           <Link
-            to='/'
+            to='/404'
             className='hover:text-primary-600 flex items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-[#eeeff8]'
           >
             <HiOutlineMegaphone />
