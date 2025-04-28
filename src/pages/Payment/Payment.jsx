@@ -29,7 +29,7 @@ export function Payment() {
   };
 
   return (
-    <div className='min-w-screen w-full px-4 sm:px-8 pb-16'>
+    <div className='min-w-screen w-full px-4 sm:px-16 pb-16'>
       <main className='mx-auto max-w-screen-2xl'>
         <BcrumbPayment />
         <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
