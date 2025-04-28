@@ -3,8 +3,7 @@ import { Home, Login, MyAccount, Register } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { Error404 } from './components/layouts/Error404';
 import { Checkout } from './pages/Checkout';
-import { LandingPage } from './pages/Products';
-import { ProductDetail } from './pages/Products/components';
+import { LandingPage, ProductDetail } from './pages/Products';
 
 const router = createBrowserRouter([
   {

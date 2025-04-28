@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProductHighlight } from '.'
+import { ProductHighlight } from './components'
 
 export function ProductDetail() {
   return (
