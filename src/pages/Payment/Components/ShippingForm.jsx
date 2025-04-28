@@ -1,5 +1,3 @@
-import { Card, CardHeader, CardTitle } from '@/components/ui/card';
-
 export function ShippingForm(formData, handleChange) {
   return (
     <div>

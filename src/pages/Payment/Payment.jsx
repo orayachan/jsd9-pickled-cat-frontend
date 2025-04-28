@@ -1,9 +1,9 @@
 import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 import { BcrumbPayment } from './Components/BcrumbPayment';
 import { PaymentMethod } from './Components/PaymentMethod';
 import { PaymentSummary } from './Components/PaymentSummary';
 import { ShippingForm } from './Components/ShippingForm';
-import { useState } from 'react';
 
 export function Payment() {
   const [formData, setFormData] = useState({
@@ -29,10 +29,13 @@ export function Payment() {
   };
 
   return (
-    <div className='min-w-screen w-full px-4 sm:px-16 pb-16'>
+    <div className='w-full min-w-screen px-4 pb-16 sm:px-16'>
       <main className='mx-auto max-w-screen-2xl'>
         <BcrumbPayment />
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+        <form
+          onSubmit={handleSubmit}
+          className='mt-8 grid grid-cols-1 gap-8 lg:grid-cols-3'
+        >
           {/* PART: Left */}
           <div className='space-y-8 lg:col-span-2'>
             <ShippingForm formData={formData} handleChange={handleChange} />

@@ -1,4 +1,4 @@
-export function PaymentMethod( formData, handleChange) {
+export function PaymentMethod(formData, handleChange) {
   return (
     <div>
       <h2 className='mb-4 text-xl font-semibold'>วิธีการชำระเงิน</h2>
