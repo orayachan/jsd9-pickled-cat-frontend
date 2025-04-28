@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 import { Error404 } from './components/layouts/Error404';
 import { Checkout } from './pages/Checkout';
 import { LandingPage } from './pages/Products';
+import { ProductDetail } from './pages/Products/components';
 
 const router = createBrowserRouter([
   {
@@ -11,8 +12,9 @@ const router = createBrowserRouter([
     Component: Default,
     children: [
       { index: true, Component: LandingPage },
-      { path: '*', Component: Home },
       { path: 'checkout', Component: Checkout },
+      { path: 'product/:id', Component: ProductDetail },
+      { path: '*', Component: Home },
     ],
   },
   {

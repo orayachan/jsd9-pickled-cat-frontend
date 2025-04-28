@@ -1,8 +1,10 @@
+import { Link } from "react-router"
+
 export const ProductCard = ({ product }) => {
   return (
     <div className='flex h-full w-full flex-col justify-between rounded-2xl border p-4 shadow-md'>
       {/* รูปภาพ */}
-      <a target='_blank' href={`/product/${product.id}`} rel='noreferrer'>
+      <Link to={`/product/${product.id}`}>
         <div className='hover: flex justify-center'>
           <img
             src={product.images[0]}
@@ -10,7 +12,7 @@ export const ProductCard = ({ product }) => {
             className='h-[244.63px] w-[231.8px] rounded-md object-cover transition-transform duration-300 hover:scale-110'
           />
         </div>
-      </a>
+      </Link>
 
       {/* รายละเอียดสินค้า */}
       <div className='mt-2 flex-1'>
