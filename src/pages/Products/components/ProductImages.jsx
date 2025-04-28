@@ -4,8 +4,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from '@/components/ui/carousel';
 
 export function ProductImages({ images }) {
@@ -15,7 +13,7 @@ export function ProductImages({ images }) {
   return (
     <figure className='flex flex-col gap-4 lg:w-1/2 lg:flex-row'>
       {/* Thumbnails (ซ้าย) */}
-      <div className='hidden w-1/5 flex-col space-y-4 lg:flex'>
+      {/* <div className='hidden w-1/5 flex-col space-y-4 lg:flex'>
         {images.map((img, index) => (
           <img
             key={index}
@@ -24,10 +22,10 @@ export function ProductImages({ images }) {
             className='h-full w-full cursor-pointer rounded-lg border bg-[#F7F5F7]'
           />
         ))}
-      </div>
+      </div> */}
 
       {/* Main Carousel (ขวา) */}
-      <div className='w-full lg:w-4/5'>
+      <div className='w-full'>
         <Carousel
           plugins={[plugin.current]}
           className='w-full'
@@ -45,8 +43,8 @@ export function ProductImages({ images }) {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          {/* <CarouselPrevious />
+          <CarouselNext /> */}
         </Carousel>
       </div>
     </figure>
