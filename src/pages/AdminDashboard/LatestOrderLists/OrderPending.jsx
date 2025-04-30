@@ -6,7 +6,7 @@ export function OrderPending() {
       <div className='flex flex-col rounded-lg border bg-white p-4 shadow-sm'>
         <div className='mx-2 my-2 flex flex-row gap-4 border-b pb-4'>
           <img
-            src='/public/logos/Sample_User_Icon.png'
+            src='/Sample_User_Icon.png'
             alt='user profile'
             className='max-h-12 max-w-12 rounded-4xl border'
           />
