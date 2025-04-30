@@ -10,9 +10,9 @@ export const data = [
     option: ['สูตรดั้งเดิม', 'สูตรโอเมก้า+', 'สูตรลดกลิ่น'],
     sizes: ['150g', '300g', '500g'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img2.pic.in.th/pic/Tuna.jpeg',
+      'https://img5.pic.in.th/file/secure-sv1/Chicken2.jpeg',
+      'https://img2.pic.in.th/pic/Chicken3.jpeg',
     ],
   },
   {
@@ -26,9 +26,9 @@ export const data = [
     option: ['สูตรดั้งเดิม', 'สูตรบำรุงลำไส้', 'สูตรไร้เกลือ'],
     sizes: ['100g', '200g', '400g'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img2.pic.in.th/pic/Chicken.jpeg',
+      'https://img5.pic.in.th/file/secure-sv1/Tuna2.jpeg',
+      'https://img5.pic.in.th/file/secure-sv1/Tuna4.jpeg',
     ],
   },
   {
@@ -42,9 +42,9 @@ export const data = [
     option: ['สูตรดั้งเดิม', 'สูตรบำรุงขน', 'สูตรควบคุมน้ำหนัก'],
     sizes: ['120g', '240g', '360g'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Salmon.jpeg',
+      'https://img2.pic.in.th/pic/Salmon2.jpeg',
+      'https://img5.pic.in.th/file/secure-sv1/Salmon3.jpeg',
     ],
   },
   {
@@ -58,7 +58,7 @@ export const data = [
     option: ['สูตรดั้งเดิม', 'สูตรกลิ่นวานิลลา', 'สูตรเสริมวิตามิน'],
     sizes: ['80g', '160g', '240g'],
     images: [
-      'https://example.com/images/1.jpg',
+      'https://img2.pic.in.th/pic/Sweet-Potato.png',
       'https://example.com/images/2.jpg',
       'https://example.com/images/3.jpg',
     ],
@@ -74,8 +74,8 @@ export const data = [
     option: ['สูตรล็อบสเตอร์', 'สูตรล็อบสเตอร์+วิตามิน', 'สูตรลดกลิ่นฉี่'],
     sizes: ['4 ซอง', '8 ซอง', '12 ซอง'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/lobster-jelly.png',
+      'https://img2.pic.in.th/pic/lobster-jelly2.jpg',
       'https://example.com/images/3.jpg',
     ],
   },
@@ -90,9 +90,9 @@ export const data = [
     option: ['แบบขนนก', 'แบบกระดิ่ง', 'แบบเลเซอร์'],
     sizes: ['สั้น', 'กลาง', 'ยาว'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Bait.jpeg',
+      'https://img2.pic.in.th/pic/Cat-Bait2.jpeg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Bait3.jpeg',
     ],
   },
   {
@@ -106,25 +106,25 @@ export const data = [
     option: ['กลิ่นปลาหมึก', 'กลิ่นปลาทู', 'กลิ่นแมวขี้เกลือ'],
     sizes: ['เล็ก', 'กลาง', 'ใหญ่'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img2.pic.in.th/pic/Yarn-Ball3.jpeg',
+      'https://img2.pic.in.th/pic/Yarn-Ball.jpeg',
+      'https://img5.pic.in.th/file/secure-sv1/Yarn-Ball2.jpeg',
     ],
   },
   {
     id: 8,
-    name: 'Ancient Cat Maze',
-    description: 'เขาวงกตแมวธีมลายโบราณ มีที่ซ่อนขนมและของเล่น',
+    name: 'Water Fountain',
+    description: 'น้ำพุสำหรับแมว สวยงาม ทำให้การดื่มน้ำไม่มีเบื่อ',
     price: 890,
     discount: 10,
     stock: 13,
     category: 'ของเล่นแมว',
-    option: ['ลายโบราณ', 'ลายดองเกลือ', 'ลายถ้ำแมว'],
+    option: ['สีขาว', 'สีดำ'],
     sizes: ['ขนาดเล็ก', 'ขนาดกลาง', 'ขนาดใหญ่'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img2.pic.in.th/pic/water1d623dd73124150b.jpeg',
+      'https://img5.pic.in.th/file/secure-sv1/water-2.jpeg',
+      'https://img2.pic.in.th/pic/Cat-Maze2.jpg',
     ],
   },
   {
@@ -138,9 +138,9 @@ export const data = [
     option: ['กลิ่นปลา', 'กลิ่นไก่', 'กลิ่นชีส'],
     sizes: ['เล็ก', 'กลาง', 'ใหญ่'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img2.pic.in.th/pic/Cat-Mouse.jpeg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Mouse2.jpeg',
+      'https://img2.pic.in.th/pic/Cat-Mouse3.jpeg',
     ],
   },
   {
@@ -154,9 +154,9 @@ export const data = [
     option: ['ลายปลาหมัก', 'ลายโหลดอง', 'ลายขี้เกลือ'],
     sizes: ['90cm', '120cm', '150cm'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Tunnel.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Tunnel3.jpg',
+      'https://img2.pic.in.th/pic/Cat-Tunnel2.jpg',
     ],
   },
   {
@@ -170,9 +170,9 @@ export const data = [
     option: ['Vintage', 'classic Tent', 'Boho Style'],
     sizes: ['S', 'M', 'L'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img2.pic.in.th/pic/Cat-Tent.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Tent2.jpg',
+      'https://img2.pic.in.th/pic/Cat-Tent3.jpg',
     ],
   },
   {
@@ -186,9 +186,9 @@ export const data = [
     option: ['Hammock', 'Hanging Cradle', 'Foldable Net'],
     sizes: ['S', 'M', 'L'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Hammock.jpg',
+      'https://img2.pic.in.th/pic/Cat-Hammock2.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Hammock3.jpg',
     ],
   },
   {
@@ -202,9 +202,9 @@ export const data = [
     option: ['Barrel', 'Rustic Drum', 'Vintage Canister'],
     sizes: ['S', 'M', 'L'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img2.pic.in.th/pic/barrel2.jpeg',
+      'https://img2.pic.in.th/pic/barrel.jpeg',
+      'https://img5.pic.in.th/file/secure-sv1/barrel3.jpeg',
     ],
   },
   {
@@ -218,9 +218,9 @@ export const data = [
     option: ['Fortress', 'Castle Style', 'Royal Den'],
     sizes: ['M', 'L', 'XL'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img2.pic.in.th/pic/Castle-Condo3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Castle-Condo2.jpg',
+      'https://img2.pic.in.th/pic/Castle-Condo.jpg',
     ],
   },
   {
@@ -234,9 +234,9 @@ export const data = [
     option: ['Bread Shape', 'Toasted Style', 'Jam Swirl'],
     sizes: ['S', 'M', 'L'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img2.pic.in.th/pic/Cat-Bed3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Bed4.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Bed2.jpgg',
     ],
   },
   {
@@ -250,9 +250,9 @@ export const data = [
     option: ['Pickled Tuna', 'Pickled Salmon', 'Pickled Shrimp'],
     sizes: ['S', 'M', 'L'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Shirt4.jpg',
+      'https://img2.pic.in.th/pic/Cat-Shirt3.jpg',
+      'https://img2.pic.in.th/pic/Cat-Shirt.jpg',
     ],
   },
   {
@@ -266,8 +266,8 @@ export const data = [
     option: ['Vintage Sepia', 'Classic Black', 'Pickled Pink'],
     sizes: ['S', 'M', 'Free Size'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Mask.jpg',
+      'https://img2.pic.in.th/pic/Cat-Mask2.png',
       'https://example.com/images/3.jpg',
     ],
   },
@@ -282,9 +282,9 @@ export const data = [
     option: ['Golden Brown', 'Classic Navy', 'Pickled Plum'],
     sizes: ['S', 'M', 'L'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/vintage-cloak2.jpg',
+      'https://img2.pic.in.th/pic/vintage-cloak3.jpg',
+      'https://img2.pic.in.th/pic/vintage-cloak5.jpg',
     ],
   },
   {
@@ -298,9 +298,9 @@ export const data = [
     option: ['Pickled Fish', 'Tuna Pattern', 'Shrimp Classic'],
     sizes: ['S', 'M', 'Free Size'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img2.pic.in.th/pic/Bow-Ribbon3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Bow-Ribbon2.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Bow-Ribbon4.jpg',
     ],
   },
   {
@@ -315,8 +315,8 @@ export const data = [
     option: ['Woven Natural', 'Pickled Blue', 'Sea Brown'],
     sizes: ['S', 'M', 'Free Size'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/old-school-hat.jpg',
+      'https://img2.pic.in.th/pic/old-school-hat-2.jpgg',
       'https://example.com/images/3.jpg',
     ],
   },
@@ -331,9 +331,9 @@ export const data = [
     option: ['Handmade', 'Limited Edition', 'Natural Finish'],
     sizes: ['S', 'M', 'L'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Jar-3.jpg',
+      'https://img2.pic.in.th/pic/Cat-Jar.jpg',
+      'https://img2.pic.in.th/pic/Cat-Jar-2.jpg',
     ],
   },
   {
@@ -347,9 +347,9 @@ export const data = [
     option: ['Standard', 'Special Edition', 'Gold Rim'],
     sizes: ['S (dessert)', 'M (lunch)', 'L (dinner)'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/cat-plate.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/cat-plate-2.jpg',
+      'https://img2.pic.in.th/pic/cat-plate-3.jpg',
     ],
   },
   {
@@ -363,9 +363,9 @@ export const data = [
     option: ['Standard', 'Roman Dial', 'Antique Finish'],
     sizes: ['S (mini)', 'M (wall)', 'L (mantel)'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Vintage-Clock.jpg',
+      'https://img2.pic.in.th/pic/cat-clock-3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Clock-2.png',
     ],
   },
   {
@@ -379,8 +379,8 @@ export const data = [
     option: ['Standard', 'Carved Style', 'Vintage Paint'],
     sizes: ['S (4x6)', 'M (5x7)', 'L (8x10)'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Wooden-Frame.jpg',
+      'https://img2.pic.in.th/pic/Cat-Wooden-Frame-2.jpg',
       'https://example.com/images/3.jpg',
     ],
   },
@@ -395,9 +395,9 @@ export const data = [
     option: ['Standard', 'Bamboo Lid', 'Floral Print'],
     sizes: ['S (tea)', 'M (cookies)', 'L (storage)'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat-Jar-3.jpg',
+      'https://img2.pic.in.th/pic/Cat-Jar.jpg',
+      'https://img2.pic.in.th/pic/Cat-Jar-2.jpg',
     ],
   },
   {
@@ -411,8 +411,8 @@ export const data = [
     option: ['Standard', 'Herbal Infusion', 'Vintage Glass'],
     sizes: ['S (travel)', 'M (home)', 'L (gift set)'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/aroma-candle-2.jpeg',
+      'https://img2.pic.in.th/pic/aroma-candle.jpeg',
       'https://example.com/images/3.jpg',
     ],
   },
@@ -428,9 +428,9 @@ export const data = [
     option: ['Standard', 'Matte Finish', 'Wooden Lid'],
     sizes: ['S (espresso)', 'M (regular)', 'L (tall)'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img2.pic.in.th/pic/Cat_Mug.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat_Mug4.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/Cat_Mug2.jpg',
     ],
   },
   {
@@ -444,7 +444,7 @@ export const data = [
     option: ['Standard', 'Hardcover', 'Linen Bound'],
     sizes: ['S (A6)', 'M (A5)', 'L (B5)'],
     images: [
-      'https://example.com/images/1.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/notebook.jpg',
       'https://example.com/images/2.jpg',
       'https://example.com/images/3.jpg',
     ],
@@ -461,9 +461,9 @@ export const data = [
     option: ['Standard', 'Foldable', 'Inner Pocket'],
     sizes: ['S (small carry)', 'M (daily)', 'L (shopping)'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/tote-bag.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/tote-bag-2.png',
+      'https://img2.pic.in.th/pic/tote-bag-3.png',
     ],
   },
   {
@@ -477,9 +477,9 @@ export const data = [
     option: ['Handmade', 'Limited Edition', 'Herbal Formula'],
     sizes: ['S (guest)', 'M (daily)', 'L (spa)'],
     images: [
-      'https://example.com/images/1.jpg',
-      'https://example.com/images/2.jpg',
-      'https://example.com/images/3.jpg',
+      'https://img2.pic.in.th/pic/pc_soap1.jpg',
+      'https://img5.pic.in.th/file/secure-sv1/pc_soap2.png',
+      'https://img2.pic.in.th/pic/pc_soap3.png',
     ],
   },
 ];
