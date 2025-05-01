@@ -4,19 +4,18 @@ import {
   Default,
   Minimal,
 } from '@/components/layouts';
-import { Login, MyAccount, Register } from '@/pages';
+import { Home, Login, MyAccount, Register } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { Error404 } from './components/layouts/Error404';
 import { Checkout } from './pages/Checkout';
 import { Payment } from './pages/Payment';
-import { LandingPage } from './pages/Products';
 
 const router = createBrowserRouter([
   {
     path: '/',
     Component: Default,
     children: [
-      { index: true, Component: LandingPage },
+      { index: true, Component: Home },
       { path: 'checkout', Component: Checkout },
       { path: 'payment', Component: Payment },
     ],

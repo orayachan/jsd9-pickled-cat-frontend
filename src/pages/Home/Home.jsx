@@ -2,7 +2,7 @@ import { data } from '@/lib/data';
 import { useState } from 'react';
 import { ProductCard, ProductFilterBar, SearchProduct } from './components';
 
-export const LandingPage = () => {
+export const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortPrice, setSortPrice] = useState('');
