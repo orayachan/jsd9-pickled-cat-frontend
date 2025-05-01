@@ -4,7 +4,7 @@ import {
   Default,
   Minimal,
 } from '@/components/layouts';
-import { Home, Login, MyAccount, Register } from '@/pages';
+import { Login, MyAccount, Register } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { Error404 } from './components/layouts/Error404';
 import { Checkout } from './pages/Checkout';
@@ -17,7 +17,6 @@ const router = createBrowserRouter([
     Component: Default,
     children: [
       { index: true, Component: LandingPage },
-      { path: '*', Component: Home },
       { path: 'checkout', Component: Checkout },
       { path: 'payment', Component: Payment },
     ],
