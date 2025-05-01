@@ -16,6 +16,7 @@ const router = createBrowserRouter([
       { index: true, Component: Home },
       { path: 'checkout', Component: Checkout },
       { path: 'payment', Component: Payment },
+      { path: '*', Component: Error404 },
     ],
   },
   {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       { path: 'login', Component: Login },
       { path: 'register', Component: Register },
-      { path: '404', Component: Error404 },
+      { path: '*', Component: Error404 },
     ],
   },
   {
@@ -32,12 +33,19 @@ const router = createBrowserRouter([
     Component: Dashboard,
     children: [
       { index: true, Component: MyAccount },
+      // TODO: Modify to redirect to `/dashboard`, not just show something else.
       { path: '*', Component: MyAccount },
     ],
   },
   {
     path: 'admin/dashboard',
     Component: AdminDashboard,
+  },
+  // TODO: Make other non-existed paths redirect to this.
+  {
+    path: '404',
+    Component: Minimal,
+    children: [{ index: true, Component: Error404 }],
   },
 ]);
 
