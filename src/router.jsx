@@ -2,13 +2,11 @@ import {
   AdminDashboard,
   Dashboard,
   Default,
+  Error404,
   Minimal,
 } from '@/components/layouts';
-import { Home, Login, MyAccount, Register } from '@/pages';
+import { Checkout, Home, Login, MyAccount, Payment, Register } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
-import { Error404 } from './components/layouts/Error404';
-import { Checkout } from './pages/Checkout';
-import { Payment } from './pages/Payment';
 
 const router = createBrowserRouter([
   {
