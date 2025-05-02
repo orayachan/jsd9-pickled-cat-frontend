@@ -1,7 +1,7 @@
-import { data } from "@/lib/data";
-import { useParams } from "react-router";
-import { Error404 } from "@/components/layouts/Error404";
-import { ProductImages } from "./Components";
+import { Error404 } from '@/components/layouts/Error404';
+import { data } from '@/lib/data';
+import { useParams } from 'react-router';
+import { ProductImages } from './Components';
 
 export function ProductDetail() {
   const { id } = useParams();
@@ -9,7 +9,6 @@ export function ProductDetail() {
 
   if (!product) {
     return <Error404 />;
-
   }
   return (
     <section className='mx-auto max-w-7xl p-4'>
