@@ -4,12 +4,12 @@ import MockPhoto from '/public/error/mini-graycat.png';
 
 export function ItemCard() {
   return (
-    <section className='w-full flex items-center-safe justify-start px-8 pb-4'>
+    <section className='flex w-full items-center-safe justify-start px-8 pb-4'>
       <Checkbox />
-      <figure className='border-secondary-50 max-h-auto max-w-[120px] mx-2 xl:mx-auto rounded-md border-1'>
+      <figure className='border-secondary-50 max-h-auto mx-2 max-w-[120px] rounded-md border-1 xl:mx-auto'>
         <img src={MockPhoto} alt='product image' className='fill' />
       </figure>
-      <div className='w-3/4 ml-2'>
+      <div className='ml-2 w-3/4'>
         <p className='text-primary-700 font-semibold'>ชื่อสินค้า</p>
         <p className='text-primary-700 text-sm'>ตัวเลือก, ขนาด</p>
         <p className='text-primary-700 font-semibold'>฿ xxx.xx</p>
