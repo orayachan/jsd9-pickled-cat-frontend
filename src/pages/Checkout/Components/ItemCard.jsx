@@ -4,16 +4,16 @@ import MockPhoto from '/public/error/mini-graycat.png';
 
 export function ItemCard() {
   return (
-    <section className='flex items-center-safe justify-start pb-4'>
-      <Checkbox className='mx-2' />
-      <figure className='border-secondary-50 mx-2 h-[120px] w-[120px] rounded-md border-1'>
+    <section className='w-full flex items-center-safe justify-start px-8 pb-4'>
+      <Checkbox />
+      <figure className='border-secondary-50 max-h-auto max-w-[120px] mx-2 xl:mx-auto rounded-md border-1'>
         <img src={MockPhoto} alt='product image' className='fill' />
       </figure>
-      <div>
+      <div className='w-3/4 ml-2'>
         <p className='text-primary-700 font-semibold'>ชื่อสินค้า</p>
         <p className='text-primary-700 text-sm'>ตัวเลือก, ขนาด</p>
         <p className='text-primary-700 font-semibold'>฿ xxx.xx</p>
-        <div className='mt-2 flex items-center justify-center gap-2'>
+        <div className='mt-2 flex items-center justify-between gap-2'>
           <div className='bg-primary-50 flex w-24 items-center justify-around rounded-full py-1'>
             <button className='hover:text-primary-500 font-bold'>-</button>
             <span className='text-primary-700 font-bold'>1</span>
