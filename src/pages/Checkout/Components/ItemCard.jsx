@@ -6,7 +6,11 @@ export function ItemCard() {
     <section className='flex items-center-safe justify-start pb-4'>
       <Checkbox className='mx-2' />
       <figure className='border-secondary-50 mx-2 h-[120px] w-[120px] rounded-md border-1'>
-        <img src='https://img2.pic.in.th/pic/mini-graycat.png' alt='product image' className='fill' />
+        <img
+          src='https://img2.pic.in.th/pic/mini-graycat.png'
+          alt='product image'
+          className='fill'
+        />
       </figure>
       <div>
         <p className='text-primary-700 font-semibold'>ชื่อสินค้า</p>
