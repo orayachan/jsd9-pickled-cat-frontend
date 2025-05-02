@@ -8,7 +8,7 @@ import {
 
 export function ShippingPrice() {
   return (
-    <Card className='max-w-[350px] w-full'>
+    <Card className='w-full max-w-[350px]'>
       <CardHeader>
         <CardTitle>ค่าบริการจัดส่ง</CardTitle>
       </CardHeader>
