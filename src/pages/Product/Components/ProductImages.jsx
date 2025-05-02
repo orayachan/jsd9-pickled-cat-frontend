@@ -1,10 +1,10 @@
-import React from 'react';
-import Autoplay from 'embla-carousel-autoplay';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
+import React from 'react';
 
 export function ProductImages({ images }) {
   const plugin = React.useRef(
