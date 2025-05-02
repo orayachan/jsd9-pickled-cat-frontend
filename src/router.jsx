@@ -5,7 +5,7 @@ import {
   Error404,
   Minimal,
 } from '@/components/layouts';
-import { Checkout, Home, Login, MyAccount, Payment, Register } from '@/pages';
+import { Checkout, Home, Login, Payment, Register } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 
 const router = createBrowserRouter([
