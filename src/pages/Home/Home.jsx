@@ -1,6 +1,6 @@
 import { data } from '@/lib/data';
 import { useState } from 'react';
-import { ProductCard, ProductFilterBar, SearchProduct } from './components';
+import { ProductCard, ProductFilterBar, SearchProduct , FAQ } from './components';
 
 export const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -54,6 +54,8 @@ export const Home = () => {
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
+
+        <FAQ></FAQ>
       </section>
     </section>
   );

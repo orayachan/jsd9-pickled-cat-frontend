@@ -26,17 +26,18 @@ const router = createBrowserRouter([
       { path: 'login', Component: Login },
       { path: 'register', Component: Register },
       { path: '*', Component: Error404 },
+      { path: 'dashboard', Component: Dashboard },
     ],
   },
-  {
-    path: 'dashboard',
-    Component: Dashboard,
-    children: [
-      { index: true, Component: MyAccount },
-      // TODO: Modify to redirect to `/dashboard`, not just show something else.
-      { path: '*', Component: MyAccount },
-    ],
-  },
+  // {
+  //   path: 'dashboard',
+  //   Component: Dashboard,
+  //   children: [
+  //     { index: true, Component: MyAccount },
+  //     // TODO: Modify to redirect to `/dashboard`, not just show something else.
+  //     { path: '*', Component: MyAccount },
+  //   ],
+  // },
   {
     path: 'admin/dashboard',
     Component: AdminDashboard,
