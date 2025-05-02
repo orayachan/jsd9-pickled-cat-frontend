@@ -5,7 +5,7 @@ import {
   Error404,
   Minimal,
 } from '@/components/layouts';
-import { Checkout, Home, Login, MyAccount, Payment, Register } from '@/pages';
+import { Checkout, Home, Login, Payment, Register } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 
 const router = createBrowserRouter([
@@ -26,17 +26,18 @@ const router = createBrowserRouter([
       { path: 'login', Component: Login },
       { path: 'register', Component: Register },
       { path: '*', Component: Error404 },
+      { path: 'dashboard', Component: Dashboard },
     ],
   },
-  {
-    path: 'dashboard',
-    Component: Dashboard,
-    children: [
-      { index: true, Component: MyAccount },
-      // TODO: Modify to redirect to `/dashboard`, not just show something else.
-      { path: '*', Component: MyAccount },
-    ],
-  },
+  // {
+  //   path: 'dashboard',
+  //   Component: Dashboard,
+  //   children: [
+  //     { index: true, Component: MyAccount },
+  //     // TODO: Modify to redirect to `/dashboard`, not just show something else.
+  //     { path: '*', Component: MyAccount },
+  //   ],
+  // },
   {
     path: 'admin/dashboard',
     Component: AdminDashboard,
