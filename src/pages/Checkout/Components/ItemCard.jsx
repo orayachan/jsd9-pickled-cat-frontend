@@ -12,11 +12,11 @@ export function ItemCard() {
           className='fill'
         />
       </figure>
-      <div>
+      <div className='ml-2 w-3/4'>
         <p className='text-primary-700 font-semibold'>ชื่อสินค้า</p>
         <p className='text-primary-700 text-sm'>ตัวเลือก, ขนาด</p>
         <p className='text-primary-700 font-semibold'>฿ xxx.xx</p>
-        <div className='mt-2 flex items-center justify-center gap-2'>
+        <div className='mt-2 flex items-center justify-between gap-2'>
           <div className='bg-primary-50 flex w-24 items-center justify-around rounded-full py-1'>
             <button className='hover:text-primary-500 font-bold'>-</button>
             <span className='text-primary-700 font-bold'>1</span>
