@@ -7,6 +7,7 @@ import {
 } from '@/components/layouts';
 import { Checkout, Home, Login, Payment, Register } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
+import { ProductDetail } from './pages/Product';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
     Component: Default,
     children: [
       { index: true, Component: Home },
+      { path: 'product/:id', Component: ProductDetail },
       { path: 'checkout', Component: Checkout },
       { path: 'payment', Component: Payment },
       { path: '*', Component: Error404 },
