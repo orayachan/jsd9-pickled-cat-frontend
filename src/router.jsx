@@ -29,22 +29,9 @@ const router = createBrowserRouter([
       { path: 'register', Component: Register },
       { path: '*', Component: Error404 },
       { path: 'dashboard', Component: Dashboard },
+      { path: 'admin/dashboard', Component: AdminDashboard },
     ],
   },
-  // {
-  //   path: 'dashboard',
-  //   Component: Dashboard,
-  //   children: [
-  //     { index: true, Component: MyAccount },
-  //     // TODO: Modify to redirect to `/dashboard`, not just show something else.
-  //     { path: '*', Component: MyAccount },
-  //   ],
-  // },
-  {
-    path: 'admin/dashboard',
-    Component: AdminDashboard,
-  },
-  // TODO: Make other non-existed paths redirect to this.
   {
     path: '404',
     Component: Minimal,
