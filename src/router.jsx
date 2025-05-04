@@ -2,24 +2,23 @@ import {
   AdminDashboard,
   Dashboard,
   Default,
+  Error404,
   Minimal,
 } from '@/components/layouts';
-import { Home, Login, MyAccount, Register } from '@/pages';
+import { Checkout, Home, Login, Payment, Register } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
-import { Error404 } from './components/layouts/Error404';
-import { Checkout } from './pages/Checkout';
-import { Payment } from './pages/Payment';
-import { LandingPage } from './pages/Products';
+import { ProductDetail } from './pages/Product';
 
 const router = createBrowserRouter([
   {
     path: '/',
     Component: Default,
     children: [
-      { index: true, Component: LandingPage },
-      { path: '*', Component: Home },
+      { index: true, Component: Home },
+      { path: 'product/:id', Component: ProductDetail },
       { path: 'checkout', Component: Checkout },
       { path: 'payment', Component: Payment },
+      { path: '*', Component: Error404 },
     ],
   },
   {
@@ -28,17 +27,15 @@ const router = createBrowserRouter([
     children: [
       { path: 'login', Component: Login },
       { path: 'register', Component: Register },
-      { path: '404', Component: Error404 },
+      { path: '*', Component: Error404 },
+      { path: 'dashboard', Component: Dashboard },
       { path: 'admin/dashboard', Component: AdminDashboard },
     ],
   },
   {
-    path: 'dashboard',
-    Component: Dashboard,
-    children: [
-      { index: true, Component: MyAccount },
-      { path: '*', Component: MyAccount },
-    ],
+    path: '404',
+    Component: Minimal,
+    children: [{ index: true, Component: Error404 }],
   },
 ]);
 

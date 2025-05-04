@@ -1,4 +1,4 @@
-import ProductCard from '@/components/ui/ProductCard';
+import { ProductCard } from '@/components/customs';
 import { data } from '@/lib/data';
 
 export function AdminProductList() {

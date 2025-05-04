@@ -6,17 +6,20 @@ import { ShippingPrice } from './Components/ShippingPrice';
 
 export function Checkout() {
   return (
-    <div className='bg-secondary-50 min-w-dvw px-8 pt-4 pb-16'>
+    <div className='bg-secondary-50 min-w-dvw px-8 pb-16'>
       <main className='mx-auto flex max-w-screen-2xl flex-col justify-center'>
         {/* Breadcrumb */}
         <BcrumbCheckout />
-        <section className='flex flex-col items-start justify-center gap-4 md:flex-row'>
+        <section className='mt-4 flex flex-col gap-y-8 md:flex-row'>
           {/* Cart */}
-          <Cart />
-          <aside className='flex flex-col items-center justify-center'>
+          <div className='w-full md:w-2/3'>
+            <Cart />
+          </div>
+          {/* Sidebar */}
+          <aside className='flex w-full flex-col items-center justify-start gap-4 md:w-1/3 lg:pl-4'>
             {/* Order summary */}
             <OrderSummary />
-            <p className='text-primary-700 py-4'>
+            <p className='text-primary-700 py-2 text-center text-sm sm:text-base'>
               <Link
                 to='/Login'
                 className='hover:text-primary-500 font-semibold'

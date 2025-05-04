@@ -1,6 +1,6 @@
-import { Button } from './button';
+import { Button } from '@/components/ui/button';
 
-const ProductCard = ({ product }) => {
+export const ProductCard = ({ product }) => {
   const { name, description, price, discount, stock, category, images } =
     product;
 
@@ -36,5 +36,3 @@ const ProductCard = ({ product }) => {
     </div>
   );
 };
-
-export default ProductCard;

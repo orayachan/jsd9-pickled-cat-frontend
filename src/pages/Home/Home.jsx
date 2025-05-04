@@ -1,41 +1,67 @@
-import { useEffect, useState } from 'react';
-import { Card } from './components';
-import style from './home.module.css';
-import { useMockData } from './hooks';
+import { data } from '@/lib/data';
+import { useState } from 'react';
+import {
+  FAQ,
+  ProductCard,
+  ProductFilterBar,
+  SearchProduct,
+} from './components';
 
-export function Home() {
-  const data = useMockData();
-  const [loading, setLoading] = useState(false);
+export const Home = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [sortPrice, setSortPrice] = useState('');
 
-  // NOTE: Example only!
+  let filteredData = [...data];
 
-  const [data1, setData1] = useState({});
-  const [data2, setData2] = useState({});
+  if (selectedCategory) {
+    filteredData = filteredData.filter(
+      (product) => product.category === selectedCategory,
+    );
+  }
 
-  useEffect(() => {
-    if (!data) setLoading(true);
-    else {
-      setData1(data[0]);
-      setData2(data[1]);
-    }
-    return () => setLoading(false);
-  }, [data, loading]);
+  if (searchTerm) {
+    filteredData = filteredData.filter((product) =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    );
+  }
 
+  if (sortPrice === 'ราคาน้อยไปมาก') {
+    filteredData.sort((a, b) => a.price - b.price);
+  } else if (sortPrice === 'ราคามากไปน้อย') {
+    filteredData.sort((a, b) => b.price - a.price);
+  }
   return (
-    <section className={`${style['section']} gap-4 p-2 outline`}>
-      <p className='text-center'>
-        This is <code>Home.jsx</code> page.
-      </p>
-      {
-        //Pass props as an object, or pass prop for each field explicitly.
-      }
-      {!loading && (
-        <>
-          {/*  WARN: Prop names must be the same as object prop names */}
-          <Card {...data1} />{' '}
-          <Card id={data2.id} description={data2.description} />
-        </>
-      )}
+    <section className='mx-4 my-6 flex justify-center sm:mx-8 md:mx-16 lg:mx-20'>
+      <section className='w-full max-w-screen-2xl'>
+        <h2 className='text-[28px] font-bold text-[#3A4980] sm:text-[32px]'>
+          สินค้าของเรา
+        </h2>
+
+        {/* menu-bar */}
+        <div className='my-8 hidden items-center justify-between text-sm md:flex'>
+          {/* sort-option */}
+          <ProductFilterBar
+            onCategoryChange={(category) => setSelectedCategory(category)}
+            onPriceChange={(price) => setSortPrice(price)}
+          />
+
+          {/* search bar */}
+          <SearchProduct
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+          />
+        </div>
+
+        {/* product list */}
+        <div className='mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+          {filteredData.slice(0, 16).map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+
+        <FAQ></FAQ>
+      </section>
     </section>
   );
-}
+};
