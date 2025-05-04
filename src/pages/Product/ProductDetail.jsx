@@ -1,25 +1,51 @@
 import { Error404 } from '@/components/layouts/Error404';
 import { data } from '@/lib/data';
-import { useParams } from 'react-router';
+import { useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router';
 import { ProductImages } from './Components';
 
-export function ProductDetail() {
+export const ProductDetail = () => {
   const { id } = useParams();
   const product = data.find((item) => item.id === Number(id));
+  const navigate = useNavigate();
+
+  const [selectedOption, setSelectedOption] = useState(product.option[0]);
+  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+  const [quantity, setQuantity] = useState(1);
 
   if (!product) {
     return <Error404 />;
   }
+
+  const handleAddToCart = () => {
+    const cartItem = {
+      id: product.id,
+      name: product.name,
+      image: product.images[0],
+      price: product.price,
+      discount: product.discount,
+      selectedOption,
+      selectedSize,
+      quantity,
+    };
+
+    const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
+    currentCart.push(cartItem);
+    localStorage.setItem('cart', JSON.stringify(currentCart));
+
+    navigate('/Checkout');
+  };
+
   return (
     <section className='mx-auto max-w-7xl p-4'>
       {/* Breadcrumb */}
       <nav className='text-sm text-gray-500'>
-        <a href='/'>Home</a> &gt;{' '}
+        <Link to='/'>Home</Link> &gt;{' '}
         <span className='text-gray-700'>{product.name}</span>
       </nav>
 
       <div className='mt-4 flex flex-col lg:flex-row lg:gap-8'>
-        {/* Product Images */}
+        {/* dproductData Images */}
         <ProductImages images={product.images} />
 
         {/* Product Details */}
@@ -60,12 +86,17 @@ export function ProductDetail() {
 
           {/* Food Recipes */}
           <div className='mt-5'>
-            <h2 className='font-semibold text-gray-700'>เลือกสูตรอาหาร</h2>
+            <h2 className='font-semibold text-gray-700'>เลือกที่ลูกชอบ</h2>
             <div className='mt-2 grid grid-cols-3 gap-2'>
               {product.option.map((opt) => (
                 <button
                   key={opt}
-                  className='rounded-lg border bg-gray-200 px-4 py-2 hover:bg-gray-300'
+                  onClick={() => setSelectedOption(opt)}
+                  className={`rounded-lg border bg-gray-200 px-4 py-2 ${
+                    selectedOption === opt ?
+                      'bg-black text-white'
+                    : 'bg-gray-200 hover:bg-gray-300'
+                  }`}
                 >
                   {opt}
                 </button>
@@ -75,12 +106,17 @@ export function ProductDetail() {
 
           {/* Packaging Size */}
           <div className='mt-5'>
-            <h2 className='font-semibold text-gray-700'>เลือกขนาดบรรจุ</h2>
+            <h2 className='font-semibold text-gray-700'>เลือกขนาดที่ต้องการ</h2>
             <div className='mt-2 flex space-x-3'>
               {product.sizes.map((size) => (
                 <button
                   key={size}
-                  className='rounded-lg border px-5 py-3 text-gray-700 transition hover:bg-black hover:text-white'
+                  onClick={() => setSelectedSize(size)}
+                  className={`rounded-lg border px-5 py-3 text-gray-700 transition ${
+                    selectedSize === size ?
+                      'bg-black text-white'
+                    : 'text-gray-700 hover:bg-black hover:text-white'
+                  }`}
                 >
                   {size}
                 </button>
@@ -91,11 +127,21 @@ export function ProductDetail() {
           {/* Quantity & Add to Cart */}
           <div className='mt-6 flex items-center gap-4'>
             <div className='flex items-center rounded-full border bg-gray-300 px-5 py-3'>
-              <button className='text-2xl'>-</button>
-              <span className='mx-4 text-xl font-semibold'>1</span>
-              <button className='text-2xl'>+</button>
+              <button
+                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                className='text-2xl'
+              >
+                -
+              </button>
+              <span className='mx-4 text-xl font-semibold'>{quantity}</span>
+              <button
+                onClick={() => setQuantity((q) => q + 1)}
+                className='text-2xl'
+              >
+                +
+              </button>
             </div>
-            <button className='w-full rounded-full bg-black px-6 py-4 text-lg font-semibold text-white transition hover:bg-gray-800'>
+            <button onClick={handleAddToCart} className='w-full rounded-full bg-black px-6 py-4 text-lg font-semibold text-white transition hover:bg-gray-800'>
               Add to Cart
             </button>
           </div>
@@ -103,4 +149,4 @@ export function ProductDetail() {
       </div>
     </section>
   );
-}
+};
