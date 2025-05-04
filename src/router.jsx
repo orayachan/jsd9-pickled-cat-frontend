@@ -5,7 +5,7 @@ import {
   Error404,
   Minimal,
 } from '@/components/layouts';
-import { Checkout, Home, Login, Payment, Register } from '@/pages';
+import { Checkout, Home, Login, MyAccount, Payment, Register } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { ProductDetail } from './pages/Product';
 
@@ -27,15 +27,17 @@ const router = createBrowserRouter([
     children: [
       { path: 'login', Component: Login },
       { path: 'register', Component: Register },
-      { path: '*', Component: Error404 },
-      { path: 'dashboard', Component: Dashboard },
+      { path: '404', Component: Error404 },
       { path: 'admin/dashboard', Component: AdminDashboard },
     ],
   },
   {
-    path: '404',
-    Component: Minimal,
-    children: [{ index: true, Component: Error404 }],
+    path: 'dashboard',
+    Component: Dashboard,
+    children: [
+      { index: true, Component: MyAccount },
+      { path: '*', Component: MyAccount },
+    ],
   },
 ]);
 

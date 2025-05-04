@@ -5,7 +5,7 @@ import {
   LatestOrder,
 } from '@/pages/AdminDashboard';
 import { useState } from 'react';
-import { useNavigate } from "react-router";
+import { useNavigate } from 'react-router';
 import { AdminSidebar } from '../customs';
 
 export function AdminDashboard() {
@@ -30,7 +30,13 @@ export function AdminDashboard() {
     <main className='flex min-h-screen flex-col items-center bg-purple-50 py-10'>
       <section className='w-full max-w-6xl'>
         <nav className='mb-4 text-sm text-gray-500'>
-          <span className='cursor-pointer hover:underline' onClick={() => navigate("/")}>หน้าแรก</span> -&gt;
+          <span
+            className='cursor-pointer hover:underline'
+            onClick={() => navigate('/')}
+          >
+            หน้าแรก
+          </span>{' '}
+          -&gt;
           <span className='mx-1'>จัดการระบบ</span>
         </nav>
 

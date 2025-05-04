@@ -1,5 +1,4 @@
 import { Link } from 'react-router';
-import ErrorCat from '/public/error/graycat404.png';
 
 export function Error404() {
   return (
@@ -11,7 +10,7 @@ export function Error404() {
           Back →
         </Link>
       </section>
-      <img src={ErrorCat} />
+      <img src='https://img5.pic.in.th/file/secure-sv1/graycat404.md.png' />
     </div>
   );
 }
