@@ -36,13 +36,21 @@ export function ProductDetail() {
             <span className='text-3xl font-bold text-gray-900'>
               ฿{product.price}
             </span>
-            {/* สมมุติมี discount */}
-            <span className='text-lg text-gray-400 line-through'>
-              ฿{Math.round(product.price * 1.4)}
-            </span>
-            <span className='rounded-lg bg-red-100 px-2 py-1 text-xs text-red-500'>
-              -40%
-            </span>
+
+            {/* เช็กว่ามีส่วนลดหรือไม่ */}
+            {product.discount > 0 && (
+              <>
+                {/* คำนวณราคาเดิม */}
+                <span className='text-lg text-gray-400 line-through'>
+                  ฿{Math.round(product.price / (1 - product.discount / 100))}
+                </span>
+
+                {/* แสดงเปอร์เซ็นต์ลด */}
+                <span className='rounded-lg bg-red-100 px-2 py-1 text-xs text-red-500'>
+                  -{Math.round(product.discount)}%
+                </span>
+              </>
+            )}
           </div>
 
           {/* Description */}
