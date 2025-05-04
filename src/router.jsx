@@ -24,6 +24,7 @@ const router = createBrowserRouter([
       { path: 'login', Component: Login },
       { path: 'register', Component: Register },
       { path: '404', Component: Error404 },
+      { path: 'admin/dashboard', Component: AdminDashboard },
     ],
   },
   {
@@ -33,10 +34,6 @@ const router = createBrowserRouter([
       { index: true, Component: MyAccount },
       { path: '*', Component: MyAccount },
     ],
-  },
-  {
-    path: 'admin/dashboard',
-    Component: AdminDashboard,
   },
 ]);
 
