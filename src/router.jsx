@@ -1,4 +1,9 @@
-import { AdminDashboard, Dashboard, Default, Minimal } from '@/components/layouts';
+import {
+  AdminDashboard,
+  Dashboard,
+  Default,
+  Minimal,
+} from '@/components/layouts';
 import { Home, Login, MyAccount, Register } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { Error404 } from './components/layouts/Error404';
