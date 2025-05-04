@@ -1,6 +1,7 @@
 import { data } from '@/lib/data';
 import { useState } from 'react';
 import {
+  AboutUs,
   FAQ,
   ProductCard,
   ProductFilterBar,
@@ -61,6 +62,7 @@ export const Home = () => {
         </div>
 
         <FAQ></FAQ>
+        <AboutUs></AboutUs>
       </section>
     </section>
   );
