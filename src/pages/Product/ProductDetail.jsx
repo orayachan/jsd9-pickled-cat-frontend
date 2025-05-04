@@ -141,7 +141,10 @@ export const ProductDetail = () => {
                 +
               </button>
             </div>
-            <button onClick={handleAddToCart} className='w-full rounded-full bg-black px-6 py-4 text-lg font-semibold text-white transition hover:bg-gray-800'>
+            <button
+              onClick={handleAddToCart}
+              className='w-full rounded-full bg-black px-6 py-4 text-lg font-semibold text-white transition hover:bg-gray-800'
+            >
               Add to Cart
             </button>
           </div>
