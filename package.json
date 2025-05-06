@@ -6,6 +6,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
+    "format": "prettier -w .",
     "lint": "eslint .",
     "preview": "vite preview"
   },
