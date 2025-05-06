@@ -2,6 +2,7 @@
   "arrowParens": "always",
   "bracketSameLine": false,
   "bracketSpacing": true,
+  "cssDeclarationSorterOrder": "smacss",
   "cursorOffset": -1,
   "embeddedLanguageFormatting": "auto",
   "endOfLine": "lf",

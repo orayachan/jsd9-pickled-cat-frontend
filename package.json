@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "format": "prettier -w .",
     "dev": "vite",
     "lint": "eslint .",
     "preview": "vite preview"
