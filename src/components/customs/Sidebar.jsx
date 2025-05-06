@@ -9,7 +9,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import { useNavigate } from "react-router";
+import { useNavigate } from 'react-router';
 
 export function Sidebar({ activeTab, setActiveTab }) {
   const navigate = useNavigate();
@@ -79,7 +79,10 @@ export function Sidebar({ activeTab, setActiveTab }) {
             <AlertDialogCancel className='hover:cursor-pointer'>
               ยกเลิก
             </AlertDialogCancel>
-            <AlertDialogAction className='border bg-white text-black hover:cursor-pointer hover:bg-red-100' onClick={() => navigate("/login")}>
+            <AlertDialogAction
+              className='border bg-white text-black hover:cursor-pointer hover:bg-red-100'
+              onClick={() => navigate('/login')}
+            >
               ยืนยัน
             </AlertDialogAction>
           </AlertDialogFooter>
