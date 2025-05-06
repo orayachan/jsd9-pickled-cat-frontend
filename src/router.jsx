@@ -29,14 +29,7 @@ const router = createBrowserRouter([
       { path: 'register', Component: Register },
       { path: '404', Component: Error404 },
       { path: 'admin/dashboard', Component: AdminDashboard },
-    ],
-  },
-  {
-    path: 'dashboard',
-    Component: Dashboard,
-    children: [
-      { index: true, Component: MyAccount },
-      { path: '*', Component: MyAccount },
+      { path: 'dashboard', Component: Dashboard },
     ],
   },
 ]);
