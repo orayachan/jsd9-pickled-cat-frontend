@@ -38,7 +38,7 @@ export const Home = () => {
       <HeroBanner />
 
       {/* menu bar */}
-      <section className='px-8'>
+      <section id='products' className='px-8'>
         <h2 className='text-[28px] font-bold text-[#3A4980] sm:text-[32px]'>
           สินค้าของเรา
         </h2>

@@ -1,6 +1,6 @@
 export function FAQ() {
   return (
-    <section id='faqs' class='mx-4 my-8'>
+    <section id='faqs' class='mx-4 pt-16'>
       <div class='relative mx-auto max-w-screen-xl justify-center'>
         {/* <!-- Title --> */}
         <div class=''>
