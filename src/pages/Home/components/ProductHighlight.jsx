@@ -12,7 +12,7 @@ export function ProductHighlight() {
     <div className='mx-auto flex max-w-screen-2xl flex-col content-center-safe justify-center'>
       <h2
         id='highlight'
-        className='text-primary-700 py-4 text-center text-2xl font-bold'
+        className='text-primary-700 py-4 text-center text-[28px] font-bold sm:text-[32px]'
       >
         สินค้าขายดี
       </h2>
