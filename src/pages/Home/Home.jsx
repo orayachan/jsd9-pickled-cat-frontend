@@ -34,11 +34,11 @@ export const Home = () => {
     filteredData.sort((a, b) => b.price - a.price);
   }
   return (
-    <>
+    <div className='mx-auto my-6 max-w-screen-2xl'>
       <HeroBanner />
 
       {/* menu bar */}
-      <section className='px-8'>
+      <section id='products' className='px-8'>
         <h2 className='text-[28px] font-bold text-[#3A4980] sm:text-[32px]'>
           สินค้าของเรา
         </h2>
@@ -66,6 +66,6 @@ export const Home = () => {
 
       <FAQ></FAQ>
       <AboutUs></AboutUs>
-    </>
+    </div>
   );
 };

@@ -26,27 +26,24 @@ export function Header() {
             </Link>
           </li>
           <li>
-            <Link to={{ hash: '#products' }} className='hover:text-primary-600'>
+            <a href='#products' className='hover:text-primary-600'>
               สินค้าของเรา
-            </Link>
+            </a>
           </li>
-          <li>
-            <Link
-              to={{ hash: '#highlight' }}
-              className='hover:text-primary-600'
-            >
+          <li className='hidden'>
+            <a href='#highlight' className='hover:text-primary-600'>
               สินค้าขายดี
-            </Link>
+            </a>
           </li>
           <li>
-            <Link to={{ hash: '#contact' }} className='hover:text-primary-600'>
-              ติดต่อเรา
-            </Link>
-          </li>
-          <li>
-            <Link to={{ hash: '#faqs' }} className='hover:text-primary-600'>
+            <a href='#faqs' className='hover:text-primary-600'>
               คำถามที่พบบ่อย
-            </Link>
+            </a>
+          </li>
+          <li>
+            <a href='#contact' className='hover:text-primary-600'>
+              ติดต่อเรา
+            </a>
           </li>
         </ul>
         {/* Part - end */}

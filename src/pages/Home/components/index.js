@@ -3,4 +3,5 @@ export * from './FAQ.jsx';
 export * from './HeroBanner.jsx';
 export * from './ProductCard.jsx';
 export * from './ProductFilterBar.jsx';
+export * from './ProductHighlight.jsx';
 export * from './SearchProduct.jsx';
