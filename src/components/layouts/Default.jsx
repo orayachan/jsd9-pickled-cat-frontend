@@ -5,7 +5,7 @@ export function Default() {
   return (
     <>
       <Header />
-      <main className='mx-auto my-6 max-w-screen-2xl'>
+      <main>
         <Outlet />
       </main>
       <Footer />

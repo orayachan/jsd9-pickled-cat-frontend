@@ -34,7 +34,7 @@ export const Home = () => {
     filteredData.sort((a, b) => b.price - a.price);
   }
   return (
-    <>
+    <div className='mx-auto my-6 max-w-screen-2xl'>
       <HeroBanner />
 
       {/* menu bar */}
@@ -66,6 +66,6 @@ export const Home = () => {
 
       <FAQ></FAQ>
       <AboutUs></AboutUs>
-    </>
+    </div>
   );
 };
