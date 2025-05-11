@@ -9,6 +9,7 @@ import { Link } from 'react-router';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <header className='content-center-safe border-b bg-white px-8 py-4 text-center'>
       <nav className='mx-auto flex items-center justify-between gap-4 lg:max-w-screen-2xl'>
@@ -60,37 +61,43 @@ export function Header() {
           >
             <HiOutlineMegaphone />
           </Link>
+
           {/* Menu */}
-          <div className='relative'>
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className='hover:text-primary-600 flex items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-[#eeeff8]'
-            >
-              <HiOutlineMenu />
-            </button>
-            {isMenuOpen && (
-              <ul className='absolute right-0 z-50 mt-4 w-36 rounded-lg border bg-white shadow-md'>
-                <li className='hover:text-primary-600 mr-4 text-end'>
-                  <Link to='/Dashboard'>ข้อมูลของฉัน</Link>
-                </li>
-                <li className='hover:text-primary-600 mr-4 text-end'>
-                  <Link to='/Dashboard'>คำสั่งซื้อ</Link>
-                </li>
-                <li className='hover:text-primary-600 mr-4 text-end'>
-                  <Link to='/Dashboard'>รายการยกเลิก</Link>
-                </li>
-                <li className='hover:text-primary-600 mr-4 text-end'>
-                  <Link to='/Dashboard'>รีวิวสินค้า</Link>
-                </li>
-                <li className='hover:text-primary-600 mr-4 text-end'>
-                  <Link to='/'>ออกจากระบบ</Link>
-                </li>
-              </ul>
-            )}
-          </div>
+          {/* Only show menu when logged in */}
+          {isLoggedIn && (
+            <div className='relative'>
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className='hover:text-primary-600 flex items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-[#eeeff8]'
+              >
+                <HiOutlineMenu />
+              </button>
+              {isMenuOpen && (
+                <ul className='absolute right-0 z-50 mt-4 w-36 rounded-lg border bg-white shadow-md'>
+                  <li className='hover:text-primary-600 mr-4 text-end'>
+                    <Link to='/Dashboard'>ข้อมูลของฉัน</Link>
+                  </li>
+                  <li className='hover:text-primary-600 mr-4 text-end'>
+                    <Link to='/Dashboard'>คำสั่งซื้อ</Link>
+                  </li>
+                  <li className='hover:text-primary-600 mr-4 text-end'>
+                    <Link to='/Dashboard'>รายการยกเลิก</Link>
+                  </li>
+                  <li className='hover:text-primary-600 mr-4 text-end'>
+                    <Link to='/Dashboard'>รีวิวสินค้า</Link>
+                  </li>
+                  <li className='hover:text-primary-600 mr-4 text-end'>
+                    <Link to='/' onClick={() => setIsLoggedIn(false)}>ออกจากระบบ</Link>
+                  </li>
+                </ul>
+              )}
+            </div>
+          )}
+
           <button className='hover:text-primary-600 hidden items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-yellow-100'>
             <HiOutlineUserCircle />
           </button>
+
           <p className='hidden flex-col items-start justify-center lg:flex'>
             <span className='font-semibold'>สวัสดี</span>
             <Link to='/Login' className='hover:text-primary-600'>
