@@ -8,7 +8,7 @@ export const ProductDetail = () => {
   const { id } = useParams();
   const product = data.find((item) => item.id === Number(id));
   const navigate = useNavigate();
-
+  
   const [selectedOption, setSelectedOption] = useState(product.option[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
   const [quantity, setQuantity] = useState(1);

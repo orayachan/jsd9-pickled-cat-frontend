@@ -1,5 +1,6 @@
-import { data } from '@/lib/data';
-import { useState } from 'react';
+//import { data } from '@/lib/data';
+import { getAllProduct } from '@/services/productsService.js';
+import { useEffect, useState } from 'react';
 import {
   AboutUs,
   FAQ,
@@ -13,8 +14,32 @@ export const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortPrice, setSortPrice] = useState('');
+  const [products, setProducts] = useState([]);
+  const [loadingProducts, setLoadingProducts] = useState(true);
+  const [error, setError] = useState('');
 
-  let filteredData = [...data];
+  const fetchProducts = async () => {
+    try {
+      const res = await getAllProduct();
+      setProducts(res.products || []);
+    } catch (err) {
+      console.error(err);
+      setError('Failed to load products.');
+    } finally {
+      setLoadingProducts(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  let filteredData = [...products];
+
+  if (loadingProducts)
+    return (
+      <div className='mt-10 text-center text-xl'>Loading all products...</div>
+    );
 
   if (selectedCategory) {
     filteredData = filteredData.filter(
@@ -56,11 +81,24 @@ export const Home = () => {
             setSearchTerm={setSearchTerm}
           />
         </div>
+
+        {/* error display */}
+        {error && (
+          <div className='text-center text-sm text-red-500'>{error}</div>
+        )}
+
         {/* product list */}
         <div className='mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-          {filteredData.slice(0, 16).map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {loadingProducts ?
+            <div className='col-span-full text-center text-gray-400'>
+              กำลังโหลดสินค้า...
+            </div>
+          : filteredData
+              .slice(0, 16)
+              .map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))
+          }
         </div>
       </section>
 
