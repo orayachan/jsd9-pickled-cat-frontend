@@ -10,7 +10,7 @@ export function Error404() {
           Back →
         </Link>
       </section>
-      <img src='https://img5.pic.in.th/file/secure-sv1/graycat404.md.png' />
+      <img src='https://img5.pic.in.th/file/secure-sv1/graycat404.md.png' alt='image error 404' />
     </div>
   );
 }
