@@ -36,11 +36,6 @@ export const Home = () => {
 
   let filteredData = [...products];
 
-  if (loadingProducts)
-    return (
-      <div className='mt-10 text-center text-xl'>Loading all products...</div>
-    );
-
   if (selectedCategory) {
     filteredData = filteredData.filter(
       (product) => product.category === selectedCategory,
@@ -96,7 +91,7 @@ export const Home = () => {
           : filteredData
               .slice(0, 16)
               .map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <ProductCard key={product._id} product={product} />
               ))
           }
         </div>
