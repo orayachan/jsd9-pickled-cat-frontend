@@ -9,28 +9,41 @@ import {
 } from '@/components/ui/card';
 import { Link } from 'react-router';
 
-export function OrderSummary() {
+export function OrderSummary({ selectedItems = [] }) {
+  const totalPrice = selectedItems.reduce((sum, item) => {
+    return sum + item.price * item.quantity;
+  }, 0);
+
+  const discount = selectedItems.reduce((sum, item) => {
+    const originalPrice = item.price / (1 - item.discount / 100);
+    const discountAmount = (originalPrice - item.price) * item.quantity;
+    return sum + discountAmount;
+  }, 0);
+
+  const shippingFee = selectedItems.length > 0 ? 50 : 0;
+  const grandTotal = totalPrice + shippingFee;
+
   return (
     <Card className='max-w-[350px]'>
       <CardHeader>
         <CardTitle className='pt-2'>สรุปคำสั่งซื้อ</CardTitle>
       </CardHeader>
       <CardContent className='border-b-1 px-6'>
-        <CardDescription className='mb-2 flex items-start justify-between gap-4'>
+        <CardDescription className='mb-2 flex justify-between'>
           <span>ราคาทั้งหมด</span>
-          <span>xxx.xx ฿</span>
+          <span>฿{totalPrice.toFixed(2)}</span>
         </CardDescription>
-        <CardDescription className='mb-2 flex items-start justify-between gap-4'>
+        <CardDescription className='mb-2 flex justify-between'>
           <span>ส่วนลด</span>
-          <span>xxx.xx ฿</span>
+          <span>-฿{discount.toFixed(2)}</span>
         </CardDescription>
-        <CardDescription className='mb-2 flex items-start justify-between gap-4'>
+        <CardDescription className='mb-2 flex justify-between'>
           <span>ค่าบริการจัดส่ง</span>
-          <span>xxx.xx ฿</span>
+          <span>฿{shippingFee.toFixed(2)}</span>
         </CardDescription>
-        <CardDescription className='my-4 flex items-start justify-between gap-4 font-semibold'>
+        <CardDescription className='my-4 flex justify-between font-semibold'>
           <span>ชำระเงิน</span>
-          <span>xxx.xx ฿</span>
+          <span>฿{grandTotal.toFixed(2)}</span>
         </CardDescription>
       </CardContent>
       <CardFooter className='flex flex-col'>
