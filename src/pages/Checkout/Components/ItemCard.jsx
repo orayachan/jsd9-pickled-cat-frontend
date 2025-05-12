@@ -1,8 +1,15 @@
+import { Checkbox } from '@/components/ui/checkbox';
 import { HiOutlineTrash } from 'react-icons/hi';
 
-export function ItemCard({ item, onQuantityChange, onRemove }) {
+export function ItemCard({ item, onQuantityChange, onRemove, isChecked, onSelect }) {
   return (
     <section className='flex items-start justify-start gap-4 px-4 pb-4'>
+      <div className='mt-2'>
+        <Checkbox
+        checked={isChecked}
+        onCheckedChange={(checked) => onSelect(item, checked)}
+        />
+      </div>
       <figure className='h-[100px] w-[100px] shrink-0 overflow-hidden rounded-md border bg-white'>
         <img
           src={item.image}
