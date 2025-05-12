@@ -2,7 +2,7 @@ import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { useEffect, useState } from 'react';
 import { ItemCard } from './ItemCard';
 
-export function Cart({onSelectionChange}) {
+export function Cart({ onSelectionChange }) {
   const [cartItems, setCartItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
 
