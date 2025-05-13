@@ -1,9 +1,9 @@
+import { useState } from 'react';
 import { Link } from 'react-router';
 import { BcrumbCheckout } from './Components/BcrumbCheckout';
 import { Cart } from './Components/Cart';
 import { OrderSummary } from './Components/OrderSummary';
 import { ShippingPrice } from './Components/ShippingPrice';
-import { useState } from 'react';
 
 export function Checkout() {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -15,7 +15,7 @@ export function Checkout() {
         <section className='mt-4 flex flex-col gap-y-8 md:flex-row'>
           {/* Cart */}
           <div className='w-full md:w-2/3'>
-            <Cart onSelectionChange={setSelectedItems}/>
+            <Cart onSelectionChange={setSelectedItems} />
           </div>
           {/* Sidebar */}
           <aside className='flex w-full flex-col items-center justify-start gap-4 md:w-1/3 lg:pl-4'>
