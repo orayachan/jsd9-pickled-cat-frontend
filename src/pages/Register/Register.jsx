@@ -35,7 +35,6 @@ export function Register() {
           <img className='object-cover' src='/greycat.png' alt='' />
         </div>
 
-        {/* TODO: เปลี่ยน Path ด้วยครับท่านผู้เจริญ */}
         <form
           className='mx-auto size-full content-center space-y-12 lg:px-4'
           method='POST'
@@ -202,14 +201,13 @@ export function Register() {
 
               <div>
                 <Link
-                  to={{ pathname: '/' }}
+                  to={{ pathname: '/forgot' }}
                   className='text-primary font-semibold'
                 >
                   ลืมรหัสผ่าน?
                 </Link>
               </div>
               <div className='flex gap-2'>
-                {/* TODO: เอาไงกับชีวิตดีครับ ฟีเจอร์นี้ ท่านผู้เจริญ */}
                 <Checkbox className='bg-white' id='remember-me' />
                 <Label className='text-primary' htmlFor='remember-me'>
                   จดจำการเข้าสู่ระบบ
@@ -235,7 +233,10 @@ export function Register() {
 
           <div className='text-center'>
             {'เป็นสมาชิกแล้ว' + ' '}
-            <Link to={{ pathname: '/' }} className='text-primary font-semibold'>
+            <Link
+              to={{ pathname: '/login' }}
+              className='text-primary font-semibold'
+            >
               เข้าสู่ระบบ
             </Link>
           </div>

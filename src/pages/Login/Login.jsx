@@ -25,7 +25,6 @@ export function Login() {
   return (
     <section className='bg-secondary-50 min-h-[calc(100dvh_-_8rem)] content-center pt-16 max-xl:px-4 max-sm:px-0 lg:pt-24 lg:pb-4'>
       <div className='bg-secondary-50 mx-auto grid max-w-screen-sm -translate-y-8 place-items-center gap-8 rounded-xl p-4 lg:max-w-screen-xl lg:grid-cols-2 lg:bg-white lg:p-8 lg:shadow-md'>
-        {/* TODO: เปลี่ยน Path ด้วยครับท่านผู้เจริญ */}
         <form
           className='mx-auto size-full content-center space-y-12 lg:px-4'
           method='POST'
@@ -98,14 +97,13 @@ export function Login() {
 
               <div>
                 <Link
-                  to={{ pathname: '/' }}
+                  to={{ pathname: '/forgot' }}
                   className='text-primary font-semibold'
                 >
                   ลืมรหัสผ่าน?
                 </Link>
               </div>
               <div className='flex gap-2'>
-                {/* TODO: เอาไงกับชีวิตดีครับ ฟีเจอร์นี้ ท่านผู้เจริญ */}
                 <Checkbox className='bg-white' id='remember-me' />
                 <Label className='text-primary' htmlFor='remember-me'>
                   จดจำการเข้าสู่ระบบ
@@ -131,7 +129,10 @@ export function Login() {
 
           <div className='text-center'>
             {'ยังไม่มีบัญชี?' + ' '}
-            <Link to={{ pathname: '/' }} className='text-primary font-semibold'>
+            <Link
+              to={{ pathname: '/register' }}
+              className='text-primary font-semibold'
+            >
               สร้างบัญชี
             </Link>
           </div>

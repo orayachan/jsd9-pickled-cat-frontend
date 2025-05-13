@@ -1,27 +1,55 @@
 import { Error404 } from '@/components/layouts/Error404';
-import { data } from '@/lib/data';
-import { useState } from 'react';
+// import { data } from '@/lib/data';
+import { getProductById } from '@/services/productsService';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import { ProductImages } from './Components';
 
 export const ProductDetail = () => {
   const { id } = useParams();
-  const product = data.find((item) => item.id === Number(id));
+  // const product = data.find((item) => item.id === Number(id));
   const navigate = useNavigate();
 
-  const [selectedOption, setSelectedOption] = useState(product.option[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+  const [product, setProduct] = useState(null);
+  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  if (!product) {
-    return <Error404 />;
-  }
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const res = await getProductById(id);
+        const fetchedProduct = res.product;
+
+        if (!fetchedProduct) {
+          throw new Error('Product not found');
+        }
+
+        setProduct(fetchedProduct);
+        setSelectedOption(fetchedProduct.option?.[0] || '');
+        setSelectedSize(fetchedProduct.sizes?.[0] || '');
+      } catch (err) {
+        console.error(err);
+        setError('ไม่สามารถโหลดข้อมูลสินค้าได้');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
+
+  if (loading)
+    return <div className='mt-10 text-center'>กำลังโหลดสินค้า...</div>;
+  if (error || !product) return <Error404 />;
 
   const handleAddToCart = () => {
     const cartItem = {
-      id: product.id,
+      id: product._id,
       name: product.name,
-      image: product.images[0],
+      image: product.images?.[0] || '',
       price: product.price,
       discount: product.discount,
       selectedOption,
@@ -29,10 +57,37 @@ export const ProductDetail = () => {
       quantity,
     };
 
-    const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
-    currentCart.push(cartItem);
-    localStorage.setItem('cart', JSON.stringify(currentCart));
+    const rawCart = localStorage.getItem('cart');
+    let currentCart = [];
 
+    try {
+      currentCart = JSON.parse(rawCart) || [];
+    } catch (err) {
+      console.warn('Cart is corrupted. Resetting.', err);
+      currentCart = [];
+    }
+
+    if (!Array.isArray(currentCart)) {
+      currentCart = [];
+    }
+
+    const existingIndex = currentCart.findIndex((item) => {
+      if (!item || typeof item !== 'object') return false;
+      return (
+        item.id === cartItem.id &&
+        item.selectedOption === cartItem.selectedOption &&
+        item.selectedSize === cartItem.selectedSize
+      );
+    });
+
+    if (existingIndex !== -1) {
+      // ถ้ามีสินค้าเดิมอยู่แล้ว ให้เพิ่มจำนวนเข้าไป
+      currentCart[existingIndex].quantity += quantity;
+    } else {
+      currentCart.push(cartItem);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(currentCart));
     navigate('/Checkout');
   };
 
@@ -45,7 +100,7 @@ export const ProductDetail = () => {
       </nav>
 
       <div className='mt-4 flex flex-col lg:flex-row lg:gap-8'>
-        {/* dproductData Images */}
+        {/* productData Images */}
         <ProductImages images={product.images} />
 
         {/* Product Details */}

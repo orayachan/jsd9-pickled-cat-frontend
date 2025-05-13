@@ -27,15 +27,11 @@ const router = createBrowserRouter([
     children: [
       { path: 'login', Component: Login },
       { path: 'register', Component: Register },
-      { path: '*', Component: Error404 },
-      { path: 'dashboard', Component: Dashboard },
+      { path: '404', Component: Error404 },
       { path: 'admin/dashboard', Component: AdminDashboard },
+      { path: 'dashboard', Component: Dashboard },
+      { path: 'forgot', Component: Error404 },
     ],
-  },
-  {
-    path: '404',
-    Component: Minimal,
-    children: [{ index: true, Component: Error404 }],
   },
 ]);
 

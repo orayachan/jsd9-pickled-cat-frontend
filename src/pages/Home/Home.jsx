@@ -1,7 +1,10 @@
-import { data } from '@/lib/data';
-import { useState } from 'react';
+//import { data } from '@/lib/data';
+import { getAllProduct } from '@/services/productsService.js';
+import { useEffect, useState } from 'react';
 import {
+  AboutUs,
   FAQ,
+  HeroBanner,
   ProductCard,
   ProductFilterBar,
   SearchProduct,
@@ -11,8 +14,27 @@ export const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortPrice, setSortPrice] = useState('');
+  const [products, setProducts] = useState([]);
+  const [loadingProducts, setLoadingProducts] = useState(true);
+  const [error, setError] = useState('');
 
-  let filteredData = [...data];
+  const fetchProducts = async () => {
+    try {
+      const res = await getAllProduct();
+      setProducts(res.products || []);
+    } catch (err) {
+      console.error(err);
+      setError('Failed to load products.');
+    } finally {
+      setLoadingProducts(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  let filteredData = [...products];
 
   if (selectedCategory) {
     filteredData = filteredData.filter(
@@ -32,15 +54,17 @@ export const Home = () => {
     filteredData.sort((a, b) => b.price - a.price);
   }
   return (
-    <section className='mx-4 my-6 flex justify-center sm:mx-8 md:mx-16 lg:mx-20'>
-      <section className='w-full max-w-screen-2xl'>
+    <div className='mx-auto my-6 max-w-screen-2xl'>
+      <HeroBanner />
+
+      {/* menu bar */}
+      <section id='products' className='px-8'>
         <h2 className='text-[28px] font-bold text-[#3A4980] sm:text-[32px]'>
           สินค้าของเรา
         </h2>
 
-        {/* menu-bar */}
         <div className='my-8 hidden items-center justify-between text-sm md:flex'>
-          {/* sort-option */}
+          {/* sort option */}
           <ProductFilterBar
             onCategoryChange={(category) => setSelectedCategory(category)}
             onPriceChange={(price) => setSortPrice(price)}
@@ -53,15 +77,28 @@ export const Home = () => {
           />
         </div>
 
+        {/* error display */}
+        {error && (
+          <div className='text-center text-sm text-red-500'>{error}</div>
+        )}
+
         {/* product list */}
         <div className='mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-          {filteredData.slice(0, 16).map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {loadingProducts ?
+            <div className='col-span-full text-center text-gray-400'>
+              กำลังโหลดสินค้า...
+            </div>
+          : filteredData
+              .slice(0, 16)
+              .map((product) => (
+                <ProductCard key={product._id} product={product} />
+              ))
+          }
         </div>
-
-        <FAQ></FAQ>
       </section>
-    </section>
+
+      <FAQ></FAQ>
+      <AboutUs></AboutUs>
+    </div>
   );
 };
