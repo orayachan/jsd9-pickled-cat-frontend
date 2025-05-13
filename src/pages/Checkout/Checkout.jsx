@@ -12,9 +12,9 @@ export function Checkout() {
       <main className='mx-auto flex max-w-screen-2xl flex-col justify-center'>
         {/* Breadcrumb */}
         <BcrumbCheckout />
-        <section className='mt-4 flex flex-col gap-y-8 md:flex-row'>
+        <section className='w-full mt-4 flex flex-col gap-y-8 md:flex-row'>
           {/* Cart */}
-          <div className='w-full md:w-2/3'>
+          <div className='w-full md:w-2/3 mr-8'>
             <Cart onSelectionChange={setSelectedItems} />
           </div>
           {/* Sidebar */}

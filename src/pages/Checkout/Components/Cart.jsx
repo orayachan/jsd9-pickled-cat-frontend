@@ -77,7 +77,7 @@ export function Cart({ onSelectionChange }) {
   return (
     <Card className='max-w-full'>
       <CardHeader>
-        <CardTitle className='pt-2'>รายการคำสั่งซื้อ</CardTitle>
+        <CardTitle className='text-primary-800 pt-2 lg:text-xl'>รายการคำสั่งซื้อ</CardTitle>
       </CardHeader>
       {cartItems.map((item) => (
         <ItemCard

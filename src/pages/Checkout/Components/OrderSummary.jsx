@@ -24,9 +24,9 @@ export function OrderSummary({ selectedItems = [] }) {
   const grandTotal = totalPrice + shippingFee;
 
   return (
-    <Card className='max-w-[350px]'>
+    <Card className='w-full'>
       <CardHeader>
-        <CardTitle className='pt-2'>สรุปคำสั่งซื้อ</CardTitle>
+        <CardTitle className='pt-2 text-primary-800 lg:text-xl'>สรุปคำสั่งซื้อ</CardTitle>
       </CardHeader>
       <CardContent className='border-b-1 px-6'>
         <CardDescription className='mb-2 flex justify-between'>

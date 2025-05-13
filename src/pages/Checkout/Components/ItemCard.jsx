@@ -14,9 +14,10 @@ export function ItemCard({
         <Checkbox
           checked={isChecked}
           onCheckedChange={(checked) => onSelect(item, checked)}
+          className='ml-4 lg:mx-8'
         />
       </div>
-      <figure className='h-[100px] w-[100px] shrink-0 overflow-hidden rounded-md border bg-white'>
+      <figure className='h-[100px] w-[100px] lg:h-[200px] lg:w-[200px] shrink-0 overflow-hidden rounded-md border bg-white lg:mr-6'>
         <img
           src={item.image}
           alt={item.name}
@@ -25,11 +26,11 @@ export function ItemCard({
       </figure>
       <div className='flex w-full flex-col justify-between'>
         <div>
-          <p className='text-primary-700 font-semibold'>{item.name}</p>
-          <p className='text-sm text-gray-600'>
+          <p className='text-primary-700 font-semibold lg:text-xl lg:pt-4'>{item.name}</p>
+          <p className='text-sm text-gray-600 lg:pt-2'>
             {item.selectedOption}, {item.selectedSize}
           </p>
-          <p className='text-primary-700 mt-1 font-bold'>
+          <p className='text-primary-700 mt-1 font-bold lg:py-4'>
             ฿{(item.price * item.quantity).toFixed(2)}
           </p>
         </div>
@@ -67,7 +68,7 @@ export function ItemCard({
             onClick={() =>
               onRemove(item.id, item.selectedOption, item.selectedSize)
             }
-            className='text-primary-500 cursor-pointer hover:text-red-600'
+            className='text-xl lg:text-2xl lg:mr-8 text-primary-500 cursor-pointer hover:text-red-600'
           />
         </div>
       </div>
