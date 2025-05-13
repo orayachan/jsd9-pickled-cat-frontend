@@ -46,6 +46,11 @@ export const ProductDetail = () => {
   if (error || !product) return <Error404 />;
 
   const handleAddToCart = () => {
+    const optionIndex = product.option.findIndex(
+      (opt) => opt === selectedOption,
+    );
+    const sizeIndex = product.sizes.findIndex((size) => size == selectedSize);
+
     const cartItem = {
       id: product._id,
       name: product.name,
@@ -54,31 +59,20 @@ export const ProductDetail = () => {
       discount: product.discount,
       selectedOption,
       selectedSize,
+      selectedOptionIndex: optionIndex,
+      selectedSizeIndex: sizeIndex,
       quantity,
     };
 
     const rawCart = localStorage.getItem('cart');
-    let currentCart = [];
+    let currentCart = rawCart ? JSON.parse(rawCart) : [];
 
-    try {
-      currentCart = JSON.parse(rawCart) || [];
-    } catch (err) {
-      console.warn('Cart is corrupted. Resetting.', err);
-      currentCart = [];
-    }
-
-    if (!Array.isArray(currentCart)) {
-      currentCart = [];
-    }
-
-    const existingIndex = currentCart.findIndex((item) => {
-      if (!item || typeof item !== 'object') return false;
-      return (
+    const existingIndex = currentCart.findIndex(
+      (item) =>
         item.id === cartItem.id &&
         item.selectedOption === cartItem.selectedOption &&
-        item.selectedSize === cartItem.selectedSize
-      );
-    });
+        item.selectedSize === cartItem.selectedSize,
+    );
 
     if (existingIndex !== -1) {
       // ถ้ามีสินค้าเดิมอยู่แล้ว ให้เพิ่มจำนวนเข้าไป
