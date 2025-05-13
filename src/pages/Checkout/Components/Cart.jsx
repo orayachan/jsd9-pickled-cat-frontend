@@ -2,7 +2,7 @@ import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { useEffect, useState } from 'react';
 import { ItemCard } from './ItemCard';
 
-export function Cart({onSelectionChange}) {
+export function Cart({ onSelectionChange }) {
   const [cartItems, setCartItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
 
@@ -19,7 +19,7 @@ export function Cart({onSelectionChange}) {
   };
 
   const handleQuantityChange = (id, option, size, newQty) => {
-    const updated = cartItems.map((item) =>
+    const updatedCart = cartItems.map((item) =>
       (
         item.id === id &&
         item.selectedOption === option &&
@@ -28,7 +28,18 @@ export function Cart({onSelectionChange}) {
         { ...item, quantity: newQty }
       : item,
     );
-    updateStorage(updated);
+    updateStorage(updatedCart);
+
+    const updatedSelected = selectedItems.map((item) =>
+      (
+        item.id === id &&
+        item.selectedOption === option &&
+        item.selectedSize === size
+      ) ?
+        { ...item, quantity: newQty }
+      : item,
+    );
+    setSelectedItems(updatedSelected);
   };
 
   const handleRemove = (id, option, size) => {
