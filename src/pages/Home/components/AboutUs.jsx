@@ -10,7 +10,7 @@ export function AboutUs() {
         <div className='flex flex-col mx-4'>
           {/* <!-- Title --> */}
           <div className='m-6 flex flex-col items-start'>
-            <h2 className='text-primary-700 text-4xl font-bold'>ติดต่อเรา</h2>
+            <h2 className='text-primary-700 text-2xl lg:text-4xl font-bold'>ติดต่อเรา</h2>
           </div>
 
           <div className='m-4 flex flex-col justify-between gap-8 lg:flex-row'>
@@ -18,7 +18,7 @@ export function AboutUs() {
               <div className='m-8 flex flex-col justify-center gap-2'>
                 <div className='flex flex-row gap-4'>
                   <TiLocation className='h-[40px] w-[40px]' />
-                  <h2 className='text-primary-700 self-center text-2xl font-bold'>
+                  <h2 className='text-primary-700 self-center text-xl lg:text-2xl font-bold'>
                     สถานที่ตั้ง
                   </h2>
                 </div>
@@ -34,7 +34,7 @@ export function AboutUs() {
               <div className='m-8 flex flex-col justify-center gap-2'>
                 <div className='flex flex-row gap-4'>
                   <RiMailOpenFill className='h-[40px] w-[40px]' />
-                  <h2 className='text-primary-700 self-center text-2xl font-bold'>
+                  <h2 className='text-primary-700 self-center text-xl lg:text-2xl font-bold'>
                     อีเมลล์
                   </h2>
                 </div>
@@ -46,7 +46,7 @@ export function AboutUs() {
               <div className='m-8 flex flex-col justify-center gap-2'>
                 <div className='flex flex-row gap-4'>
                   <MdLocalPhone className='h-[40px] w-[40px]' />
-                  <h2 className='text-primary-700 self-center text-2xl font-bold'>
+                  <h2 className='text-primary-700 self-center text-xl lg:text-2xl font-bold'>
                     เบอร์โทรศัพท์
                   </h2>
                 </div>

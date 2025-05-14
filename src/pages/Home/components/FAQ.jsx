@@ -4,7 +4,7 @@ export function FAQ() {
       <div className='relative mx-4 justify-center'>
         {/* <!-- Title --> */}
         <div className=''>
-          <h2 className='text-primary-700 m-6 text-left text-4xl font-bold'>
+          <h2 className='text-primary-700 m-6 text-left text-2xl lg:text-4xl font-bold'>
             คำถามที่พบบ่อย (FAQs)
           </h2>
         </div>
