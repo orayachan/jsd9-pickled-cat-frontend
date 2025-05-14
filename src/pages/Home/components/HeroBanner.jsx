@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 
 export function HeroBanner() {
   return (
-    <section className='px-8 py-16'>
+    <section className='px-8 pb-8 lg:py-12'>
       <div className='bg-secondary relative mx-auto grid justify-center rounded-xl border-red-300 px-8 shadow-xl sm:py-16 md:grid-cols-2 lg:px-16'>
         <div className='max-w-prose space-y-8 max-xl:pb-24 max-lg:z-[1] max-md:text-center max-sm:pt-16 sm:content-center'>
           <h1 className='text-primary text-4xl leading-tight font-medium xl:text-5xl xl:leading-snug'>
@@ -17,7 +17,7 @@ export function HeroBanner() {
         </div>
         <img
           className='xs:h-full absolute bottom-0 max-md:opacity-30 sm:right-0 md:-right-8 lg:right-16 lg:h-[calc(100%+4rem)]'
-          src='/big-grey-cat.svg'
+          src='/big-grey-cat.png'
           alt=''
         />
       </div>

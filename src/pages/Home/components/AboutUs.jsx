@@ -5,27 +5,29 @@ import { TiLocation } from 'react-icons/ti';
 export function AboutUs() {
   return (
     // <!-- Contact Us -->
-    <section id='contact' className='mx-4 mb-16 bg-white'>
-      <div className='relative mx-auto flex max-w-screen-xl flex-col justify-center'>
-        <div className='flex flex-col'>
+    <section id='contact' className='mx-auto mb-16 max-w-screen-2xl bg-white'>
+      <div className='relative mx-auto flex flex-col justify-center'>
+        <div className='mx-4 flex flex-col'>
           {/* <!-- Title --> */}
           <div className='m-6 flex flex-col items-start'>
-            <h2 className='text-primary-700 text-4xl font-bold'>ติดต่อเรา</h2>
+            <h2 className='text-primary-700 text-2xl font-bold lg:text-4xl'>
+              ติดต่อเรา
+            </h2>
           </div>
 
           <div className='m-4 flex flex-col justify-between gap-8 lg:flex-row'>
             <div className='border-primary-500 max-w-220 min-w-70 flex-[1] rounded-3xl border-2'>
               <div className='m-8 flex flex-col justify-center gap-2'>
                 <div className='flex flex-row gap-4'>
-                  <TiLocation className='mb-4 h-[40px] w-[40px]' />
-                  <h2 className='text-primary-700 self-center text-2xl font-bold'>
+                  <TiLocation className='h-[40px] w-[40px]' />
+                  <h2 className='text-primary-700 self-center text-xl font-bold lg:text-2xl'>
                     สถานที่ตั้ง
                   </h2>
                 </div>
-                <h3 className='text-primary-800'>
-                  110/1 อาคารเคเอ็กซ์ <br></br> ถนนกรุงธนบุรี แขวงบางลำภูล่าง{' '}
-                  <br></br> เขตคลองสาน กรุงเทพมหานคร <br></br>{' '}
-                  <strong>10600</strong>
+                <h3 className='text-primary-800 p-4 text-pretty lg:text-xl'>
+                  110/1 อาคารเคเอ็กซ์ ถนนกรุงธนบุรี แขวงบางลำภูล่าง เขตคลองสาน
+                  กรุงเทพมหานคร <br />
+                  10600
                 </h3>
               </div>
             </div>
@@ -33,34 +35,38 @@ export function AboutUs() {
             <div className='border-primary-500 max-w-220 min-w-70 flex-[1] rounded-3xl border-2'>
               <div className='m-8 flex flex-col justify-center gap-2'>
                 <div className='flex flex-row gap-4'>
-                  <RiMailOpenFill className='mb-4 h-[40px] w-[40px]' />
-                  <h2 className='text-primary-700 self-center text-2xl font-bold'>
+                  <RiMailOpenFill className='h-[40px] w-[40px]' />
+                  <h2 className='text-primary-700 self-center text-xl font-bold lg:text-2xl'>
                     อีเมลล์
                   </h2>
                 </div>
-                <h3 className='text-primary-800'>contact@pickledcat.com</h3>
+                <h3 className='text-primary-800 p-4 lg:text-xl'>
+                  contact@pickledcat.com
+                </h3>
               </div>
             </div>
 
             <div className='border-primary-500 max-w-220 min-w-70 flex-[1] rounded-3xl border-2'>
               <div className='m-8 flex flex-col justify-center gap-2'>
                 <div className='flex flex-row gap-4'>
-                  <MdLocalPhone className='mb-4 h-[40px] w-[40px]' />
-                  <h2 className='text-primary-700 self-center text-2xl font-bold'>
+                  <MdLocalPhone className='h-[40px] w-[40px]' />
+                  <h2 className='text-primary-700 self-center text-xl font-bold lg:text-2xl'>
                     เบอร์โทรศัพท์
                   </h2>
                 </div>
-                <h3 className='text-primary-800'>(+66) 99 999 9999</h3>
+                <h3 className='text-primary-800 p-4 lg:text-xl'>
+                  (+66) 99 999 9999
+                </h3>
               </div>
             </div>
           </div>
         </div>
 
         {/* <!-- Map --> */}
-        <div className='bg-secondary-50 mx-4 my-8 flex max-w-220 justify-center rounded-3xl p-4 lg:max-w-1280 lg:min-w-225'>
+        <div className='bg-secondary-50 mx-6 my-8 flex max-w-220 justify-center rounded-3xl p-4 lg:max-w-1280 lg:min-w-225'>
           <iframe
             title='map store'
-            className='h-[450px] max-h-[1280px] w-full max-w-[1280px] border-0'
+            className='h-[450px] max-h-[1280px] w-full max-w-[1580px] border-0'
             loading='lazy'
             allowFullScreen
             referrerPolicy='no-referrer-when-downgrade'

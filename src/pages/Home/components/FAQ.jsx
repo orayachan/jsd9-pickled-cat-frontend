@@ -1,23 +1,23 @@
 export function FAQ() {
   return (
-    <section id='faqs' className='mx-4 pt-16'>
-      <div className='relative mx-auto max-w-screen-xl justify-center'>
+    <section id='faqs' className='mx-auto max-w-screen-2xl pt-16'>
+      <div className='relative mx-4 justify-center'>
         {/* <!-- Title --> */}
         <div className=''>
-          <h2 className='text-primary-700 m-6 text-left text-4xl font-bold'>
+          <h2 className='text-primary-700 m-6 text-left text-2xl font-bold lg:text-4xl'>
             คำถามที่พบบ่อย (FAQs)
           </h2>
         </div>
 
         {/* <!-- List --> */}
         <div className='mr-4 mb-16 ml-4 flex flex-col gap-2'>
-          <div className='bg-secondary-50 rounded-xl'>
+          <div className='bg-secondary-50 rounded-xl lg:p-2'>
             <input className='peer hidden' id='faq1' type='checkbox' />
             <label
               className='flex cursor-pointer items-center justify-between py-3 text-lg font-medium text-gray-700 peer-checked:[&>svg]:rotate-180'
               htmlFor='faq1'
             >
-              <span className='text-primary-800 ml-4'>
+              <span className='text-primary-800 ml-4 lg:text-xl'>
                 มีบริการจัดส่งทั่วประเทศหรือไม่?
               </span>
 
@@ -43,13 +43,13 @@ export function FAQ() {
             </div>
           </div>
 
-          <div className='bg-secondary-50 rounded-xl'>
+          <div className='bg-secondary-50 rounded-xl lg:p-2'>
             <input className='peer hidden' id='faq2' type='checkbox' />
             <label
               className='flex cursor-pointer items-center justify-between py-3 text-lg font-medium text-gray-700 peer-checked:[&>svg]:rotate-180'
               htmlFor='faq2'
             >
-              <span className='text-primary-800 ml-4'>
+              <span className='text-primary-800 ml-4 lg:text-xl'>
                 สามารถเปลี่ยนหรือคืนสินค้าได้หรือไม่?
               </span>
               <svg
@@ -75,13 +75,13 @@ export function FAQ() {
             </div>
           </div>
 
-          <div className='bg-secondary-50 rounded-xl'>
+          <div className='bg-secondary-50 rounded-xl lg:p-2'>
             <input className='peer hidden' id='faq3' type='checkbox' />
             <label
               className='flex cursor-pointer items-center justify-between py-3 text-lg font-medium text-gray-700 peer-checked:[&>svg]:rotate-180'
               htmlFor='faq3'
             >
-              <span className='text-primary-800 ml-4'>
+              <span className='text-primary-800 ml-4 lg:text-xl'>
                 สามารถชำระเงินด้วยวิธีใดได้บ้าง?
               </span>
               <svg
@@ -106,13 +106,13 @@ export function FAQ() {
             </div>
           </div>
 
-          <div className='bg-secondary-50 rounded-xl'>
+          <div className='bg-secondary-50 rounded-xl lg:p-2'>
             <input className='peer hidden' id='faq4' type='checkbox' />
             <label
               className='flex cursor-pointer items-center justify-between py-3 text-lg font-medium text-gray-700 peer-checked:[&>svg]:rotate-180'
               htmlFor='faq4'
             >
-              <span className='text-primary-800 ml-4'>
+              <span className='text-primary-800 ml-4 lg:text-xl'>
                 จะรู้ได้อย่างไรว่ามีสินค้าใหม่เข้ามา?
               </span>
               <svg
