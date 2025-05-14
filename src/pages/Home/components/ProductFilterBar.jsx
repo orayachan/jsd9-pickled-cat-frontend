@@ -14,7 +14,7 @@ export function ProductFilterBar({ onCategoryChange, onPriceChange }) {
   ];
   const priceOptions = ['ราคาน้อยไปมาก', 'ราคามากไปน้อย'];
   return (
-    <div className='relative my-8 hidden items-center justify-between text-sm md:flex'>
+    <div className='relative my-2 lg:ml-4 flex items-center justify-between text-sm'>
       <div className='flex flex-wrap gap-2'>
         {/* หมวดหมู่ */}
         <div className='relative'>
@@ -23,7 +23,7 @@ export function ProductFilterBar({ onCategoryChange, onPriceChange }) {
               setShowCategoryDropdown(!showCategoryDropdown);
               setShowPriceDropdown(false);
             }}
-            className='flex items-center gap-1 rounded-full bg-gray-200 px-4 py-1 text-sm font-medium hover:bg-gray-300'
+            className='flex items-center gap-2 rounded-full bg-gray-200 px-4 py-2 mr-2 text-sm font-medium hover:bg-gray-300'
           >
             หมวดหมู่
             <img
@@ -57,7 +57,7 @@ export function ProductFilterBar({ onCategoryChange, onPriceChange }) {
               setShowPriceDropdown(!showPriceDropdown);
               setShowCategoryDropdown(false);
             }}
-            className='flex items-center gap-1 rounded-full bg-gray-200 px-4 py-1 text-sm font-medium hover:bg-gray-300'
+            className='flex items-center gap-2 rounded-full bg-gray-200 px-4 py-2 mr-2 text-sm font-medium hover:bg-gray-300'
           >
             ราคา
             <img
@@ -84,7 +84,7 @@ export function ProductFilterBar({ onCategoryChange, onPriceChange }) {
           )}
         </div>
 
-        <div className='flex flex-wrap gap-2'>
+        <div className='hidden lg:flex flex-wrap gap-4'>
           {['รีวิว', 'ขายดี', 'มาใหม่', 'ส่วนลด'].map((label) => (
             <button
               key={label}
@@ -92,7 +92,7 @@ export function ProductFilterBar({ onCategoryChange, onPriceChange }) {
             >
               {label}
               <img
-                className='inline-block h-4 w-4'
+                className='h-4 w-4 hidden'
                 src='/logos/drop.png'
                 alt='dropdown icon'
               />

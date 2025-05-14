@@ -59,11 +59,11 @@ export const Home = () => {
 
       {/* menu bar */}
       <section id='products' className='p-8'>
-        <h2 className='text-2xl lg:text-4xl lg:pl-4 font-bold text-primary-700'>
+        <h2 className='text-2xl lg:text-4xl lg:pl-4 font-bold text-primary-700 mb-6'>
           สินค้าของเรา
         </h2>
 
-        <div className='my-8 hidden items-center justify-between text-sm md:flex'>
+        <div className='flex flex-col md:flex-row items-start justify-between text-sm '>
           {/* sort option */}
           <ProductFilterBar
             onCategoryChange={(category) => setSelectedCategory(category)}
