@@ -4,6 +4,8 @@ import { BcrumbPayment } from './Components/BcrumbPayment';
 import { PaymentMethod } from './Components/PaymentMethod';
 import { PaymentSummary } from './Components/PaymentSummary';
 import { ShippingForm } from './Components/ShippingForm';
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 export function Payment() {
   const [formData, setFormData] = useState({
@@ -22,10 +24,42 @@ export function Payment() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     // Backend (TBC)
+
+    const orderId = uuidv4(); // Generate a unique order ID
+    const paymentId = uuidv4(); // Generate a unique payment ID
+
+    let paidAt = new Date().toISOString(); // Get the current date and time in ISO format
+    let updateAt = new Date().toISOString(); // Get the current date and time in ISO format
+
+    let status = 'Pending'; // Set the initial status to 'Pending'
+
+    if (formData.paymentMethod === 'เก็บเงินปลายทาง') {
+      // Handle cash on delivery
+      status = 'Paid'; // Set the status to 'Paid'
+      paidAt = new Date().toISOString(); // Set the paidAt date to now
+      updateAt = new Date().toISOString(); // Set the updateAt date to now
+    }
+
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/api/payments', // Replace with your backend URL
+        {
+          order_id: orderId, // Replace with the actual order ID
+          payment_id: paymentId, // Replace with the actual payment ID
+          payment_method: formData.paymentMethod,
+          amount: 100, // Replace with the actual amount
+          payment_status: status,
+          payment_date: paidAt,
+          update_at: updateAt,
+        }
+      );
+      console.log('Payment successful:', response.data);
+    } catch (error) {
+      console.error('Error processing payment:', error);
+    }
   };
 
   return (
