@@ -94,7 +94,7 @@ export const ProductDetail = () => {
   return (
     <section className='mx-auto max-w-7xl p-4'>
       {/* Breadcrumb */}
-      <nav className='text-sm text-primary-600'>
+      <nav className='text-primary-600 text-sm'>
         <Link to='/'>Home</Link> &gt;{' '}
         <span className='text-primary-900'>{product.name}</span>
       </nav>
@@ -105,7 +105,9 @@ export const ProductDetail = () => {
 
         {/* Product Details */}
         <article className='mt-6 lg:mt-0 lg:w-1/2'>
-          <h1 className='text-2xl text-primary-800 font-semibold'>{product.name}</h1>
+          <h1 className='text-primary-800 text-2xl font-semibold'>
+            {product.name}
+          </h1>
 
           <div className='flex items-center space-x-2 text-lg text-yellow-400'>
             <p>★★★★★</p>
@@ -114,7 +116,7 @@ export const ProductDetail = () => {
 
           {/* Price */}
           <div className='mt-3 flex items-center space-x-3'>
-            <span className='text-3xl font-bold text-primary-900'>
+            <span className='text-primary-900 text-3xl font-bold'>
               ฿{product.price}
             </span>
 
@@ -135,13 +137,13 @@ export const ProductDetail = () => {
           </div>
 
           {/* Description */}
-          <p className='mt-3 leading-relaxed text-primary-600'>
+          <p className='text-primary-600 mt-3 leading-relaxed'>
             {product.description}
           </p>
 
           {/* Food Recipes */}
           <div className='mt-5'>
-            <h2 className='font-semibold text-primary-700'>เลือกที่ลูกชอบ</h2>
+            <h2 className='text-primary-700 font-semibold'>เลือกที่ลูกชอบ</h2>
             <div className='mt-2 grid grid-cols-3 gap-2'>
               {product.option.map((opt) => (
                 <button
@@ -161,7 +163,9 @@ export const ProductDetail = () => {
 
           {/* Packaging Size */}
           <div className='mt-5'>
-            <h2 className='font-semibold text-primary-700'>เลือกขนาดที่ต้องการ</h2>
+            <h2 className='text-primary-700 font-semibold'>
+              เลือกขนาดที่ต้องการ
+            </h2>
             <div className='mt-2 flex space-x-3'>
               {product.sizes.map((size) => (
                 <button
@@ -198,7 +202,7 @@ export const ProductDetail = () => {
             </div>
             <button
               onClick={handleAddToCart}
-              className='w-full rounded-full bg-primary-800 px-6 py-4 text-lg font-semibold text-white transition hover:bg-primary-700'
+              className='bg-primary-800 hover:bg-primary-700 w-full rounded-full px-6 py-4 text-lg font-semibold text-white transition'
             >
               Add to Cart
             </button>

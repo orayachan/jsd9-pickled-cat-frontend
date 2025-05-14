@@ -17,7 +17,7 @@ export function ItemCard({
           className='ml-4 lg:mx-8'
         />
       </div>
-      <figure className='h-[100px] w-[100px] lg:h-[200px] lg:w-[200px] shrink-0 overflow-hidden rounded-md border bg-white lg:mr-6'>
+      <figure className='h-[100px] w-[100px] shrink-0 overflow-hidden rounded-md border bg-white lg:mr-6 lg:h-[200px] lg:w-[200px]'>
         <img
           src={item.image}
           alt={item.name}
@@ -26,7 +26,9 @@ export function ItemCard({
       </figure>
       <div className='flex w-full flex-col justify-between'>
         <div>
-          <p className='text-primary-700 font-semibold lg:text-xl lg:pt-4'>{item.name}</p>
+          <p className='text-primary-700 font-semibold lg:pt-4 lg:text-xl'>
+            {item.name}
+          </p>
           <p className='text-sm text-gray-600 lg:pt-2'>
             {item.selectedOption}, {item.selectedSize}
           </p>
@@ -68,7 +70,7 @@ export function ItemCard({
             onClick={() =>
               onRemove(item.id, item.selectedOption, item.selectedSize)
             }
-            className='text-xl lg:text-2xl lg:mr-8 text-primary-500 cursor-pointer hover:text-red-600'
+            className='text-primary-500 cursor-pointer text-xl hover:text-red-600 lg:mr-8 lg:text-2xl'
           />
         </div>
       </div>

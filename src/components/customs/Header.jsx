@@ -19,7 +19,7 @@ export function Header() {
           </Link>
         </h1>
         {/* Part - middle */}
-        <ul className='py-4 px-8 bg-primary-50 rounded-full hidden items-center justify-center font-medium xl:flex'>
+        <ul className='bg-primary-50 hidden items-center justify-center rounded-full px-8 py-4 font-medium xl:flex'>
           <li>
             <Link to='/' className='hover:text-primary-600 mx-6'>
               หน้าแรก
@@ -50,7 +50,7 @@ export function Header() {
         <div className='flex items-center justify-end gap-4 text-lg md:text-xl'>
           <Link
             to='/Checkout'
-            className='hover:text-primary-600 flex items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-[#f5f1ee] lg:text-primary-500'
+            className='hover:text-primary-600 lg:text-primary-500 flex items-center justify-center rounded-full lg:h-[50px] lg:w-[50px] lg:bg-[#f5f1ee]'
           >
             <HiOutlineShoppingCart />
           </Link>
@@ -70,19 +70,19 @@ export function Header() {
             </button>
             {isMenuOpen && (
               <ul className='absolute right-0 z-50 mt-4 w-44 rounded-lg border bg-white shadow-md'>
-                <li className='text-lg hover:text-primary-600 m-4 text-end'>
+                <li className='hover:text-primary-600 m-4 text-end text-lg'>
                   <Link to='/Dashboard'>ข้อมูลของฉัน</Link>
                 </li>
-                <li className='text-lg hover:text-primary-600 m-4 text-end'>
+                <li className='hover:text-primary-600 m-4 text-end text-lg'>
                   <Link to='/Dashboard'>คำสั่งซื้อ</Link>
                 </li>
-                <li className='text-lg hover:text-primary-600 m-4 text-end'>
+                <li className='hover:text-primary-600 m-4 text-end text-lg'>
                   <Link to='/Dashboard'>รายการยกเลิก</Link>
                 </li>
-                <li className='text-lg hover:text-primary-600 m-4 text-end'>
+                <li className='hover:text-primary-600 m-4 text-end text-lg'>
                   <Link to='/Dashboard'>รีวิวสินค้า</Link>
                 </li>
-                <li className='text-lg hover:text-primary-600 m-4 text-end'>
+                <li className='hover:text-primary-600 m-4 text-end text-lg'>
                   <Link to='/'>ออกจากระบบ</Link>
                 </li>
               </ul>

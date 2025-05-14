@@ -5,12 +5,14 @@ import { TiLocation } from 'react-icons/ti';
 export function AboutUs() {
   return (
     // <!-- Contact Us -->
-    <section id='contact' className='max-w-screen-2xl mx-auto mb-16 bg-white'>
+    <section id='contact' className='mx-auto mb-16 max-w-screen-2xl bg-white'>
       <div className='relative mx-auto flex flex-col justify-center'>
-        <div className='flex flex-col mx-4'>
+        <div className='mx-4 flex flex-col'>
           {/* <!-- Title --> */}
           <div className='m-6 flex flex-col items-start'>
-            <h2 className='text-primary-700 text-2xl lg:text-4xl font-bold'>ติดต่อเรา</h2>
+            <h2 className='text-primary-700 text-2xl font-bold lg:text-4xl'>
+              ติดต่อเรา
+            </h2>
           </div>
 
           <div className='m-4 flex flex-col justify-between gap-8 lg:flex-row'>
@@ -18,13 +20,13 @@ export function AboutUs() {
               <div className='m-8 flex flex-col justify-center gap-2'>
                 <div className='flex flex-row gap-4'>
                   <TiLocation className='h-[40px] w-[40px]' />
-                  <h2 className='text-primary-700 self-center text-xl lg:text-2xl font-bold'>
+                  <h2 className='text-primary-700 self-center text-xl font-bold lg:text-2xl'>
                     สถานที่ตั้ง
                   </h2>
                 </div>
-                <h3 className='text-primary-800 text-pretty lg:text-xl p-4'>
-                  110/1 อาคารเคเอ็กซ์ ถนนกรุงธนบุรี แขวงบางลำภูล่าง
-                  เขตคลองสาน กรุงเทพมหานคร <br/>
+                <h3 className='text-primary-800 p-4 text-pretty lg:text-xl'>
+                  110/1 อาคารเคเอ็กซ์ ถนนกรุงธนบุรี แขวงบางลำภูล่าง เขตคลองสาน
+                  กรุงเทพมหานคร <br />
                   10600
                 </h3>
               </div>
@@ -34,11 +36,13 @@ export function AboutUs() {
               <div className='m-8 flex flex-col justify-center gap-2'>
                 <div className='flex flex-row gap-4'>
                   <RiMailOpenFill className='h-[40px] w-[40px]' />
-                  <h2 className='text-primary-700 self-center text-xl lg:text-2xl font-bold'>
+                  <h2 className='text-primary-700 self-center text-xl font-bold lg:text-2xl'>
                     อีเมลล์
                   </h2>
                 </div>
-                <h3 className='text-primary-800 lg:text-xl p-4'>contact@pickledcat.com</h3>
+                <h3 className='text-primary-800 p-4 lg:text-xl'>
+                  contact@pickledcat.com
+                </h3>
               </div>
             </div>
 
@@ -46,11 +50,13 @@ export function AboutUs() {
               <div className='m-8 flex flex-col justify-center gap-2'>
                 <div className='flex flex-row gap-4'>
                   <MdLocalPhone className='h-[40px] w-[40px]' />
-                  <h2 className='text-primary-700 self-center text-xl lg:text-2xl font-bold'>
+                  <h2 className='text-primary-700 self-center text-xl font-bold lg:text-2xl'>
                     เบอร์โทรศัพท์
                   </h2>
                 </div>
-                <h3 className='text-primary-800 lg:text-xl p-4'>(+66) 99 999 9999</h3>
+                <h3 className='text-primary-800 p-4 lg:text-xl'>
+                  (+66) 99 999 9999
+                </h3>
               </div>
             </div>
           </div>

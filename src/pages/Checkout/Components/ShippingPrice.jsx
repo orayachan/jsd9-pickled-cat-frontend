@@ -10,7 +10,9 @@ export function ShippingPrice() {
   return (
     <Card className='w-full'>
       <CardHeader>
-        <CardTitle className='text-primary-800 lg:text-xl'>ค่าบริการจัดส่ง</CardTitle>
+        <CardTitle className='text-primary-800 lg:text-xl'>
+          ค่าบริการจัดส่ง
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <CardDescription className='mb-2 flex items-start justify-between gap-4'>
