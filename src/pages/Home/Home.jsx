@@ -97,8 +97,8 @@ export const Home = () => {
         </div>
       </section>
 
-      <FAQ></FAQ>
-      <AboutUs></AboutUs>
+      <FAQ />
+      <AboutUs />
     </div>
   );
 };
