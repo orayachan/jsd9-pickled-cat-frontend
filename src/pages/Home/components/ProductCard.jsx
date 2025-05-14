@@ -12,25 +12,25 @@ export const ProductCard = ({ product }) => {
             className='h-[244.63px] w-[231.8px] rounded-md object-cover transition-transform duration-300 hover:scale-110'
           />
         </div>
-      </Link>
-
       {/* รายละเอียดสินค้า */}
-      <div className='mt-2 flex-1'>
+      <div className='mt-2 flex-1 mx-4'>
         <div className='flex justify-between'>
-          <p>{product.name}</p>
-          <p>{product.price.toFixed(2)}</p>
+          <p className='text-lg text-primary-800 font-semibold pt-4 pb-2'>{product.name}</p>
+          <p className='font-semibold pt-4 flex min-w-[80px] justify-end'>฿ {product.price.toFixed(2)}</p>
         </div>
-        <p>{product.description}</p>
-        <div className='mt-2 flex h-4 items-center gap-1'>
+        <p className='text-pretty'>{product.description}</p>
+        <div className='my-2 flex h-4 items-center gap-1'>
           <p className='text-yellow-400'>★★★★★</p>
           <p className='text-sm'>(121)</p>
         </div>
       </div>
+      </Link>
+
 
       {/* ปุ่ม */}
       <div className='mt-4 flex flex-col gap-2'>
-        <button className=''>รายละเอียด</button>
-        <button className=''>ลงตระกร้า</button>
+        <button className='bg-primary-100 rounded-full py-2 font-medium hover:bg-primary-50 hover:shadow-sm'>กดสั่งซื้อสินค้าที่นี่</button>
+        <button className='hidden'>ลงตระกร้า</button>
       </div>
     </div>
   );
