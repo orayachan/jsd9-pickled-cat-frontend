@@ -1,10 +1,10 @@
 import { Button } from '@/components/ui/button';
-import React, { useState } from 'react';
+import axios from 'axios';
+import { useState } from 'react';
 import { BcrumbPayment } from './Components/BcrumbPayment';
 import { PaymentMethod } from './Components/PaymentMethod';
 import { PaymentSummary } from './Components/PaymentSummary';
 import { ShippingForm } from './Components/ShippingForm';
-import axios from 'axios';
 
 export function Payment() {
   const [formData, setFormData] = useState({
@@ -18,11 +18,11 @@ export function Payment() {
     postalCode: '',
   });
 
-  const [ paymentMethod, setPaymentMethod ] = useState('bankTransfer');
+  const [paymentMethod, setPaymentMethod] = useState('bankTransfer');
 
   const handlePaymentMethodChange = (e) => {
     setPaymentMethod(e.target.value);
-  }
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -72,7 +72,10 @@ export function Payment() {
           {/* PART: Left */}
           <div className='space-y-8 lg:col-span-2'>
             <ShippingForm formData={formData} handleChange={handleChange} />
-            <PaymentMethod formData={paymentMethod} handleChange={handlePaymentMethodChange} />
+            <PaymentMethod
+              formData={paymentMethod}
+              handleChange={handlePaymentMethodChange}
+            />
             <Button
               type='submit'
               className='bg-primary-600 hover:bg-primary-700 w-full rounded-full py-3 transition'
