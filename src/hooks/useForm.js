@@ -59,15 +59,18 @@ export function useForm(validationType) {
         1000,
       );
     } catch (error) {
-      let emailConflict = error.response.status === 409;
+      let errorMessage = error.response.data['message'];
+      const emailConflict = error.response.status === 409;
+      if (emailConflict) errorMessage = 'อีเมลนี้ถูกใช้แล้ว';
+      const internalServerError = error.response.status >= 500;
+      if (internalServerError)
+        errorMessage = 'เซิร์ฟเวอร์เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง';
+
       setErrors((prev) => ({
         ...prev,
         type: 'fetching',
         errors: {
-          fetch:
-            emailConflict ? 'อีเมลนี้ถูกใช้แล้ว' : (
-              error.response.data['message']
-            ),
+          fetch: errorMessage,
         },
         emailConflict,
       }));

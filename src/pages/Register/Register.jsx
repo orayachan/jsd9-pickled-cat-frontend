@@ -27,12 +27,20 @@ export function Register() {
     }
   }
 
-  function fetchingError() {
-    return (
-      errors.type === 'fetching' &&
-      errors.emailConflict &&
-      errors.errors['fetch']
-    );
+  /** @param {'email' | 'global'} field */
+  function fetchingError(field) {
+    if (field === 'email')
+      return (
+        errors.type === 'fetching' &&
+        errors.emailConflict &&
+        errors.errors['fetch']
+      );
+    else
+      return (
+        errors.type === 'fetching' &&
+        !errors.emailConflict &&
+        errors.errors['fetch']
+      );
   }
 
   return (
@@ -77,7 +85,7 @@ export function Register() {
                 />
                 <p
                   className={cn(
-                    validationError('email') || fetchingError() ?
+                    validationError('email') || fetchingError('email') ?
                       'grid'
                     : 'hidden',
                     'text-destructive text-sm',
@@ -220,6 +228,14 @@ export function Register() {
                 </Link>
               </div>
             </div>
+            <p
+              className={cn(
+                fetchingError('global') ? 'grid' : 'hidden',
+                'text-destructive text-lg font-semibold',
+              )}
+            >
+              {errors.errors['fetch']}
+            </p>
             <p
               className={cn(
                 success ? 'grid' : 'hidden',

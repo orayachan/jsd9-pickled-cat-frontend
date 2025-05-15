@@ -46,7 +46,7 @@ const errorMessage = {
 const loginFormSchema = z.object({
   email: z
     .string({
-      message: errorMessage.email.login,
+      message: errorMessage.email.string.login,
     })
     .email({ message: errorMessage.email.email }),
   password: z

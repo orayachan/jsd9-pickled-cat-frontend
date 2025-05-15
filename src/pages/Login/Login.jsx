@@ -111,14 +111,28 @@ export function Login() {
                   จดจำการเข้าสู่ระบบ
                 </Label>
               </div>
+              <p
+                className={cn(
+                  (
+                    errors.type === 'fetching' &&
+                      !errors.emailConflict &&
+                      errors.errors['fetch']
+                  ) ?
+                    'grid'
+                  : 'hidden',
+                  'text-destructive',
+                )}
+              >
+                อีเมลหรือรหัสผ่านไม่ถูกต้อง กรุณาลองอีกครั้ง
+              </p>
             </div>
             <p
               className={cn(
-                true ? 'grid' : 'hidden',
+                success ? 'grid' : 'hidden',
                 'text-primary text-lg font-semibold',
               )}
             >
-              เข้าสู่ระบบสำเร็จ กำลังไปที่หน้า Dashboard
+              เข้าสู่ระบบสำเร็จ กำลังไปที่หน้า Dashboard...
             </p>
           </div>
 
