@@ -59,6 +59,21 @@ export const ProductCard = ({ product, onProductUpdated }) => {
     }
   };
 
+  const handleDelete = async () => {
+    if (!window.confirm('คุณต้องการลบสินค้านี้จริงหรือไม่?')) return;
+    setLoading(true);
+    setError(null);
+    try {
+      await axios.delete(`http://localhost:3000/api/products/${_id}`);
+      setOpen(false);
+      if (onProductUpdated) onProductUpdated();
+    } catch (err) {
+      setError('เกิดข้อผิดพลาดในการลบสินค้า');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className='flex w-full flex-col justify-between rounded-2xl bg-white p-4 shadow-md'>
       <img
@@ -133,13 +148,23 @@ export const ProductCard = ({ product, onProductUpdated }) => {
                 ))}
               </div>
               {error && <div className='text-red-500 text-sm'>{error}</div>}
-              <AlertDialogFooter>
-                <AlertDialogCancel disabled={loading}>ยกเลิก</AlertDialogCancel>
-                <AlertDialogAction asChild>
-                  <button type='submit' disabled={loading} className='bg-primary text-white rounded px-4 py-2'>
-                    {loading ? 'กำลังบันทึก...' : 'บันทึก'}
-                  </button>
-                </AlertDialogAction>
+              <AlertDialogFooter className="flex flex-row justify-between items-center gap-2">
+                <AlertDialogCancel
+                  type="button"
+                  disabled={loading}
+                  onClick={handleDelete}
+                  className="bg-red-600 text-white rounded px-4 py-2 hover:bg-red-700 transition-colors"
+                >
+                  {loading ? 'กำลังลบ...' : 'ลบสินค้า'}
+                </AlertDialogCancel>
+                <div className="flex flex-row gap-2">
+                  <AlertDialogCancel disabled={loading} className="border border-gray-300 bg-white text-gray-700 rounded px-4 py-2 hover:bg-gray-100 transition-colors">ยกเลิก</AlertDialogCancel>
+                  <AlertDialogAction asChild>
+                    <button type='submit' disabled={loading} className='bg-primary text-white rounded px-4 py-2 hover:bg-primary/90 transition-colors'>
+                      {loading ? 'กำลังบันทึก...' : 'บันทึก'}
+                    </button>
+                  </AlertDialogAction>
+                </div>
               </AlertDialogFooter>
             </form>
           </AlertDialogContent>
