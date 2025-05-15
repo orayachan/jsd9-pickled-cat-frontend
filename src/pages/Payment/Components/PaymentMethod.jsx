@@ -1,4 +1,4 @@
-export function PaymentMethod(formData, handleChange) {
+export function PaymentMethod({ formData, handleChange }) {
   return (
     <div>
       <h2 className='mb-4 text-xl font-semibold'>วิธีการชำระเงิน</h2>
@@ -9,7 +9,7 @@ export function PaymentMethod(formData, handleChange) {
             name='paymentMethod'
             value='bankTransfer'
             onChange={handleChange}
-            checked={formData.paymentMethod === 'bankTransfer'}
+            checked={formData === 'bankTransfer'}
             className='mr-2'
             required
           />
@@ -21,7 +21,7 @@ export function PaymentMethod(formData, handleChange) {
             name='paymentMethod'
             value='creditCard'
             onChange={handleChange}
-            checked={formData.paymentMethod === 'creditCard'}
+            checked={formData === 'creditCard'}
             className='mr-2'
           />
           <label>บัตรเครดิต/เดบิต</label>
@@ -32,7 +32,7 @@ export function PaymentMethod(formData, handleChange) {
             name='paymentMethod'
             value='wallet'
             onChange={handleChange}
-            checked={formData.paymentMethod === 'wallet'}
+            checked={formData === 'wallet'}
             className='mr-2'
           />
           <label>วอลเล็ต (PromptPay, TrueMoney)</label>
@@ -43,7 +43,7 @@ export function PaymentMethod(formData, handleChange) {
             name='paymentMethod'
             value='cod'
             onChange={handleChange}
-            checked={formData.paymentMethod === 'cod'}
+            checked={formData === 'cod'}
             className='mr-2'
           />
           <label>เก็บเงินปลายทาง (COD)</label>

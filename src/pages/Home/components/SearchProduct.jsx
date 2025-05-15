@@ -2,7 +2,7 @@ import { CiSearch } from 'react-icons/ci';
 
 export function SearchProduct({ searchTerm, setSearchTerm }) {
   return (
-    <div className='relative w-full max-w-sm'>
+    <div className='relative w-full max-w-sm py-2'>
       <input
         type='text'
         placeholder='ค้นหาผลิตภัณฑ์...'

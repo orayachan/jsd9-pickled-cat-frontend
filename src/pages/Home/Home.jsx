@@ -58,12 +58,12 @@ export const Home = () => {
       <HeroBanner />
 
       {/* menu bar */}
-      <section id='products' className='px-8'>
-        <h2 className='text-[28px] font-bold text-[#3A4980] sm:text-[32px]'>
+      <section id='products' className='p-8'>
+        <h2 className='text-primary-700 mb-6 text-2xl font-bold lg:pl-4 lg:text-4xl'>
           สินค้าของเรา
         </h2>
 
-        <div className='my-8 hidden items-center justify-between text-sm md:flex'>
+        <div className='flex flex-col items-start justify-between text-sm md:flex-row'>
           {/* sort option */}
           <ProductFilterBar
             onCategoryChange={(category) => setSelectedCategory(category)}
@@ -97,8 +97,8 @@ export const Home = () => {
         </div>
       </section>
 
-      <FAQ></FAQ>
-      <AboutUs></AboutUs>
+      <FAQ />
+      <AboutUs />
     </div>
   );
 };
