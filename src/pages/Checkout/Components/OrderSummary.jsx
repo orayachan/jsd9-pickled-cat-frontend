@@ -41,11 +41,13 @@ export function OrderSummary({ selectedItems = [] }) {
       const orderData = {
         order_items: selectedItems.map((item) => ({
           product_id: item.id,
+          product_name: item.name,
           quantity: item.quantity,
           price: item.price,
           product_option: item.selectedOptionIndex ?? 0,
           product_size: item.selectedSizeIndex ?? 0,
           discount: item.discount,
+          image: item.image,
         })),
         total_price: total,
         status: 'Pending',
