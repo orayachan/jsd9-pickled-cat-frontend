@@ -7,21 +7,60 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Link } from 'react-router';
+import { createOrder } from '@/services/ordersService';
+import { useMemo } from 'react';
+import { useNavigate } from 'react-router';
 
 export function OrderSummary({ selectedItems = [] }) {
-  const totalPrice = selectedItems.reduce((sum, item) => {
-    return sum + item.price * item.quantity;
-  }, 0);
+  const navigate = useNavigate();
 
-  const discount = selectedItems.reduce((sum, item) => {
-    const originalPrice = item.price / (1 - item.discount / 100);
-    const discountAmount = (originalPrice - item.price) * item.quantity;
-    return sum + discountAmount;
-  }, 0);
+  const { totalBefore, discount, shipping, total } = useMemo(() => {
+    const shipping = selectedItems.length > 0 ? 50 : 0;
 
-  const shippingFee = selectedItems.length > 0 ? 50 : 0;
-  const grandTotal = totalPrice + shippingFee;
+    let totalBefore = 0;
+    let discount = 0;
+
+    selectedItems.forEach((item) => {
+      const originalPrice = item.price / (1 - item.discount / 100);
+      totalBefore += originalPrice * item.quantity;
+      discount += originalPrice * item.quantity * (item.discount / 100);
+    });
+
+    const total = totalBefore - discount + shipping;
+
+    return {
+      totalBefore,
+      discount,
+      shipping,
+      total,
+    };
+  }, [selectedItems]);
+
+  const handlePayment = async () => {
+    try {
+      const orderData = {
+        order_items: selectedItems.map((item) => ({
+          product_id: item.id,
+          product_name: item.name,
+          quantity: item.quantity,
+          price: item.price,
+          product_option: item.selectedOptionIndex ?? 0,
+          product_size: item.selectedSizeIndex ?? 0,
+          discount: item.discount,
+          image: item.image,
+        })),
+        total_price: total,
+        status: 'Pending',
+      };
+      console.log('🧾 Order Payload:', orderData);
+      const response = await createOrder(orderData);
+      console.log('Order created:', response);
+      navigate('/payment');
+    } catch (err) {
+      console.error('Failed to create order:', err);
+      alert('ไม่สามารถสร้างคำสั่งซื้อได้');
+    }
+  };
 
   return (
     <Card className='w-full'>
@@ -33,7 +72,7 @@ export function OrderSummary({ selectedItems = [] }) {
       <CardContent className='border-b-1 px-6'>
         <CardDescription className='mb-2 flex justify-between'>
           <span>ราคาทั้งหมด</span>
-          <span>฿{totalPrice.toFixed(2)}</span>
+          <span>฿{totalBefore.toFixed(2)}</span>
         </CardDescription>
         <CardDescription className='mb-2 flex justify-between'>
           <span>ส่วนลด</span>
@@ -41,11 +80,11 @@ export function OrderSummary({ selectedItems = [] }) {
         </CardDescription>
         <CardDescription className='mb-2 flex justify-between'>
           <span>ค่าบริการจัดส่ง</span>
-          <span>฿{shippingFee.toFixed(2)}</span>
+          <span>฿{shipping.toFixed(2)}</span>
         </CardDescription>
         <CardDescription className='my-4 flex justify-between font-semibold'>
           <span>ชำระเงิน</span>
-          <span>฿{grandTotal.toFixed(2)}</span>
+          <span>฿{total.toFixed(2)}</span>
         </CardDescription>
       </CardContent>
       <CardFooter className='flex flex-col'>
@@ -59,9 +98,14 @@ export function OrderSummary({ selectedItems = [] }) {
             รับส่วนลด
           </Button>
         </div>
-        <Link to='/payment' className='w-full'>
-          <Button className='w-full rounded-full'>ชำระเงิน</Button>
-        </Link>
+
+        <Button
+          className='w-full rounded-full'
+          onClick={handlePayment}
+          disabled={selectedItems.length === 0}
+        >
+          ชำระเงิน
+        </Button>
       </CardFooter>
     </Card>
   );

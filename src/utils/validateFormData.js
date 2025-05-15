@@ -3,7 +3,7 @@ import { z } from 'zod';
 const constraint = {
   name: {
     min: 2,
-    max: 40,
+    max: 50,
   },
   password: {
     min: 8,
@@ -15,20 +15,20 @@ const constraint = {
 const errorMessage = {
   email: {
     string: {
-      login: 'รูปแบบอีเมลไม่ถูกต้อง',
-      register: 'อีเมลนี้ถูกใช้ไปแล้ว กรุณาใช้อีเมลอื่น',
+      login: 'กรุณากรอกอีเมลของคุณ',
+      register: 'กรุณากรอกอีเมลของคุณ',
     },
     email: 'รูปแบบอีเมลไม่ถูกต้อง',
   },
   firstname: {
     string: 'กรุณากรอกชื่อจริงของคุณ',
     min: 'ชื่อควรมีความยาวไม่ต่ำกว่า 2 ตัวอักษร',
-    max: 'ชื่อควรมีความยาวไม่เกิน 40 ตัวอักษร',
+    max: 'ชื่อควรมีความยาวไม่เกิน 50 ตัวอักษร',
   },
   lastname: {
     string: 'กรุณากรอกนามสกุลของคุณ',
     min: 'นามสกุลควรมีความยาวไม่ต่ำกว่า 2 ตัวอักษร',
-    max: 'นามสกุลควรมีความยาวไม่เกิน 40 ตัวอักษร',
+    max: 'นามสกุลควรมีความยาวไม่เกิน 50 ตัวอักษร',
   },
   password: {
     string: {
@@ -46,7 +46,7 @@ const errorMessage = {
 const loginFormSchema = z.object({
   email: z
     .string({
-      message: errorMessage.email.login,
+      message: errorMessage.email.string.login,
     })
     .email({ message: errorMessage.email.email }),
   password: z
@@ -67,13 +67,13 @@ const registerFormSchema = z
 
     firstname: z
       .string({ message: errorMessage.firstname.string })
-      .min(2, errorMessage.firstname.min)
-      .max(40, errorMessage.firstname.max),
+      .min(constraint.name.min, errorMessage.firstname.min)
+      .max(constraint.name.max, errorMessage.firstname.max),
 
     lastname: z
       .string({ message: errorMessage.lastname.string })
-      .min(2, errorMessage.lastname.min)
-      .max(40, errorMessage.lastname.max),
+      .min(constraint.name.min, errorMessage.lastname.min)
+      .max(constraint.name.max, errorMessage.lastname.max),
 
     password: z
       .string({
