@@ -61,7 +61,7 @@ export function OrderAll() {
     try {
       await axios.patch(`http://localhost:3000/api/orders/${id}/status`, { status });
       fetchOrders();
-    } catch (err) {
+    } catch {
       alert('เกิดข้อผิดพลาดในการอัปเดตสถานะ');
     }
   }
@@ -72,7 +72,7 @@ export function OrderAll() {
       const response = await axios.get('http://localhost:3000/api/orders');
       setOrders(response.data.orders.map(mapOrder));
       setLoading(false);
-    } catch (err) {
+    } catch {
       console.error('Error fetching orders:');
       setError('ไม่สามารถโหลดข้อมูลได้');
       setLoading(false);
@@ -111,7 +111,7 @@ export function OrderPending() {
       await axios.patch(`http://localhost:3000/api/orders/${id}/status`, { status });
       // Refresh list after update
       fetchOrders();
-    } catch (err) {
+    } catch {
       alert('เกิดข้อผิดพลาดในการอัปเดตสถานะ');
     }
   }
@@ -122,7 +122,7 @@ export function OrderPending() {
       const response = await axios.get('http://localhost:3000/api/orders/status/Pending');
       setOrders(response.data.orders.map(mapOrder));
       setLoading(false);
-    } catch (err) {
+    } catch {
       console.error('Error fetching pending orders:');
       setError('ไม่สามารถโหลดข้อมูลได้');
       setLoading(false);
@@ -158,7 +158,7 @@ export function OrderOnRoute() {
     try {
       await axios.patch(`http://localhost:3000/api/orders/${id}/status`, { status });
       fetchOrders();
-    } catch (err) {
+    } catch {
       alert('เกิดข้อผิดพลาดในการอัปเดตสถานะ');
     }
   }
@@ -169,7 +169,7 @@ export function OrderOnRoute() {
       const response = await axios.get('http://localhost:3000/api/orders/status/Shipped');
       setOrders(response.data.orders.map(mapOrder));
       setLoading(false);
-    } catch (err) {
+    } catch {
       console.error('Error fetching shipped orders:');
       setError('ไม่สามารถโหลดข้อมูลได้');
       setLoading(false);
@@ -208,8 +208,8 @@ export function OrderSuccess() {
         const response = await axios.get('http://localhost:3000/api/orders/status/Delivered');
         setOrders(response.data.orders.map(mapOrder));
         setLoading(false);
-      } catch (err) {
-        console.error('Error fetching delivered orders:', err);
+      } catch {
+        console.error('Error fetching delivered orders:');
         setError('ไม่สามารถโหลดข้อมูลได้');
         setLoading(false);
       }
@@ -236,7 +236,7 @@ export function OrderCancelled() {
         const response = await axios.get('http://localhost:3000/api/orders/status/Cancelled');
         setOrders(response.data.orders.map(mapOrder));
         setLoading(false);
-      } catch (err) {
+      } catch {
         console.error('Error fetching cancelled orders:', err);
         setError('ไม่สามารถโหลดข้อมูลได้');
         setLoading(false);
