@@ -37,20 +37,3 @@ export const uploadToCloudinary = (file) => {
     });
   });
 };
-
-/**
- * ลบไฟล์จาก Cloudinary (ต้องทำผ่าน backend ด้วย API key และ secret)
- * หมายเหตุ: ฟังก์ชันนี้จะไม่ทำงานในฝั่ง client โดยตรง ควรสร้าง API endpoint ในฝั่ง server
- * @param {string} publicId - public_id ของไฟล์ที่ต้องการลบ
- * @returns {Promise} - คืนค่า promise ที่มีข้อมูลการลบ
- */
-export const deleteFromCloudinary = (publicId) => {
-  console.warn('deleteFromCloudinary ไม่สามารถเรียกใช้โดยตรงในฝั่ง client ได้ ต้องทำผ่าน API endpoint ในฝั่ง server');
-  
-  // ตัวอย่างวิธีเรียกใช้ API ผ่าน backend
-  return new Promise((resolve, reject) => {
-    // ให้สร้าง API endpoint สำหรับลบไฟล์ แล้วเรียกใช้ endpoint นั้นแทน
-    // เช่น fetch('/api/cloudinary/delete', { method: 'POST', body: JSON.stringify({ publicId }) })
-    reject(new Error('ฟังก์ชันนี้ไม่สามารถใช้ได้โดยตรงในฝั่ง client'));
-  });
-}; 

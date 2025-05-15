@@ -52,8 +52,6 @@ export const ProductCard = ({ product, onProductUpdated }) => {
       });
       setOpen(false);
       if (onProductUpdated) onProductUpdated();
-    } catch (err) {
-      setError('เกิดข้อผิดพลาดในการบันทึกข้อมูล');
     } finally {
       setLoading(false);
     }
@@ -67,8 +65,6 @@ export const ProductCard = ({ product, onProductUpdated }) => {
       await axios.delete(`http://localhost:3000/api/products/${_id}`);
       setOpen(false);
       if (onProductUpdated) onProductUpdated();
-    } catch (err) {
-      setError('เกิดข้อผิดพลาดในการลบสินค้า');
     } finally {
       setLoading(false);
     }

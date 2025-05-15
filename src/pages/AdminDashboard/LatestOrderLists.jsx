@@ -73,7 +73,7 @@ export function OrderAll() {
       setOrders(response.data.orders.map(mapOrder));
       setLoading(false);
     } catch (err) {
-      console.error('Error fetching orders:', err);
+      console.error('Error fetching orders:');
       setError('ไม่สามารถโหลดข้อมูลได้');
       setLoading(false);
     }
@@ -123,7 +123,7 @@ export function OrderPending() {
       setOrders(response.data.orders.map(mapOrder));
       setLoading(false);
     } catch (err) {
-      console.error('Error fetching pending orders:', err);
+      console.error('Error fetching pending orders:');
       setError('ไม่สามารถโหลดข้อมูลได้');
       setLoading(false);
     }
@@ -170,7 +170,7 @@ export function OrderOnRoute() {
       setOrders(response.data.orders.map(mapOrder));
       setLoading(false);
     } catch (err) {
-      console.error('Error fetching shipped orders:', err);
+      console.error('Error fetching shipped orders:');
       setError('ไม่สามารถโหลดข้อมูลได้');
       setLoading(false);
     }
