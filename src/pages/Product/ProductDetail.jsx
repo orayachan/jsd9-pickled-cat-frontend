@@ -1,27 +1,55 @@
 import { Error404 } from '@/components/layouts/Error404';
-import { data } from '@/lib/data';
-import { useState } from 'react';
+// import { data } from '@/lib/data';
+import { getProductById } from '@/services/productsService';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import { ProductImages } from './Components';
 
 export const ProductDetail = () => {
   const { id } = useParams();
-  const product = data.find((item) => item.id === Number(id));
+  // const product = data.find((item) => item.id === Number(id));
   const navigate = useNavigate();
 
-  const [selectedOption, setSelectedOption] = useState(product.option[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+  const [product, setProduct] = useState(null);
+  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  if (!product) {
-    return <Error404 />;
-  }
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const res = await getProductById(id);
+        const fetchedProduct = res.product;
+
+        if (!fetchedProduct) {
+          throw new Error('Product not found');
+        }
+
+        setProduct(fetchedProduct);
+        setSelectedOption(fetchedProduct.option?.[0] || '');
+        setSelectedSize(fetchedProduct.sizes?.[0] || '');
+      } catch (err) {
+        console.error(err);
+        setError('ไม่สามารถโหลดข้อมูลสินค้าได้');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
+
+  if (loading)
+    return <div className='mt-10 text-center'>กำลังโหลดสินค้า...</div>;
+  if (error || !product) return <Error404 />;
 
   const handleAddToCart = () => {
     const cartItem = {
-      id: product.id,
+      id: product._id,
       name: product.name,
-      image: product.images[0],
+      image: product.images?.[0] || '',
       price: product.price,
       discount: product.discount,
       selectedOption,
@@ -29,28 +57,57 @@ export const ProductDetail = () => {
       quantity,
     };
 
-    const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
-    currentCart.push(cartItem);
-    localStorage.setItem('cart', JSON.stringify(currentCart));
+    const rawCart = localStorage.getItem('cart');
+    let currentCart = [];
 
+    try {
+      currentCart = JSON.parse(rawCart) || [];
+    } catch (err) {
+      console.warn('Cart is corrupted. Resetting.', err);
+      currentCart = [];
+    }
+
+    if (!Array.isArray(currentCart)) {
+      currentCart = [];
+    }
+
+    const existingIndex = currentCart.findIndex((item) => {
+      if (!item || typeof item !== 'object') return false;
+      return (
+        item.id === cartItem.id &&
+        item.selectedOption === cartItem.selectedOption &&
+        item.selectedSize === cartItem.selectedSize
+      );
+    });
+
+    if (existingIndex !== -1) {
+      // ถ้ามีสินค้าเดิมอยู่แล้ว ให้เพิ่มจำนวนเข้าไป
+      currentCart[existingIndex].quantity += quantity;
+    } else {
+      currentCart.push(cartItem);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(currentCart));
     navigate('/Checkout');
   };
 
   return (
     <section className='mx-auto max-w-7xl p-4'>
       {/* Breadcrumb */}
-      <nav className='text-sm text-gray-500'>
+      <nav className='text-primary-600 text-sm'>
         <Link to='/'>Home</Link> &gt;{' '}
-        <span className='text-gray-700'>{product.name}</span>
+        <span className='text-primary-900'>{product.name}</span>
       </nav>
 
       <div className='mt-4 flex flex-col lg:flex-row lg:gap-8'>
-        {/* dproductData Images */}
+        {/* productData Images */}
         <ProductImages images={product.images} />
 
         {/* Product Details */}
         <article className='mt-6 lg:mt-0 lg:w-1/2'>
-          <h1 className='text-2xl font-semibold'>{product.name}</h1>
+          <h1 className='text-primary-800 text-2xl font-semibold'>
+            {product.name}
+          </h1>
 
           <div className='flex items-center space-x-2 text-lg text-yellow-400'>
             <p>★★★★★</p>
@@ -59,7 +116,7 @@ export const ProductDetail = () => {
 
           {/* Price */}
           <div className='mt-3 flex items-center space-x-3'>
-            <span className='text-3xl font-bold text-gray-900'>
+            <span className='text-primary-900 text-3xl font-bold'>
               ฿{product.price}
             </span>
 
@@ -80,13 +137,13 @@ export const ProductDetail = () => {
           </div>
 
           {/* Description */}
-          <p className='mt-3 leading-relaxed text-gray-600'>
+          <p className='text-primary-600 mt-3 leading-relaxed'>
             {product.description}
           </p>
 
           {/* Food Recipes */}
           <div className='mt-5'>
-            <h2 className='font-semibold text-gray-700'>เลือกที่ลูกชอบ</h2>
+            <h2 className='text-primary-700 font-semibold'>เลือกที่ลูกชอบ</h2>
             <div className='mt-2 grid grid-cols-3 gap-2'>
               {product.option.map((opt) => (
                 <button
@@ -94,8 +151,8 @@ export const ProductDetail = () => {
                   onClick={() => setSelectedOption(opt)}
                   className={`rounded-lg border bg-gray-200 px-4 py-2 ${
                     selectedOption === opt ?
-                      'bg-black text-white'
-                    : 'bg-gray-200 hover:bg-gray-300'
+                      'bg-primary-800 text-white'
+                    : 'bg-primary-200 hover:bg-primary-300'
                   }`}
                 >
                   {opt}
@@ -106,7 +163,9 @@ export const ProductDetail = () => {
 
           {/* Packaging Size */}
           <div className='mt-5'>
-            <h2 className='font-semibold text-gray-700'>เลือกขนาดที่ต้องการ</h2>
+            <h2 className='text-primary-700 font-semibold'>
+              เลือกขนาดที่ต้องการ
+            </h2>
             <div className='mt-2 flex space-x-3'>
               {product.sizes.map((size) => (
                 <button
@@ -114,8 +173,8 @@ export const ProductDetail = () => {
                   onClick={() => setSelectedSize(size)}
                   className={`rounded-lg border px-5 py-3 text-gray-700 transition ${
                     selectedSize === size ?
-                      'bg-black text-white'
-                    : 'text-gray-700 hover:bg-black hover:text-white'
+                      'bg-primary-800 text-white'
+                    : 'text-primary-700 hover:bg-primary-300 hover:text-white'
                   }`}
                 >
                   {size}
@@ -143,7 +202,7 @@ export const ProductDetail = () => {
             </div>
             <button
               onClick={handleAddToCart}
-              className='w-full rounded-full bg-black px-6 py-4 text-lg font-semibold text-white transition hover:bg-gray-800'
+              className='bg-primary-800 hover:bg-primary-700 w-full rounded-full px-6 py-4 text-lg font-semibold text-white transition'
             >
               Add to Cart
             </button>

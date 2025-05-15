@@ -1,11 +1,11 @@
 import { Button } from '@/components/ui/button';
+import axios from 'axios';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { BcrumbPayment } from './Components/BcrumbPayment';
 import { PaymentMethod } from './Components/PaymentMethod';
 import { PaymentSummary } from './Components/PaymentSummary';
 import { ShippingForm } from './Components/ShippingForm';
-import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
 
 export function Payment() {
   const [formData, setFormData] = useState({
@@ -54,7 +54,7 @@ export function Payment() {
           payment_status: status,
           payment_date: paidAt,
           update_at: updateAt,
-        }
+        },
       );
       console.log('Payment successful:', response.data);
     } catch (error) {
