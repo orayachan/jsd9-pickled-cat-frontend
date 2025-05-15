@@ -44,7 +44,7 @@ export const uploadToCloudinary = (file) => {
  * @param {string} publicId - public_id ของไฟล์ที่ต้องการลบ
  * @returns {Promise} - คืนค่า promise ที่มีข้อมูลการลบ
  */
-export const deleteFromCloudinary = (publicId) => {
+export const deleteFromCloudinary = (/* publicId */) => {
   console.warn('deleteFromCloudinary ไม่สามารถเรียกใช้โดยตรงในฝั่ง client ได้ ต้องทำผ่าน API endpoint ในฝั่ง server');
   
   // ตัวอย่างวิธีเรียกใช้ API ผ่าน backend

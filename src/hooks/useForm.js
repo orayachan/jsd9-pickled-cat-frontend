@@ -107,7 +107,7 @@ export function useForm(validationType) {
       setErrors({ type: null, errors: [] });
       controller.abort();
     };
-  }, []);
+  }, [controller]);
 
   return {
     errors,

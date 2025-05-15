@@ -52,8 +52,6 @@ export const ProductCard = ({ product, onProductUpdated }) => {
       });
       setOpen(false);
       if (onProductUpdated) onProductUpdated();
-    } catch (err) {
-      setError('เกิดข้อผิดพลาดในการบันทึกข้อมูล');
     } finally {
       setLoading(false);
     }
