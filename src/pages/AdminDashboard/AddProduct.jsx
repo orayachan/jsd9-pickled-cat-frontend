@@ -85,11 +85,7 @@ export function AddProduct() {
         images: uploadResults.map((result) => result.url),
       };
 
-      console.log('Product data to submit:', productData);
-
       const response = await api.post('/api/products', productData);
-
-      console.log('API Response:', response.data);
 
       if (response.status === 201 || response.status === 200) {
         alert('เพิ่มสินค้าสำเร็จ');
@@ -111,7 +107,6 @@ export function AddProduct() {
         navigate('/admin/dashboard');
       }
     } catch (error) {
-      console.error('Error adding product:', error);
       const errorMessage =
         error.response?.data?.details ||
         error.message ||

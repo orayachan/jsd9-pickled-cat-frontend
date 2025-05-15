@@ -11,7 +11,6 @@ export function AdminProductList() {
     const fetchProducts = async () => {
       try {
         const response = await api.get('/api/products');
-        console.log('API Response:', response.data); // Debug log
         // Check if response.data.products exists, otherwise use response.data
         const productsData = response.data.products || response.data;
         if (!Array.isArray(productsData)) {
@@ -20,8 +19,7 @@ export function AdminProductList() {
         setProducts(productsData);
         setLoading(false);
       } catch (err) {
-        console.error('Error fetching products:', err);
-        setError('ไม่สามารถโหลดข้อมูลสินค้าได้');
+        setError('ไม่สามารถโหลดข้อมูลสินค้าได้', err);
         setLoading(false);
       }
     };
