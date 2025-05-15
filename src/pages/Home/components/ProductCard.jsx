@@ -1,8 +1,10 @@
+import { Link } from 'react-router';
+
 export const ProductCard = ({ product }) => {
   return (
     <div className='flex h-full w-full flex-col justify-between rounded-2xl border p-4 shadow-md'>
       {/* รูปภาพ */}
-      <a target='_blank' href={`/product/${product.id}`} rel='noreferrer'>
+      <Link target='_blank' to={`/product/${product._id}`} rel='noreferrer'>
         <div className='hover: flex justify-center'>
           <img
             src={product.images[0]}
@@ -10,25 +12,30 @@ export const ProductCard = ({ product }) => {
             className='h-[244.63px] w-[231.8px] rounded-md object-cover transition-transform duration-300 hover:scale-110'
           />
         </div>
-      </a>
-
-      {/* รายละเอียดสินค้า */}
-      <div className='mt-2 flex-1'>
-        <div className='flex justify-between'>
-          <p>{product.name}</p>
-          <p>{product.price.toFixed(2)}</p>
+        {/* รายละเอียดสินค้า */}
+        <div className='mx-4 mt-2 flex-1'>
+          <div className='flex justify-between'>
+            <p className='text-primary-800 pt-4 pb-2 text-lg font-semibold'>
+              {product.name}
+            </p>
+            <p className='flex min-w-[80px] justify-end pt-4 font-semibold'>
+              ฿ {product.price.toFixed(2)}
+            </p>
+          </div>
+          <p className='text-pretty'>{product.description}</p>
+          <div className='my-2 flex h-4 items-center gap-1'>
+            <p className='text-yellow-400'>★★★★★</p>
+            <p className='text-sm'>(121)</p>
+          </div>
         </div>
-        <p>{product.description}</p>
-        <div className='mt-2 flex h-4 items-center gap-1'>
-          <p className='text-yellow-400'>★★★★★</p>
-          <p className='text-sm'>(121)</p>
-        </div>
-      </div>
+      </Link>
 
       {/* ปุ่ม */}
       <div className='mt-4 flex flex-col gap-2'>
-        <button className='btn btn-addToCart'>รายละเอียด</button>
-        <button className='btn btn-addToShortList'>ลงตระกร้า</button>
+        <button className='bg-primary-100 hover:bg-primary-50 rounded-full py-2 font-medium hover:shadow-sm'>
+          กดสั่งซื้อสินค้าที่นี่
+        </button>
+        <button className='hidden'>ลงตระกร้า</button>
       </div>
     </div>
   );

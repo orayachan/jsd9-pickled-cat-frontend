@@ -1,5 +1,6 @@
-import { data } from '@/lib/data';
-import { useState } from 'react';
+//import { data } from '@/lib/data';
+import { getAllProduct } from '@/services/productsService.js';
+import { useEffect, useState } from 'react';
 import {
   AboutUs,
   FAQ,
@@ -13,8 +14,27 @@ export const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortPrice, setSortPrice] = useState('');
+  const [products, setProducts] = useState([]);
+  const [loadingProducts, setLoadingProducts] = useState(true);
+  const [error, setError] = useState('');
 
-  let filteredData = [...data];
+  const fetchProducts = async () => {
+    try {
+      const res = await getAllProduct();
+      setProducts(res.products || []);
+    } catch (err) {
+      console.error(err);
+      setError('Failed to load products.');
+    } finally {
+      setLoadingProducts(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  let filteredData = [...products];
 
   if (selectedCategory) {
     filteredData = filteredData.filter(
@@ -38,12 +58,12 @@ export const Home = () => {
       <HeroBanner />
 
       {/* menu bar */}
-      <section id='products' className='px-8'>
-        <h2 className='text-[28px] font-bold text-[#3A4980] sm:text-[32px]'>
+      <section id='products' className='p-8'>
+        <h2 className='text-primary-700 mb-6 text-2xl font-bold lg:pl-4 lg:text-4xl'>
           สินค้าของเรา
         </h2>
 
-        <div className='my-8 hidden items-center justify-between text-sm md:flex'>
+        <div className='flex flex-col items-start justify-between text-sm md:flex-row'>
           {/* sort option */}
           <ProductFilterBar
             onCategoryChange={(category) => setSelectedCategory(category)}
@@ -56,16 +76,29 @@ export const Home = () => {
             setSearchTerm={setSearchTerm}
           />
         </div>
+
+        {/* error display */}
+        {error && (
+          <div className='text-center text-sm text-red-500'>{error}</div>
+        )}
+
         {/* product list */}
         <div className='mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-          {filteredData.slice(0, 16).map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {loadingProducts ?
+            <div className='col-span-full text-center text-gray-400'>
+              กำลังโหลดสินค้า...
+            </div>
+          : filteredData
+              .slice(0, 16)
+              .map((product) => (
+                <ProductCard key={product._id} product={product} />
+              ))
+          }
         </div>
       </section>
 
-      <FAQ></FAQ>
-      <AboutUs></AboutUs>
+      <FAQ />
+      <AboutUs />
     </div>
   );
 };
