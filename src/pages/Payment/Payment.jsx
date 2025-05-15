@@ -22,7 +22,7 @@ export function Payment() {
   const [formData, setFormData] = useState(initialFormData);
   const [paymentMethod, setPaymentMethod] = useState('bankTransfer');
 
-   const handleChange = (e) => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -32,13 +32,13 @@ export function Payment() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.removeItem("cart");
+    localStorage.removeItem('cart');
 
     setFormData(initialFormData);
-    setPaymentMethod("banktransfer");
+    setPaymentMethod('banktransfer');
 
-    alert("คำสั่งซื้อของคุณได้รับการยืนยันแล้ว!");
-    navigate("/");
+    alert('คำสั่งซื้อของคุณได้รับการยืนยันแล้ว!');
+    navigate('/');
   };
 
   return (
