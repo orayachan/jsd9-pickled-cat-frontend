@@ -1,6 +1,6 @@
 import { ProductCard } from '@/components/customs';
-import { useState, useEffect } from 'react';
 import api from '@/services/api';
+import { useEffect, useState } from 'react';
 
 export function AdminProductList() {
   const [products, setProducts] = useState([]);
@@ -31,24 +31,24 @@ export function AdminProductList() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-xl">กำลังโหลด...</div>
+      <div className='flex min-h-screen items-center justify-center'>
+        <div className='text-xl'>กำลังโหลด...</div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-xl text-red-500">{error}</div>
+      <div className='flex min-h-screen items-center justify-center'>
+        <div className='text-xl text-red-500'>{error}</div>
       </div>
     );
   }
 
   if (!products || products.length === 0) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-xl">ไม่พบข้อมูลสินค้า</div>
+      <div className='flex min-h-screen items-center justify-center'>
+        <div className='text-xl'>ไม่พบข้อมูลสินค้า</div>
       </div>
     );
   }

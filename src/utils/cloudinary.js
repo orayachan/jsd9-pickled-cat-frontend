@@ -19,21 +19,21 @@ export const uploadToCloudinary = (file) => {
     // ใช้ Cloudinary Upload API
     fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
       method: 'POST',
-      body: formData
+      body: formData,
     })
-    .then(response => response.json())
-    .then(data => {
-      if (data.secure_url) {
-        resolve({
-          url: data.secure_url,
-          public_id: data.public_id
-        });
-      } else {
-        reject(new Error('อัพโหลดไม่สำเร็จ'));
-      }
-    })
-    .catch(error => {
-      reject(error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.secure_url) {
+          resolve({
+            url: data.secure_url,
+            public_id: data.public_id,
+          });
+        } else {
+          reject(new Error('อัพโหลดไม่สำเร็จ'));
+        }
+      })
+      .catch((error) => {
+        reject(error);
+      });
   });
 };

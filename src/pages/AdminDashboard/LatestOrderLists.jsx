@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
 import api from '@/services/api';
+import { useEffect, useState } from 'react';
 import {
+  CancelledOrder,
+  CompletedOrder,
   PendingOrder,
   ShippingOrder,
-  CompletedOrder,
-  CancelledOrder,
 } from './OrderComponents';
 
 // Helper: Map backend order to frontend order props
@@ -13,16 +13,18 @@ function mapOrder(order) {
     id: order._id,
     userName: order.userName || 'Guest',
     userImage: order.userImage || '/Sample_User_Icon.png',
-    orderDate: order.order_at
-      ? new Date(order.order_at).toLocaleString('th-TH')
-      : '',
+    orderDate:
+      order.order_at ? new Date(order.order_at).toLocaleString('th-TH') : '',
     items: (order.order_items || []).map((item) => ({
       image: item.image || '/Sample_Product.png',
       name: item.name || '',
       price: item.price || 0,
       quantity: item.quantity || 0,
     })),
-    totalItems: order.order_items ? order.order_items.reduce((sum, i) => sum + (i.quantity || 0), 0) : 0,
+    totalItems:
+      order.order_items ?
+        order.order_items.reduce((sum, i) => sum + (i.quantity || 0), 0)
+      : 0,
     totalAmount: order.total_price || 0,
     status: order.status,
     cancelReason: order.cancelReason || '',
@@ -40,9 +42,19 @@ function renderOrderComponent(order, handlers = {}) {
   };
   switch (order.status) {
     case 'Pending':
-      return <PendingOrder key={order.id} order={{ ...order, ...defaultHandlers, ...handlers }} />;
+      return (
+        <PendingOrder
+          key={order.id}
+          order={{ ...order, ...defaultHandlers, ...handlers }}
+        />
+      );
     case 'Shipped':
-      return <ShippingOrder key={order.id} order={{ ...order, ...defaultHandlers, ...handlers }} />;
+      return (
+        <ShippingOrder
+          key={order.id}
+          order={{ ...order, ...defaultHandlers, ...handlers }}
+        />
+      );
     case 'Delivered':
       return <CompletedOrder key={order.id} order={order} />;
     case 'Cancelled':
@@ -83,19 +95,20 @@ export function OrderAll() {
     fetchOrders();
   }, []);
 
-  if (loading) return <div className="p-4 text-center">กำลังโหลด...</div>;
-  if (error) return <div className="p-4 text-center text-red-500">{error}</div>;
-  if (orders.length === 0) return <div className="p-4 text-center">ไม่พบรายการออเดอร์</div>;
+  if (loading) return <div className='p-4 text-center'>กำลังโหลด...</div>;
+  if (error) return <div className='p-4 text-center text-red-500'>{error}</div>;
+  if (orders.length === 0)
+    return <div className='p-4 text-center'>ไม่พบรายการออเดอร์</div>;
 
   return (
-    <div className="space-y-4">
+    <div className='space-y-4'>
       {orders.map((order) =>
         renderOrderComponent(order, {
           onShip: (id) => updateOrderStatus(id, 'Shipped'),
           onOutOfStock: (id) => updateOrderStatus(id, 'Cancelled'),
           onReturnDelivery: (id) => updateOrderStatus(id, 'Cancelled'),
           onDeliverySuccess: (id) => updateOrderStatus(id, 'Delivered'),
-        })
+        }),
       )}
     </div>
   );
@@ -133,17 +146,18 @@ export function OrderPending() {
     fetchOrders();
   }, []);
 
-  if (loading) return <div className="p-4 text-center">กำลังโหลด...</div>;
-  if (error) return <div className="p-4 text-center text-red-500">{error}</div>;
-  if (orders.length === 0) return <div className="p-4 text-center">ไม่พบรายการที่รอดำเนินการ</div>;
+  if (loading) return <div className='p-4 text-center'>กำลังโหลด...</div>;
+  if (error) return <div className='p-4 text-center text-red-500'>{error}</div>;
+  if (orders.length === 0)
+    return <div className='p-4 text-center'>ไม่พบรายการที่รอดำเนินการ</div>;
 
   return (
-    <div className="space-y-4">
+    <div className='space-y-4'>
       {orders.map((order) =>
         renderOrderComponent(order, {
           onShip: (id) => updateOrderStatus(id, 'Shipped'),
           onOutOfStock: (id) => updateOrderStatus(id, 'Cancelled'),
-        })
+        }),
       )}
     </div>
   );
@@ -180,17 +194,18 @@ export function OrderOnRoute() {
     fetchOrders();
   }, []);
 
-  if (loading) return <div className="p-4 text-center">กำลังโหลด...</div>;
-  if (error) return <div className="p-4 text-center text-red-500">{error}</div>;
-  if (orders.length === 0) return <div className="p-4 text-center">ไม่พบรายการที่กำลังจัดส่ง</div>;
+  if (loading) return <div className='p-4 text-center'>กำลังโหลด...</div>;
+  if (error) return <div className='p-4 text-center text-red-500'>{error}</div>;
+  if (orders.length === 0)
+    return <div className='p-4 text-center'>ไม่พบรายการที่กำลังจัดส่ง</div>;
 
   return (
-    <div className="space-y-4">
+    <div className='space-y-4'>
       {orders.map((order) =>
         renderOrderComponent(order, {
           onReturnDelivery: (id) => updateOrderStatus(id, 'Cancelled'),
           onDeliverySuccess: (id) => updateOrderStatus(id, 'Delivered'),
-        })
+        }),
       )}
     </div>
   );
@@ -217,11 +232,12 @@ export function OrderSuccess() {
     fetchOrders();
   }, []);
 
-  if (loading) return <div className="p-4 text-center">กำลังโหลด...</div>;
-  if (error) return <div className="p-4 text-center text-red-500">{error}</div>;
-  if (orders.length === 0) return <div className="p-4 text-center">ไม่พบรายการที่จัดส่งสำเร็จ</div>;
+  if (loading) return <div className='p-4 text-center'>กำลังโหลด...</div>;
+  if (error) return <div className='p-4 text-center text-red-500'>{error}</div>;
+  if (orders.length === 0)
+    return <div className='p-4 text-center'>ไม่พบรายการที่จัดส่งสำเร็จ</div>;
 
-  return <div className="space-y-4">{orders.map(renderOrderComponent)}</div>;
+  return <div className='space-y-4'>{orders.map(renderOrderComponent)}</div>;
 }
 
 export function OrderCancelled() {
@@ -245,9 +261,10 @@ export function OrderCancelled() {
     fetchOrders();
   }, []);
 
-  if (loading) return <div className="p-4 text-center">กำลังโหลด...</div>;
-  if (error) return <div className="p-4 text-center text-red-500">{error}</div>;
-  if (orders.length === 0) return <div className="p-4 text-center">ไม่พบรายการที่ถูกยกเลิก</div>;
+  if (loading) return <div className='p-4 text-center'>กำลังโหลด...</div>;
+  if (error) return <div className='p-4 text-center text-red-500'>{error}</div>;
+  if (orders.length === 0)
+    return <div className='p-4 text-center'>ไม่พบรายการที่ถูกยกเลิก</div>;
 
-  return <div className="space-y-4">{orders.map(renderOrderComponent)}</div>;
-} 
+  return <div className='space-y-4'>{orders.map(renderOrderComponent)}</div>;
+}

@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 export function PendingOrder({ order }) {
   const [loading, setLoading] = useState(false);
@@ -23,7 +23,9 @@ export function PendingOrder({ order }) {
           alt='user profile'
           className='max-h-12 max-w-12 rounded-4xl border'
         />
-        <p className='text-primary my-auto text-xl font-bold'>{order.userName}</p>
+        <p className='text-primary my-auto text-xl font-bold'>
+          {order.userName}
+        </p>
       </div>
 
       <div className='mx-2 mb-2 flex flex-row justify-between'>
@@ -32,7 +34,10 @@ export function PendingOrder({ order }) {
       </div>
 
       {order.items.map((item, index) => (
-        <div key={index} className='mb-4 flex flex-row rounded-lg border p-4 shadow-sm'>
+        <div
+          key={index}
+          className='mb-4 flex flex-row rounded-lg border p-4 shadow-sm'
+        >
           <img
             src={item.image}
             alt={item.name}
@@ -70,9 +75,10 @@ export function PendingOrder({ order }) {
           </Button>
         </div>
         <p className='mt-auto text-lg'>
-          รวมทั้งสิ้น ( {order.totalItems} สินค้า ) : <strong>฿ {order.totalAmount}</strong>
+          รวมทั้งสิ้น ( {order.totalItems} สินค้า ) :{' '}
+          <strong>฿ {order.totalAmount}</strong>
         </p>
       </div>
     </div>
   );
-} 
+}

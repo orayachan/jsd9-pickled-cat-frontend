@@ -1,7 +1,6 @@
 import {
   AddProduct,
   AdminProductList,
-  CancelOrder,
   LatestOrder,
 } from '@/pages/AdminDashboard';
 import { useState } from 'react';

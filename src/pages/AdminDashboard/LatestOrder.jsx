@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import {
   OrderAll,
+  OrderCancelled,
   OrderOnRoute,
   OrderPending,
   OrderSuccess,
-  OrderCancelled,
 } from './LatestOrderLists';
 
 export function LatestOrder() {

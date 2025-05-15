@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { CancelSuccess } from './CancelOrder';
 
 export function CancelOrder() {
@@ -7,7 +6,9 @@ export function CancelOrder() {
     <div>
       <h1 className='my-5 text-3xl font-bold'>คำสั่งซื้อล่าสุด</h1>
       <div className='mb-6 flex gap-2'>
-        <button className='px-4 py-2 text-lg rounded-md bg-secondary'>ยกเลิกแล้ว</button>
+        <button className='bg-secondary rounded-md px-4 py-2 text-lg'>
+          ยกเลิกแล้ว
+        </button>
       </div>
       <div className='rounded-xl bg-neutral-100 p-4'>
         <CancelSuccess />

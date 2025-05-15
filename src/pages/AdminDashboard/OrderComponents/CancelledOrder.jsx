@@ -1,5 +1,3 @@
-import { Button } from '@/components/ui/button';
-
 export function CancelledOrder({ order }) {
   return (
     <div className='flex flex-col rounded-lg border bg-white p-4 shadow-sm'>
@@ -9,7 +7,9 @@ export function CancelledOrder({ order }) {
           alt='user profile'
           className='max-h-12 max-w-12 rounded-4xl border'
         />
-        <p className='text-primary my-auto text-xl font-bold'>{order.userName}</p>
+        <p className='text-primary my-auto text-xl font-bold'>
+          {order.userName}
+        </p>
       </div>
 
       <div className='mx-2 mb-2 flex flex-row justify-between'>
@@ -18,7 +18,10 @@ export function CancelledOrder({ order }) {
       </div>
 
       {order.items.map((item, index) => (
-        <div key={index} className='mb-4 flex flex-row rounded-lg border p-4 shadow-sm'>
+        <div
+          key={index}
+          className='mb-4 flex flex-row rounded-lg border p-4 shadow-sm'
+        >
           <img
             src={item.image}
             alt={item.name}
@@ -48,9 +51,10 @@ export function CancelledOrder({ order }) {
           {/* ไม่มีปุ่มกดเพิ่มเติมสำหรับออเดอร์ที่ยกเลิกแล้ว */}
         </div>
         <p className='mt-auto text-lg'>
-          รวมทั้งสิ้น ( {order.totalItems} สินค้า ) : <strong>฿ {order.totalAmount}</strong>
+          รวมทั้งสิ้น ( {order.totalItems} สินค้า ) :{' '}
+          <strong>฿ {order.totalAmount}</strong>
         </p>
       </div>
     </div>
   );
-} 
+}

@@ -1,19 +1,20 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
 import {
   AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogFooter,
   AlertDialogAction,
   AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
 import api from '@/services/api';
+import { useState } from 'react';
 
 export const ProductCard = ({ product, onProductUpdated }) => {
-  const { _id, name, description, price, discount, stock, category, images } = product;
+  const { _id, name, description, price, discount, stock, category, images } =
+    product;
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({
     name,
@@ -108,55 +109,105 @@ export const ProductCard = ({ product, onProductUpdated }) => {
             <form onSubmit={handleSubmit} className='space-y-3'>
               <div>
                 <label className='block text-sm font-medium'>ชื่อสินค้า</label>
-                <input name='name' value={form.name} onChange={handleChange} className='w-full rounded border p-2' required />
+                <input
+                  name='name'
+                  value={form.name}
+                  onChange={handleChange}
+                  className='w-full rounded border p-2'
+                  required
+                />
               </div>
               <div>
                 <label className='block text-sm font-medium'>รายละเอียด</label>
-                <textarea name='description' value={form.description} onChange={handleChange} className='w-full rounded border p-2' required />
+                <textarea
+                  name='description'
+                  value={form.description}
+                  onChange={handleChange}
+                  className='w-full rounded border p-2'
+                  required
+                />
               </div>
               <div className='flex gap-2'>
                 <div className='flex-1'>
                   <label className='block text-sm font-medium'>ราคา</label>
-                  <input name='price' type='number' value={form.price} onChange={handleChange} className='w-full rounded border p-2' required />
+                  <input
+                    name='price'
+                    type='number'
+                    value={form.price}
+                    onChange={handleChange}
+                    className='w-full rounded border p-2'
+                    required
+                  />
                 </div>
                 <div className='flex-1'>
                   <label className='block text-sm font-medium'>ส่วนลด</label>
-                  <input name='discount' type='number' value={form.discount} onChange={handleChange} className='w-full rounded border p-2' required />
+                  <input
+                    name='discount'
+                    type='number'
+                    value={form.discount}
+                    onChange={handleChange}
+                    className='w-full rounded border p-2'
+                    required
+                  />
                 </div>
                 <div className='flex-1'>
                   <label className='block text-sm font-medium'>คงเหลือ</label>
-                  <input name='stock' type='number' value={form.stock} onChange={handleChange} className='w-full rounded border p-2' required />
+                  <input
+                    name='stock'
+                    type='number'
+                    value={form.stock}
+                    onChange={handleChange}
+                    className='w-full rounded border p-2'
+                    required
+                  />
                 </div>
               </div>
               <div>
                 <label className='block text-sm font-medium'>หมวดหมู่</label>
-                <input name='category' value={form.category} onChange={handleChange} className='w-full rounded border p-2' required />
+                <input
+                  name='category'
+                  value={form.category}
+                  onChange={handleChange}
+                  className='w-full rounded border p-2'
+                  required
+                />
               </div>
               <div>
-                <label className='block text-sm font-medium'>รูปภาพ (URL)</label>
+                <label className='block text-sm font-medium'>
+                  รูปภาพ (URL)
+                </label>
                 {form.images.map((img, idx) => (
                   <input
                     key={idx}
                     value={img}
                     onChange={(e) => handleImageChange(e, idx)}
-                    className='w-full rounded border p-2 mb-1'
+                    className='mb-1 w-full rounded border p-2'
                   />
                 ))}
               </div>
-              {error && <div className='text-red-500 text-sm'>{error}</div>}
-              <AlertDialogFooter className="flex flex-row justify-between items-center gap-2">
+              {error && <div className='text-sm text-red-500'>{error}</div>}
+              <AlertDialogFooter className='flex flex-row items-center justify-between gap-2'>
                 <AlertDialogCancel
-                  type="button"
+                  type='button'
                   disabled={loading}
                   onClick={handleDelete}
-                  className="bg-red-600 text-white rounded px-4 py-2 hover:bg-red-700 transition-colors"
+                  className='rounded bg-red-600 px-4 py-2 text-white transition-colors hover:bg-red-700'
                 >
                   {loading ? 'กำลังลบ...' : 'ลบสินค้า'}
                 </AlertDialogCancel>
-                <div className="flex flex-row gap-2">
-                  <AlertDialogCancel disabled={loading} className="border border-gray-300 bg-white text-gray-700 rounded px-4 py-2 hover:bg-gray-100 transition-colors">ยกเลิก</AlertDialogCancel>
+                <div className='flex flex-row gap-2'>
+                  <AlertDialogCancel
+                    disabled={loading}
+                    className='rounded border border-gray-300 bg-white px-4 py-2 text-gray-700 transition-colors hover:bg-gray-100'
+                  >
+                    ยกเลิก
+                  </AlertDialogCancel>
                   <AlertDialogAction asChild>
-                    <button type='submit' disabled={loading} className='bg-primary text-white rounded px-4 py-2 hover:bg-primary/90 transition-colors'>
+                    <button
+                      type='submit'
+                      disabled={loading}
+                      className='bg-primary hover:bg-primary/90 rounded px-4 py-2 text-white transition-colors'
+                    >
                       {loading ? 'กำลังบันทึก...' : 'บันทึก'}
                     </button>
                   </AlertDialogAction>
