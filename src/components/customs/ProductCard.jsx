@@ -10,7 +10,7 @@ import {
   AlertDialogAction,
   AlertDialogCancel,
 } from '@/components/ui/alert-dialog';
-import axios from 'axios';
+import api from '@/services/api';
 
 export const ProductCard = ({ product, onProductUpdated }) => {
   const { _id, name, description, price, discount, stock, category, images } = product;
@@ -43,7 +43,7 @@ export const ProductCard = ({ product, onProductUpdated }) => {
     setLoading(true);
     setError(null);
     try {
-      await axios.put(`http://localhost:3000/api/products/${_id}`, {
+      await api.put(`/api/products/${_id}`, {
         ...form,
         price: Number(form.price),
         discount: Number(form.discount),
@@ -62,7 +62,7 @@ export const ProductCard = ({ product, onProductUpdated }) => {
     setLoading(true);
     setError(null);
     try {
-      await axios.delete(`http://localhost:3000/api/products/${_id}`);
+      await api.delete(`/api/products/${_id}`);
       setOpen(false);
       if (onProductUpdated) onProductUpdated();
     } finally {
