@@ -4,6 +4,7 @@ import {
   OrderOnRoute,
   OrderPending,
   OrderSuccess,
+  OrderCancelled,
 } from './LatestOrderLists';
 
 export function LatestOrder() {
@@ -17,6 +18,8 @@ export function LatestOrder() {
         return <OrderOnRoute />;
       case 'success':
         return <OrderSuccess />;
+      case 'cancelled':
+        return <OrderCancelled />;
       case 'all':
       default:
         return <OrderAll />;
@@ -53,6 +56,12 @@ export function LatestOrder() {
           className={tabClass('success')}
         >
           จัดส่งสำเร็จ
+        </button>
+        <button
+          onClick={() => setOrderTab('cancelled')}
+          className={tabClass('cancelled')}
+        >
+          ยกเลิกแล้ว
         </button>
       </div>
 

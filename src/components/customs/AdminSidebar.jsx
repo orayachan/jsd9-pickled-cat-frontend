@@ -48,17 +48,6 @@ export function AdminSidebar({ activeTab, setActiveTab }) {
         คำสั่งซื้อล่าสุด
       </button>
 
-      <button
-        onClick={() => setActiveTab('cancel')}
-        className={`block w-full py-2 pr-20 pl-10 text-left text-2xl font-bold hover:cursor-pointer ${
-          activeTab === 'cancel' ?
-            'bg-secondary font-bold'
-          : 'hover:bg-secondary-50'
-        }`}
-      >
-        คำขอยกเลิก
-      </button>
-
       <AlertDialog>
         <AlertDialogTrigger asChild>
           <button
