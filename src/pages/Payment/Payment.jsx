@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { BcrumbPayment } from './Components/BcrumbPayment';
 import { PaymentMethod } from './Components/PaymentMethod';
 import { PaymentSummary } from './Components/PaymentSummary';
@@ -17,8 +17,13 @@ export function Payment() {
     subDistrict: '',
     province: '',
     postalCode: '',
-    paymentMethod: '',
   });
+
+  const [ paymentMethod, setPaymentMethod ] = useState('bankTransfer');
+
+  const handlePaymentMethodChange = (e) => {
+    setPaymentMethod(e.target.value);
+  }
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -36,7 +41,7 @@ export function Payment() {
 
     let status = 'Pending'; // Set the initial status to 'Pending'
 
-    if (formData.paymentMethod === 'เก็บเงินปลายทาง') {
+    if (paymentMethod === 'cod') {
       // Handle cash on delivery
       status = 'Paid'; // Set the status to 'Paid'
       paidAt = new Date().toISOString(); // Set the paidAt date to now
@@ -49,7 +54,7 @@ export function Payment() {
         {
           order_id: orderId, // Replace with the actual order ID
           payment_id: paymentId, // Replace with the actual payment ID
-          payment_method: formData.paymentMethod,
+          payment_method: paymentMethod,
           amount: 100, // Replace with the actual amount
           payment_status: status,
           payment_date: paidAt,
@@ -73,7 +78,7 @@ export function Payment() {
           {/* PART: Left */}
           <div className='space-y-8 lg:col-span-2'>
             <ShippingForm formData={formData} handleChange={handleChange} />
-            <PaymentMethod formData={formData} handleChange={handleChange} />
+            <PaymentMethod formData={paymentMethod} handleChange={handlePaymentMethodChange} />
             <Button
               type='submit'
               className='bg-primary-600 hover:bg-primary-700 w-full rounded-full py-3 transition'
