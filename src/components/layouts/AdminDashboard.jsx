@@ -1,7 +1,6 @@
 import {
   AddProduct,
   AdminProductList,
-  CancelOrder,
   LatestOrder,
 } from '@/pages/AdminDashboard';
 import { useState } from 'react';
@@ -19,8 +18,6 @@ export function AdminDashboard() {
         return <AddProduct />;
       case 'latest':
         return <LatestOrder />;
-      case 'cancel':
-        return <CancelOrder />;
       default:
         return <p>ไม่พบเนื้อหา</p>;
     }
