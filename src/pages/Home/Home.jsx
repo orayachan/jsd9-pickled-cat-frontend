@@ -23,8 +23,7 @@ export const Home = () => {
       const res = await getAllProduct();
       setProducts(res.products || []);
     } catch (err) {
-      console.error(err);
-      setError('Failed to load products.');
+      setError('Failed to load products.', err);
     } finally {
       setLoadingProducts(false);
     }
