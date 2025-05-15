@@ -32,9 +32,9 @@ export const ProductCard = ({ product }) => {
 
       {/* ปุ่ม */}
       <div className='mt-4 flex flex-col gap-2'>
-        <button className='bg-primary-100 hover:bg-primary-50 rounded-full py-2 font-medium hover:shadow-sm'>
+        <Link to={`/product/${product._id}`} className='text-center bg-primary-100 hover:bg-primary-50 rounded-full py-2 font-medium hover:shadow-sm'>
           กดสั่งซื้อสินค้าที่นี่
-        </button>
+        </Link>
         <button className='hidden'>ลงตระกร้า</button>
       </div>
     </div>
