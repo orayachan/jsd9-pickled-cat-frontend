@@ -237,7 +237,7 @@ export function OrderCancelled() {
         setOrders(response.data.orders.map(mapOrder));
         setLoading(false);
       } catch {
-        console.error('Error fetching cancelled orders:', err);
+        console.error('Error fetching cancelled orders:');
         setError('ไม่สามารถโหลดข้อมูลได้');
         setLoading(false);
       }
