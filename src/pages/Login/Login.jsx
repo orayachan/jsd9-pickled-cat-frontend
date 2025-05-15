@@ -5,20 +5,20 @@ import { Label } from '@/components/ui/label';
 import { useForm } from '@/hooks';
 import { cn } from '@/lib/utils';
 import { handleBlur } from '@/utils';
-import { LoaderCircle } from 'lucide-react';
+import { Check, LoaderCircle } from 'lucide-react';
 import { Link } from 'react-router';
 
 export function Login() {
-  const { errors, handleSubmit, loading, setData, setErrors } =
+  const { errors, handleSubmit, loading, setData, setErrors, success } =
     useForm('login');
 
   /** @param {'email' | 'password'} field */
   function validationError(field) {
     switch (field) {
       case 'email':
-        return errors.type === 'validation' && errors.errors.email;
+        return errors.type === 'validation' && errors.errors['email'];
       case 'password':
-        return errors.type === 'validation' && errors.errors.password;
+        return errors.type === 'validation' && errors.errors['password'];
     }
   }
 
@@ -28,7 +28,9 @@ export function Login() {
         <form
           className='mx-auto size-full content-center space-y-12 lg:px-4'
           method='POST'
-          onReset={() => setErrors({ type: null, errors: {} })}
+          onReset={() =>
+            setErrors({ type: null, errors: {}, emailConflict: false })
+          }
           onSubmit={(event) => handleSubmit(event)}
         >
           <div className='content-center space-y-8'>
@@ -97,7 +99,7 @@ export function Login() {
 
               <div>
                 <Link
-                  to={{ pathname: '/forgot' }}
+                  to={{ pathname: '/login' }}
                   className='text-primary font-semibold'
                 >
                   ลืมรหัสผ่าน?
@@ -110,6 +112,14 @@ export function Login() {
                 </Label>
               </div>
             </div>
+            <p
+              className={cn(
+                true ? 'grid' : 'hidden',
+                'text-primary text-lg font-semibold',
+              )}
+            >
+              เข้าสู่ระบบสำเร็จ กำลังไปที่หน้า Dashboard
+            </p>
           </div>
 
           <div className='mx-auto grid w-3/4 grid-flow-row gap-4 sm:grid-flow-col'>
@@ -123,6 +133,7 @@ export function Login() {
             </Button>
             <Button className='rounded-full' size='lg' type='submit'>
               {loading && <LoaderCircle className='animate-spin' />}
+              {success && <Check className='size-6' />}
               เข้าสู่ระบบ
             </Button>
           </div>

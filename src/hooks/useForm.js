@@ -1,111 +1,87 @@
-import { postFormData, validateFormData } from '@/utils';
+import { loginService, registerService } from '@/services/usersService';
+import { validateFormData } from '@/utils';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 
 /** @param {'login' | 'register'} validationType */
 export function useForm(validationType) {
   const navigate = useNavigate();
-
   const [data, setData] = useState({});
   const [errors, setErrors] = useState({
     type: null,
     errors: {},
+    emailConflict: false,
   });
   const [loading, setLoading] = useState(false);
-
+  const [success, setSuccess] = useState(true);
   const controller = new AbortController();
 
   /** @param {SubmitEvent} e */
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    setErrors({ type: null, errors: {} });
+    setErrors({ type: null, errors: {}, emailConflict: false });
 
-    // TODO: Wrap these inside a function, return validatedData for future
-    if (validationType === 'login') {
-      const { validatedData, errors, success } = validateFormData(
-        data,
-        'login',
-      );
-      if (!success) {
-        const email =
-          errors.format().email ? errors.format().email._errors[0] : null;
-        const password =
-          errors.format().password ? errors.format().password._errors[0] : null;
+    const { validatedData, errors, success } = validateFormData(
+      data,
+      validationType,
+    );
+    if (!success) {
+      setErrors((prev) => ({
+        ...prev,
+        type: 'validation',
+        errors: {
+          email: errors.format().email?._errors[0],
+          password: errors.format().password?._errors[0],
+          firstname: errors.format().firstname?._errors[0],
+          lastname: errors.format().lastname?._errors[0],
+          confirmPassword: errors.format().confirmPassword?._errors[0],
+        },
+      }));
 
-        setErrors((prev) => ({
-          ...prev,
-          type: 'validation',
-          errors: { email: email, password: password },
-        }));
-
-        setData((prev) => ({ ...prev, validatedData }));
-        setLoading(false);
-        return;
-      }
-    } else if (validationType === 'register') {
-      const { validatedData, errors, success } = validateFormData(
-        data,
-        'register',
-      );
-      if (!success) {
-        const email =
-          errors.format().email ? errors.format().email._errors[0] : null;
-        const firstname =
-          errors.format().firstname ?
-            errors.format().firstname._errors[0]
-          : null;
-        const lastname =
-          errors.format().lastname ? errors.format().lastname._errors[0] : null;
-        const password =
-          errors.format().password ? errors.format().password._errors[0] : null;
-        const confirmPassword =
-          errors.format().confirmPassword ?
-            errors.format().confirmPassword._errors[0]
-          : null;
-
-        setErrors((prev) => ({
-          ...prev,
-          type: 'validation',
-          errors: {
-            email,
-            firstname,
-            lastname,
-            password,
-            confirmPassword,
-          },
-        }));
-
-        setData((prev) => ({ ...prev, validatedData }));
-        setLoading(false);
-        return;
-      }
+      setData((prev) => ({ ...prev, validatedData }));
+      setLoading(false);
+      return;
     }
 
-    if (import.meta.VITE_DEV_MODE ?? true) {
-      console.log(data, errors);
-    } else {
-      try {
-        // TODO: check `postFormData()` supposed to be done before `navigate()`
-        await postFormData(controller.signal, data);
-        navigate('/dashboard');
-      } catch (error) {
-        setErrors((prev) => ({
-          ...prev,
-          type: 'fetching',
-          errors: { fetch: error },
-        }));
+    try {
+      if (validationType === 'login') {
+        await loginService(validatedData, controller.signal);
+      } else if (validationType === 'register') {
+        await registerService(validatedData, controller.signal);
       }
+      setSuccess(true);
+      setTimeout(
+        () =>
+          navigate(validationType === 'login' ? '/dashboard' : '/login', {
+            viewTransition: true,
+          }),
+        1000,
+      );
+    } catch (error) {
+      let emailConflict = error.response.status === 409;
+      setErrors((prev) => ({
+        ...prev,
+        type: 'fetching',
+        errors: {
+          fetch:
+            emailConflict ? 'อีเมลนี้ถูกใช้แล้ว' : (
+              error.response.data['message']
+            ),
+        },
+        emailConflict,
+      }));
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   }
 
   useEffect(() => {
     return () => {
       setData({});
-      setErrors({ type: null, errors: [] });
+      setErrors({ type: null, errors: {}, emailConflict: false });
       controller.abort();
+      setSuccess(false);
     };
   }, []);
 
@@ -115,5 +91,6 @@ export function useForm(validationType) {
     loading,
     setData,
     setErrors,
+    success,
   };
 }
