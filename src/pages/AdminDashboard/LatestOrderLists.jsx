@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '@/services/api';
 import {
   PendingOrder,
   ShippingOrder,
@@ -59,7 +59,7 @@ export function OrderAll() {
 
   async function updateOrderStatus(id, status) {
     try {
-      await axios.patch(`http://localhost:3000/api/orders/${id}/status`, { status });
+      await api.patch(`/api/orders/${id}/status`, { status });
       fetchOrders();
     } catch {
       alert('เกิดข้อผิดพลาดในการอัปเดตสถานะ');
@@ -69,7 +69,7 @@ export function OrderAll() {
   async function fetchOrders() {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:3000/api/orders');
+      const response = await api.get('/api/orders');
       setOrders(response.data.orders.map(mapOrder));
       setLoading(false);
     } catch {
@@ -108,7 +108,7 @@ export function OrderPending() {
 
   async function updateOrderStatus(id, status) {
     try {
-      await axios.patch(`http://localhost:3000/api/orders/${id}/status`, { status });
+      await api.patch(`/api/orders/${id}/status`, { status });
       // Refresh list after update
       fetchOrders();
     } catch {
@@ -119,7 +119,7 @@ export function OrderPending() {
   async function fetchOrders() {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:3000/api/orders/status/Pending');
+      const response = await api.get('/api/orders/status/Pending');
       setOrders(response.data.orders.map(mapOrder));
       setLoading(false);
     } catch {
@@ -156,7 +156,7 @@ export function OrderOnRoute() {
 
   async function updateOrderStatus(id, status) {
     try {
-      await axios.patch(`http://localhost:3000/api/orders/${id}/status`, { status });
+      await api.patch(`/api/orders/${id}/status`, { status });
       fetchOrders();
     } catch {
       alert('เกิดข้อผิดพลาดในการอัปเดตสถานะ');
@@ -166,7 +166,7 @@ export function OrderOnRoute() {
   async function fetchOrders() {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:3000/api/orders/status/Shipped');
+      const response = await api.get('/api/orders/status/Shipped');
       setOrders(response.data.orders.map(mapOrder));
       setLoading(false);
     } catch {
@@ -205,7 +205,7 @@ export function OrderSuccess() {
     async function fetchOrders() {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:3000/api/orders/status/Delivered');
+        const response = await api.get('/api/orders/status/Delivered');
         setOrders(response.data.orders.map(mapOrder));
         setLoading(false);
       } catch {
@@ -233,7 +233,7 @@ export function OrderCancelled() {
     async function fetchOrders() {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:3000/api/orders/status/Cancelled');
+        const response = await api.get('/api/orders/status/Cancelled');
         setOrders(response.data.orders.map(mapOrder));
         setLoading(false);
       } catch {

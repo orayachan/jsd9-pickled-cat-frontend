@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { uploadToCloudinary } from '../../utils/cloudinary';
-import axios from 'axios';
+import api from '@/services/api';
 import { useNavigate } from 'react-router';
 
 export function AddProduct() {
@@ -87,7 +87,7 @@ export function AddProduct() {
       
       console.log('Product data to submit:', productData);
       
-      const response = await axios.post('http://localhost:3000/api/products', productData);
+      const response = await api.post('/api/products', productData);
       
       console.log('API Response:', response.data);
       

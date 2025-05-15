@@ -1,6 +1,6 @@
 import { ProductCard } from '@/components/customs';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '@/services/api';
 
 export function AdminProductList() {
   const [products, setProducts] = useState([]);
@@ -10,7 +10,7 @@ export function AdminProductList() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/products');
+        const response = await api.get('/api/products');
         console.log('API Response:', response.data); // Debug log
         // Check if response.data.products exists, otherwise use response.data
         const productsData = response.data.products || response.data;
