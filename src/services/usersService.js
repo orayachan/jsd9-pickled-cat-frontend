@@ -3,6 +3,7 @@ import api from './api';
 /**
  * @param {any} data
  * @param {AbortSignal} signal
+ * @return {Promise<import('axios').AxiosResponse>}
  */
 export const loginService = async (data, signal) => {
   const response = await api.post('/api/users/login', data, { signal });
@@ -13,6 +14,7 @@ export const loginService = async (data, signal) => {
 /**
  * @param {any} data
  * @param {AbortSignal} signal
+ * @return {Promise<import('axios').AxiosResponse>}
  */
 export const registerService = async (data, signal) => {
   const response = await api.post('/api/users/register', data, { signal });
