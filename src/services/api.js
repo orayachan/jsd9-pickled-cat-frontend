@@ -8,7 +8,7 @@ const baseURL =
 const api = axios.create({
   baseURL,
   headers: {
-    Authorization: localStorage.getItem('authToken') ?? null,
+    Authorization: `Bearer ${localStorage.getItem('authToken') ?? null}`,
   },
   withCredentials: true,
 });
