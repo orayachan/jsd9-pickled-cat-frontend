@@ -7,7 +7,10 @@ const baseURL =
 
 const api = axios.create({
   baseURL,
-  withCredentials: true, // critical for sending cookies!
+  headers: {
+    Authorization: localStorage.getItem('authToken') ?? null,
+  },
+  withCredentials: true,
 });
 
 export default api;

@@ -46,7 +46,8 @@ export function useForm(validationType) {
 
     try {
       if (validationType === 'login') {
-        await loginService(validatedData, controller.signal);
+        const response = await loginService(validatedData, controller.signal);
+        localStorage.setItem('authToken', response.data['auth_token']);
       } else if (validationType === 'register') {
         await registerService(validatedData, controller.signal);
       }
