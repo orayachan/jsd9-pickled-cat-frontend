@@ -76,7 +76,7 @@ export function PendingOrder({ order }) {
         </div>
         <p className='mt-auto text-lg'>
           รวมทั้งสิ้น ( {order.totalItems} สินค้า ) :{' '}
-          <strong>฿ {order.totalAmount}</strong>
+          <strong>฿ {order.totalAmountFormatted}</strong>
         </p>
       </div>
     </div>

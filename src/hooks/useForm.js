@@ -52,13 +52,14 @@ export function useForm(validationType) {
         await registerService(validatedData, controller.signal);
       }
       setSuccess(true);
-      setTimeout(
-        () =>
-          navigate(validationType === 'login' ? '/dashboard' : '/login', {
-            viewTransition: true,
-          }),
-        1000,
-      );
+      setTimeout(() => {
+        if (validationType === 'login') {
+          navigate('/dashboard', { viewTransition: true });
+          setTimeout(() => window.location.reload(), 100);
+        } else {
+          navigate('/login', { viewTransition: true });
+        }
+      }, 1000);
     } catch (error) {
       let errorMessage = error.response.data['message'];
       const emailConflict = error.response.status === 409;

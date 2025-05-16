@@ -41,10 +41,10 @@ export function CancelledOrder({ order }) {
         </div>
       ))}
 
-      <div className='mx-2 mb-2'>
+      {/* <div className='mx-2 mb-2'>
         <p className='text-lg font-semibold'>เหตุผลการยกเลิก:</p>
         <p className='mt-2 text-gray-700'>{order.cancelReason}</p>
-      </div>
+      </div> */}
 
       <div className='mx-2 mb-2 flex flex-row justify-between'>
         <div className='flex flex-row gap-4'>
@@ -52,7 +52,7 @@ export function CancelledOrder({ order }) {
         </div>
         <p className='mt-auto text-lg'>
           รวมทั้งสิ้น ( {order.totalItems} สินค้า ) :{' '}
-          <strong>฿ {order.totalAmount}</strong>
+          <strong>฿ {order.totalAmountFormatted}</strong>
         </p>
       </div>
     </div>
