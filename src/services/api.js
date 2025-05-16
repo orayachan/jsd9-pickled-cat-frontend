@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-const baseURL =
-  import.meta.env.DEV ?
-    import.meta.env.VITE_API_URL
-  : import.meta.env.VITE_PUBLIC_API_URL;
+// เปลี่ยนตรงนี้เป็น URL backend ของคุณบน Render
+const baseURL = 'https://jsd9-pickled-cat-backend.onrender.com';
 
 const api = axios.create({
   baseURL,
