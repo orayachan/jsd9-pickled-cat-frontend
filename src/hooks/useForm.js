@@ -54,7 +54,7 @@ export function useForm(validationType) {
       setSuccess(true);
       setTimeout(() => {
         if (validationType === 'login') {
-          navigate('/dashboard', { viewTransition: true });
+          navigate('/', { viewTransition: true });
           setTimeout(() => window.location.reload(), 100);
         } else {
           navigate('/login', { viewTransition: true });
