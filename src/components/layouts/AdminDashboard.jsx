@@ -26,15 +26,17 @@ export function AdminDashboard() {
   return (
     <main className='flex min-h-screen flex-col items-center bg-purple-50 py-10'>
       <section className='w-full max-w-6xl'>
-        <nav className='mb-4 text-sm text-gray-500'>
-          <span
-            className='cursor-pointer hover:underline'
-            onClick={() => navigate('/')}
-          >
-            หน้าแรก
-          </span>{' '}
-          -&gt;
-          <span className='mx-1'>จัดการระบบ</span>
+        <nav className='mb-4 text-sm text-gray-500 flex justify-between items-center'>
+          <div>
+            <span
+              className='cursor-pointer hover:underline'
+              onClick={() => navigate('/')}
+            >
+              หน้าแรก
+            </span>{' '}
+            -&gt;
+            <span className='mx-1'>จัดการระบบ</span>
+          </div>
         </nav>
 
         <div className='border-secondary-100 flex rounded-2xl border-5 bg-white'>
