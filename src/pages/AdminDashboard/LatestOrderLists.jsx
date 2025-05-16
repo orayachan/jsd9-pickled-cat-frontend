@@ -11,13 +11,13 @@ import {
 function mapOrder(order) {
   return {
     id: order._id,
-    userName: order.userName || 'Guest',
+    userName: order.user_id || 'ไม่ทราบผู้ใช้',
     userImage: order.userImage || '/Sample_User_Icon.png',
     orderDate:
       order.order_at ? new Date(order.order_at).toLocaleString('th-TH') : '',
     items: (order.order_items || []).map((item) => ({
       image: item.image || '/Sample_Product.png',
-      name: item.name || '',
+      name: item.product_name || item.name || '',
       price: item.price || 0,
       quantity: item.quantity || 0,
     })),
@@ -40,25 +40,31 @@ function renderOrderComponent(order, handlers = {}) {
     onReturnDelivery: () => {},
     onDeliverySuccess: () => {},
   };
+  // Format totalAmount for display
+  const totalAmountFormatted =
+    Number.isInteger(order.totalAmount)
+      ? order.totalAmount
+      : order.totalAmount.toFixed(2);
+  const orderWithFormat = { ...order, totalAmountFormatted };
   switch (order.status) {
     case 'Pending':
       return (
         <PendingOrder
           key={order.id}
-          order={{ ...order, ...defaultHandlers, ...handlers }}
+          order={{ ...orderWithFormat, ...defaultHandlers, ...handlers }}
         />
       );
     case 'Shipped':
       return (
         <ShippingOrder
           key={order.id}
-          order={{ ...order, ...defaultHandlers, ...handlers }}
+          order={{ ...orderWithFormat, ...defaultHandlers, ...handlers }}
         />
       );
     case 'Delivered':
-      return <CompletedOrder key={order.id} order={order} />;
+      return <CompletedOrder key={order.id} order={orderWithFormat} />;
     case 'Cancelled':
-      return <CancelledOrder key={order.id} order={order} />;
+      return <CancelledOrder key={order.id} order={orderWithFormat} />;
     default:
       return null;
   }

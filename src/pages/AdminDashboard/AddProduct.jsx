@@ -264,7 +264,7 @@ export function AddProduct() {
 
         {/* ส่วนลด */}
         <div className='flex flex-col space-y-2'>
-          <label className='font-semibold'>ส่วนลด (บาท)</label>
+          <label className='font-semibold'>ส่วนลด (%)</label>
           <input
             type='number'
             name='discount'
@@ -274,6 +274,7 @@ export function AddProduct() {
             placeholder='ใส่ 0 ถ้าไม่มี'
             required
             min='0'
+            max='100'
           />
         </div>
 

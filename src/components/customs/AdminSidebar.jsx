@@ -70,7 +70,11 @@ export function AdminSidebar({ activeTab, setActiveTab }) {
             </AlertDialogCancel>
             <AlertDialogAction
               className='border bg-white text-black hover:cursor-pointer hover:bg-red-100'
-              onClick={() => navigate('/login')}
+              onClick={() => {
+                localStorage.removeItem('authToken');
+                navigate('/login');
+                setTimeout(() => window.location.reload(), 100);
+              }}
             >
               ยืนยัน
             </AlertDialogAction>

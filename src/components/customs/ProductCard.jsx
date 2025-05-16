@@ -13,7 +13,7 @@ import api from '@/services/api';
 import { useState } from 'react';
 
 export const ProductCard = ({ product, onProductUpdated }) => {
-  const { _id, name, description, price, discount, stock, category, images } =
+  const { _id, name, description, price, discount, stock, category, images, option, sizes } =
     product;
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({
@@ -24,6 +24,8 @@ export const ProductCard = ({ product, onProductUpdated }) => {
     stock,
     category,
     images: images || [],
+    option: option || [],
+    sizes: sizes || [],
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -39,6 +41,14 @@ export const ProductCard = ({ product, onProductUpdated }) => {
     setForm((prev) => ({ ...prev, images: newImages }));
   };
 
+  const handleOptionChange = (e) => {
+    setForm((prev) => ({ ...prev, option: e.target.value.split(',').map((v) => v.trim()).filter(Boolean) }));
+  };
+
+  const handleSizesChange = (e) => {
+    setForm((prev) => ({ ...prev, sizes: e.target.value.split(',').map((v) => v.trim()).filter(Boolean) }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -50,6 +60,8 @@ export const ProductCard = ({ product, onProductUpdated }) => {
         discount: Number(form.discount),
         stock: Number(form.stock),
         images: form.images,
+        option: form.option,
+        sizes: form.sizes,
       });
       setOpen(false);
       if (onProductUpdated) onProductUpdated();
@@ -79,21 +91,16 @@ export const ProductCard = ({ product, onProductUpdated }) => {
         className='mx-auto mb-4 h-40 w-40 rounded-xl'
       />
       <h2 className='text-lg font-bold'>{name}</h2>
-      <p className='text-sm text-gray-600'>{description}</p>
+      <p className='break-words whitespace-pre-line min-h-[2.5rem] text-sm text-gray-600'>{description}</p>
       <p className='mt-2 text-sm'>
         หมวดหมู่: <span className='font-medium text-gray-800'>{category}</span>
       </p>
       <p className='text-sm'>
-        ราคา:{' '}
-        <span className='font-semibold text-green-600'>
-          {price - discount} บาท
-        </span>
-        {discount > 0 && (
-          <span className='ml-2 text-xs text-red-500 line-through'>
-            {price} บาท
-          </span>
-        )}
+        ราคา: <span className='font-semibold text-gray-800'>{price} บาท</span>
       </p>
+      {discount > 0 && (
+        <p className='text-sm text-gray-800'>ส่วนลด : {discount} %</p>
+      )}
       <p className='text-sm text-gray-600'>คงเหลือ: {stock} ชิ้น</p>
       <div className='flex flex-col pt-4 text-center'>
         <AlertDialog open={open} onOpenChange={setOpen}>
@@ -184,6 +191,26 @@ export const ProductCard = ({ product, onProductUpdated }) => {
                     className='mb-1 w-full rounded border p-2'
                   />
                 ))}
+              </div>
+              <div>
+                <label className='block text-sm font-medium'>ตัวเลือกสินค้า (option, คั่นด้วย comma)</label>
+                <input
+                  name='option'
+                  value={form.option.join(', ')}
+                  onChange={handleOptionChange}
+                  className='w-full rounded border p-2'
+                  placeholder='เช่น สีแดง, สีดำ'
+                />
+              </div>
+              <div>
+                <label className='block text-sm font-medium'>ไซส์ (sizes, คั่นด้วย comma)</label>
+                <input
+                  name='sizes'
+                  value={form.sizes.join(', ')}
+                  onChange={handleSizesChange}
+                  className='w-full rounded border p-2'
+                  placeholder='เช่น S, M, L, XL'
+                />
               </div>
               {error && <div className='text-sm text-red-500'>{error}</div>}
               <AlertDialogFooter className='flex flex-row items-center justify-between gap-2'>

@@ -1,220 +1,70 @@
 import { Button } from '@/components/ui/button';
+import api from '@/services/api';
 
-export function OrderAll() {
+const STATUS_TH = {
+  Pending: 'รอดำเนินการ',
+  Shipped: 'กำลังจัดส่ง',
+  Delivered: 'จัดส่งสำเร็จ',
+  Cancelled: 'ยกเลิก',
+};
+
+export function OrderAll({ orders = [], onOrderUpdate }) {
+  const handleCancel = async (orderId) => {
+    if (!window.confirm('ยืนยันการยกเลิกคำสั่งซื้อ?')) return;
+    try {
+      await api.patch(`api/orders/${orderId}/status`, { status: 'Cancelled' });
+      if (onOrderUpdate) onOrderUpdate();
+    } catch (err) {
+      alert('เกิดข้อผิดพลาดในการยกเลิกคำสั่งซื้อ');
+    }
+  };
+
+  if (!orders.length) {
+    return <div className="text-center text-gray-400 py-8">ไม่พบรายการคำสั่งซื้อ</div>;
+  }
   return (
     <section className='flex flex-col gap-4'>
-      <div className='flex flex-col rounded-lg border bg-white p-4 shadow-sm'>
-        <div className='mx-2 mb-2 flex flex-row justify-between'>
-          <p className='text-lg'>15 เมษายน 2568 21:23</p>
-          <p className='text-lg font-bold text-green-500'>สำเร็จ</p>
-        </div>
-
-        <div className='mb-4 flex flex-row rounded-lg border p-4 shadow-sm'>
-          <img
-            src='https://img2.pic.in.th/pic/Chicken.jpeg'
-            alt='Pickled Chicken Bites'
-            className='mr-4 h-32 w-32 rounded-md object-cover'
-          />
-          <div className='flex w-135 flex-col justify-between'>
-            <div>
-              <h3 className='text-xl font-semibold'>Pickled Chicken Bites</h3>
-            </div>
-            <div className='flex flex-row justify-between'>
-              <p className='font-bold text-purple-600'>฿ 250</p>
-              <p className=''>
-                จำนวน <strong>3</strong> ชิ้น
-              </p>
-            </div>
+      {orders.map((order) => (
+        <div key={order._id} className='flex flex-col rounded-lg border bg-white p-4 shadow-sm'>
+          <div className='mx-2 mb-2 flex flex-row justify-between'>
+            <p className='text-lg'>{new Date(order.order_at || order.createdAt || order.created_at).toLocaleString('th-TH')}</p>
+            <p className={`text-lg font-bold ${order.status === 'Delivered' ? 'text-green-500' : order.status === 'Shipped' ? 'text-yellow-500' : order.status === 'Pending' ? 'text-yellow-500' : order.status === 'Cancelled' ? 'text-red-500' : ''}`}>{STATUS_TH[order.status] || order.status}</p>
           </div>
-        </div>
-
-        {/* Product 2 */}
-        <div className='mb-4 flex flex-row rounded-lg border p-4 shadow-sm'>
-          <img
-            src='https://img5.pic.in.th/file/secure-sv1/Chicken2.jpeg'
-            alt='Pickled Chicken Bites'
-            className='mr-4 h-32 w-32 rounded-md object-cover'
-          />
-          <div className='flex w-135 flex-col justify-between'>
-            <div>
-              <h3 className='text-xl font-semibold'>Pickled Chicken Bites 2</h3>
+          {/* สินค้าในออเดอร์ */}
+          {(order.order_items || []).map((item, idx) => (
+            <div key={idx} className='mb-4 flex flex-row rounded-lg border p-4 shadow-sm'>
+              <img
+                src={item.image || 'https://img2.pic.in.th/pic/Chicken.jpeg'}
+                alt={item.product_name || item.name}
+                className='mr-4 h-32 w-32 rounded-md object-cover'
+              />
+              <div className='flex w-135 flex-col justify-between'>
+                <div>
+                  <h3 className='text-xl font-semibold'>{item.product_name || item.name}</h3>
+                </div>
+                <div className='flex flex-row justify-between'>
+                  <p className='font-bold text-purple-600'>฿ {item.price}</p>
+                  <p className=''>
+                    จำนวน <strong>{item.quantity}</strong> ชิ้น
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className='flex flex-row justify-between'>
-              <p className='font-bold text-purple-600'>฿ 250</p>
-              <p className=''>
-                จำนวน <strong>3</strong> ชิ้น
-              </p>
+          ))}
+          <div className='mx-2 mb-2 flex flex-row justify-between'>
+            <div className='flex flex-row gap-4'>
+              {order.status === 'Pending' && (
+                <Button className='hover:bg-secondary-100 border bg-white p-4 text-lg text-black hover:cursor-pointer' onClick={() => handleCancel(order._id)}>
+                  ยกเลิกคำสั่งซื้อ
+                </Button>
+              )}
             </div>
-          </div>
-        </div>
-
-        <div className='mx-2 mb-2 flex flex-row justify-between'>
-          <div className='flex flex-row gap-4'>
-            <Button className='hover:bg-secondary-100 border bg-white p-4 text-lg text-black hover:cursor-pointer'>
-              ซื้ออีกครั้ง
-            </Button>
-            <Button className='hover:bg-secondary-100 border bg-white p-4 text-lg text-black hover:cursor-pointer'>
-              รีวิวสินค้า
-            </Button>
-          </div>
-          <p className='mt-auto text-lg'>
-            รวมทั้งสิ้น ( 6 สินค้า ) : <strong>฿ 1,500</strong>
-          </p>
-        </div>
-      </div>
-
-      <div className='flex flex-col rounded-lg border bg-white p-4 shadow-sm'>
-        <div className='mx-2 mb-2 flex flex-row justify-between'>
-          <p className='text-lg'>15 เมษายน 2568 21:23</p>
-          <p className='text-lg font-bold text-yellow-500'>กำลังจัดเตรียม</p>
-        </div>
-
-        <div className='mb-4 flex flex-row rounded-lg border p-4 shadow-sm'>
-          <img
-            src='https://img2.pic.in.th/pic/Chicken.jpeg'
-            alt='Pickled Chicken Bites'
-            className='mr-4 h-32 w-32 rounded-md object-cover'
-          />
-          <div className='flex w-135 flex-col justify-between'>
-            <div>
-              <h3 className='text-xl font-semibold'>Pickled Chicken Bites</h3>
-            </div>
-            <div className='flex flex-row justify-between'>
-              <p className='font-bold text-purple-600'>฿ 250</p>
-              <p className=''>
-                จำนวน <strong>3</strong> ชิ้น
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className='mx-2 mb-2 flex flex-row justify-between'>
-          <div className='flex flex-row gap-4'>
-            <Button className='hover:bg-secondary-100 border bg-white p-4 text-lg text-black hover:cursor-pointer'>
-              ยกเลิกคำสั่งซื้อ
-            </Button>
-          </div>
-          <p className='mt-auto text-lg'>
-            รวมทั้งสิ้น ( 3 สินค้า ) : <strong>฿ 750</strong>
-          </p>
-        </div>
-      </div>
-
-      <div className='flex flex-col rounded-lg border bg-white p-4 shadow-sm'>
-        <div className='mx-2 mb-2 flex flex-row justify-between'>
-          <p className='text-lg'>15 เมษายน 2568 21:23</p>
-          <p className='text-lg font-bold text-yellow-500'>
-            อยู่ระหว่างการขนส่ง
-          </p>
-        </div>
-
-        <div className='mb-4 flex flex-row rounded-lg border p-4 shadow-sm'>
-          <img
-            src='https://img2.pic.in.th/pic/Chicken.jpeg'
-            alt='Pickled Chicken Bites'
-            className='mr-4 h-32 w-32 rounded-md object-cover'
-          />
-          <div className='flex w-135 flex-col justify-between'>
-            <div>
-              <h3 className='text-xl font-semibold'>Pickled Chicken Bites</h3>
-            </div>
-            <div className='flex flex-row justify-between'>
-              <p className='font-bold text-purple-600'>฿ 250</p>
-              <p className=''>
-                จำนวน <strong>3</strong> ชิ้น
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Product 2 */}
-        <div className='mb-4 flex flex-row rounded-lg border p-4 shadow-sm'>
-          <img
-            src='https://img5.pic.in.th/file/secure-sv1/Chicken2.jpeg'
-            alt='Pickled Chicken Bites'
-            className='mr-4 h-32 w-32 rounded-md object-cover'
-          />
-          <div className='flex w-135 flex-col justify-between'>
-            <div>
-              <h3 className='text-xl font-semibold'>Pickled Chicken Bites 2</h3>
-            </div>
-            <div className='flex flex-row justify-between'>
-              <p className='font-bold text-purple-600'>฿ 250</p>
-              <p className=''>
-                จำนวน <strong>3</strong> ชิ้น
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className='mx-2 mb-2 flex flex-row justify-between'>
-          <div className='flex flex-row gap-4 rounded-lg border p-2 px-4'>
-            <p className='font-bold'>
-              คาดว่า จะได้รับภายใน 20 เม.ย. - 21 เม.ย.
+            <p className='mt-auto text-lg'>
+              รวมทั้งสิ้น ( {order.order_items?.reduce((sum, i) => sum + (i.quantity || 0), 0)} สินค้า ) : <strong>฿ {order.total_price?.toLocaleString?.() ?? '-'}</strong>
             </p>
           </div>
-          <p className='mt-auto text-lg'>
-            รวมทั้งสิ้น ( 6 สินค้า ) : <strong>฿ 1,500</strong>
-          </p>
         </div>
-      </div>
-
-      <div className='flex flex-col rounded-lg border bg-white p-4 shadow-sm'>
-        <div className='mx-2 mb-2 flex flex-row justify-between'>
-          <p className='text-lg'>15 เมษายน 2568 21:23</p>
-          <p className='text-lg font-bold text-red-500'>ยกเลิกสำเร็จ</p>
-        </div>
-
-        <div className='mb-4 flex flex-row rounded-lg border p-4 shadow-sm'>
-          <img
-            src='https://img2.pic.in.th/pic/Chicken.jpeg'
-            alt='Pickled Chicken Bites'
-            className='mr-4 h-32 w-32 rounded-md object-cover'
-          />
-          <div className='flex w-135 flex-col justify-between'>
-            <div>
-              <h3 className='text-xl font-semibold'>Pickled Chicken Bites</h3>
-            </div>
-            <div className='flex flex-row justify-between'>
-              <p className='font-bold text-purple-600'>฿ 250</p>
-              <p className=''>
-                จำนวน <strong>3</strong> ชิ้น
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Product 2 */}
-        <div className='mb-4 flex flex-row rounded-lg border p-4 shadow-sm'>
-          <img
-            src='https://img5.pic.in.th/file/secure-sv1/Chicken2.jpeg'
-            alt='Pickled Chicken Bites'
-            className='mr-4 h-32 w-32 rounded-md object-cover'
-          />
-          <div className='flex w-135 flex-col justify-between'>
-            <div>
-              <h3 className='text-xl font-semibold'>Pickled Chicken Bites 2</h3>
-            </div>
-            <div className='flex flex-row justify-between'>
-              <p className='font-bold text-purple-600'>฿ 250</p>
-              <p className=''>
-                จำนวน <strong>3</strong> ชิ้น
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className='mx-2 mb-2 flex flex-row justify-between'>
-          <div className='flex flex-row gap-4'>
-            <Button className='hover:bg-secondary-100 border bg-white p-4 text-lg text-black hover:cursor-pointer'>
-              ซื้ออีกครั้ง
-            </Button>
-          </div>
-          <p className='mt-auto text-lg'>
-            รวมทั้งสิ้น ( 6 สินค้า ) : <strong>฿ 1,500</strong>
-          </p>
-        </div>
-      </div>
+      ))}
     </section>
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   OrderAll,
   OrderCancel,
@@ -6,23 +6,57 @@ import {
   OrderPending,
   OrderSuccess,
 } from './MyOrderList';
+import api from '@/services/api';
+
+const STATUS_MAP = {
+  pending: 'Pending',
+  onroute: 'Shipped',
+  success: 'Delivered',
+  cancel: 'Cancelled',
+};
 
 export function MyOrders() {
   const [orderTab, setOrderTab] = useState('all');
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchOrders = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await api.get('api/orders/my');
+      setOrders(res.data.orders || []);
+    } catch (err) {
+      setError('ไม่สามารถโหลดข้อมูลคำสั่งซื้อ');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  const filterOrders = () => {
+    if (orderTab === 'all') return orders;
+    return orders.filter((order) => order.status === STATUS_MAP[orderTab]);
+  };
 
   const renderOrderContent = () => {
+    const filtered = filterOrders();
     switch (orderTab) {
       case 'pending':
-        return <OrderPending />;
+        return <OrderPending orders={filtered} onOrderUpdate={fetchOrders} />;
       case 'onroute':
-        return <OrderOnRoute />;
+        return <OrderOnRoute orders={filtered} />;
       case 'success':
-        return <OrderSuccess />;
+        return <OrderSuccess orders={filtered} />;
       case 'cancel':
-        return <OrderCancel />;
+        return <OrderCancel orders={filtered} />;
       case 'all':
       default:
-        return <OrderAll />;
+        return <OrderAll orders={filtered} onOrderUpdate={fetchOrders} />;
     }
   };
 
@@ -66,7 +100,13 @@ export function MyOrders() {
       </div>
 
       <div className='rounded-xl bg-neutral-100 p-4'>
-        {renderOrderContent()}
+        {loading ? (
+          <div className="text-center py-8">กำลังโหลด...</div>
+        ) : error ? (
+          <div className="text-center text-red-500 py-8">{error}</div>
+        ) : (
+          renderOrderContent()
+        )}
       </div>
     </div>
   );
