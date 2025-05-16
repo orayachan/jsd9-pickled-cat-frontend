@@ -132,7 +132,7 @@ export function Login() {
                 'text-primary text-lg font-semibold',
               )}
             >
-              เข้าสู่ระบบสำเร็จ กำลังไปที่หน้า Dashboard...
+              เข้าสู่ระบบสำเร็จ กำลังไปที่หน้า Home...
             </p>
           </div>
 
