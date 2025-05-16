@@ -17,7 +17,7 @@ export function MyAccount() {
       setError(null);
       try {
         const token = localStorage.getItem('authToken');
-        const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/users/profile`, {
+        const res = await fetch(`https://jsd9-pickled-cat-backend.onrender.com/api/users/profile`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
