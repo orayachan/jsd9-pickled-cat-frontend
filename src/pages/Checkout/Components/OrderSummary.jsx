@@ -52,13 +52,11 @@ export function OrderSummary({ selectedItems = [] }) {
         total_price: total,
         status: 'Pending',
       };
-      console.log('🧾 Order Payload:', orderData);
-      const response = await createOrder(orderData);
-      console.log('Order created:', response);
+      await createOrder(orderData);
       navigate('/payment');
     } catch (err) {
-      console.error('Failed to create order:', err);
       alert('ไม่สามารถสร้างคำสั่งซื้อได้');
+      console.error(err);
     }
   };
 

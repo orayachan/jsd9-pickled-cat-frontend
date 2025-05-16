@@ -31,8 +31,7 @@ export const ProductDetail = () => {
         setSelectedOption(fetchedProduct.option?.[0] || '');
         setSelectedSize(fetchedProduct.sizes?.[0] || '');
       } catch (err) {
-        console.error(err);
-        setError('ไม่สามารถโหลดข้อมูลสินค้าได้');
+        setError('ไม่สามารถโหลดข้อมูลสินค้าได้', err);
       } finally {
         setLoading(false);
       }

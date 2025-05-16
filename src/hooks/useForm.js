@@ -13,7 +13,7 @@ export function useForm(validationType) {
     emailConflict: false,
   });
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(true);
+  const [success, setSuccess] = useState(false);
   const controller = new AbortController();
 
   /** @param {SubmitEvent} e */
